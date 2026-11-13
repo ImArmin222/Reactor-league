@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Reactor League</title>
+<title>Reactor League 2.0</title>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0a0a1f;--panel:#14153a;--panel2:#1d1f52;--neon:#2cffd1;--pink:#ff3df2;--yel:#ffd23f;--red:#ff4d4d;--ink:#eef0ff;--px:'Press Start 2P',monospace;--fa:'Vazirmatn',Tahoma,sans-serif}
@@ -56,6 +56,8 @@ button{font-family:var(--fa);cursor:pointer}
 .pbar{width:min(420px,86vw);height:26px;border:4px solid #000;background:#14153a;box-shadow:0 5px 0 #000}
 #pfill{height:100%;width:0;background:repeating-linear-gradient(90deg,var(--neon) 0 12px,#13b998 12px 16px);transition:width .2s steps(12)}
 #genMsg{min-height:28px;font-weight:700;color:#cfd3ff}
+.panel h4{margin:12px 0 6px;font-size:15px;color:var(--neon)}
+.tcard small{display:block;font-weight:400;opacity:.85;font-size:11px;line-height:1.6;margin-top:2px}
 /* MATCH */
 .matchWrap{direction:ltr;display:grid;grid-template-columns:minmax(0,1fr);gap:12px;max-width:1240px;margin:0 auto}
 @media(min-width:1000px){.matchWrap{grid-template-columns:minmax(0,1fr) 340px}}
@@ -172,7 +174,16 @@ button{font-family:var(--fa);cursor:pointer}
     <div class="panel p0"><h3 id="pph0"></h3><div class="pgrid" id="pg0"></div><div class="cnt" id="pc0"></div></div>
     <div class="panel p1"><h3 id="pph1"></h3><div class="pgrid" id="pg1"></div><div class="cnt" id="pc1"></div></div>
   </div>
-  <div class="bar"><button class="btn warn" id="pRand">🎲 ترکیب رندوم</button><button class="btn big" id="pStart" disabled>🚀 شروع بازی</button></div>
+  <div class="bar"><button class="btn warn" id="pRand">🎲 ترکیب رندوم</button><button class="btn big" id="pStart" disabled>➡ دروازه‌بان و مربی</button></div>
+</section>
+
+<section id="s-staff" class="screen">
+  <div class="top"><button class="btn ghost" id="sBack">⬅ برگشت</button><h2>دروازه‌بان و مربی</h2></div>
+  <div class="panels">
+    <div class="panel p0"><h3 id="sph0"></h3><h4>🧤 دروازه‌بان</h4><div class="pgrid" id="gg0"></div><h4>🧢 مربی</h4><div id="cg0"></div></div>
+    <div class="panel p1"><h3 id="sph1"></h3><h4>🧤 دروازه‌بان</h4><div class="pgrid" id="gg1"></div><h4>🧢 مربی</h4><div id="cg1"></div></div>
+  </div>
+  <div class="bar"><button class="btn warn" id="sRand">🎲 رندوم</button><button class="btn big" id="sStart" disabled>🚀 شروع بازی</button></div>
 </section>
 
 <section id="s-gen" class="screen">
@@ -236,11 +247,16 @@ const SPM=3.4;               // seconds of real time per game minute (x1)
 const RUN=46,DRIB=40,SPR=68,BENCHY=206;
 
 const TEAMS=[
- {id:'pl',name:'تیم منتخب پارک لاله اوشاخلاری',short:'پارک لاله',color:'#ff7eb6',shorts:'#ffffff',sock:'#ff7eb6',num:'#4a0f2b',glow:'#ff7eb6'},
- {id:'kh',name:'تیم کصخلان',short:'کصخلان',color:'#e02d2d',shorts:'#ffffff',sock:'#e02d2d',num:'#ffffff',glow:'#ff4d4d'},
- {id:'at',name:'تیم عاطیه صاظان',short:'عاطیه صاظان',color:'#f2f2f2',shorts:'#d5d9e6',sock:'#f2f2f2',num:'#1a1a2a',glow:'#ffffff'},
- {id:'kb',name:'تیم خیابونی',short:'خیابونی',color:'#262626',shorts:'#111111',sock:'#262626',num:'#ffd23f',glow:'#9a9aff'},
- {id:'v',name:'تیم ڤ',short:'ڤ',color:'#2f6df0',shorts:'#ffffff',sock:'#2f6df0',num:'#ffffff',glow:'#4d8dff'}
+ {id:'pl',name:'منتخب پارک لاله اوشاخلاری',short:'پارک لاله',color:'#ff7eb6',shorts:'#ffffff',sock:'#ff7eb6',num:'#4a0f2b',glow:'#ff7eb6'},
+ {id:'kh',name:'کصخلان',short:'کصخلان',color:'#e02d2d',shorts:'#ffffff',sock:'#e02d2d',num:'#ffffff',glow:'#ff4d4d'},
+ {id:'at',name:'عاطیه صاظان',short:'عاطیه صاظان',color:'#f2f2f2',shorts:'#d5d9e6',sock:'#f2f2f2',num:'#1a1a2a',glow:'#ffffff'},
+ {id:'kb',name:'خیابونی',short:'خیابونی',color:'#ffd23f',shorts:'#1a1a1a',sock:'#ffd23f',num:'#111111',glow:'#ffd23f'},
+ {id:'v',name:'ڤ',short:'ڤ',color:'#2f6df0',shorts:'#ffffff',sock:'#2f6df0',num:'#ffffff',glow:'#4d8dff'},
+ {id:'pr',name:'پارس',short:'پارس',color:'#4dc3ff',shorts:'#ffffff',sock:'#4dc3ff',num:'#06304a',glow:'#4dc3ff'},
+ {id:'mr',name:'منتخب راکتور',short:'منتخب راکتور',color:'#9b4dff',shorts:'#ffffff',sock:'#9b4dff',num:'#ffffff',glow:'#b57bff'},
+ {id:'oq',name:'عقاب',short:'عقاب',color:'#9a9aa8',shorts:'#3a3a48',sock:'#9a9aa8',num:'#111111',glow:'#c0c0d0'},
+ {id:'az',name:'آذرخش',short:'آذرخش',color:'#b3123f',shorts:'#ffffff',sock:'#b3123f',num:'#ffffff',glow:'#e8365f'},
+ {id:'gh',name:'قاچاقچیان',short:'قاچاقچیان',color:'#22b34a',shorts:'#111111',sock:'#22b34a',num:'#ffffff',glow:'#3ddc69'}
 ];
 const PLAYERS=[
  {id:'armin',name:'آرمین',num:30,skin:'#e8b48a',hair:'#2a1a10'},
@@ -248,7 +264,27 @@ const PLAYERS=[
  {id:'ilya',name:'ایلیا',num:15,skin:'#d9a07a',hair:'#111111'},
  {id:'taha',name:'طاها',num:9,skin:'#c98f66',hair:'#3a2a1a'},
  {id:'nima',name:'نیما',num:20,skin:'#efc29c',hair:'#8a5a1a'},
- {id:'kian',name:'کیان',num:13,skin:'#e0aa82',hair:'#161616'}
+ {id:'kian',name:'کیان',num:13,skin:'#e0aa82',hair:'#161616'},
+ {id:'mahan',name:'ماهان',num:12,skin:'#e8b48a',hair:'#1a1208'},
+ {id:'mohammad',name:'محمد',num:36,skin:'#d9a07a',hair:'#222222'},
+ {id:'hossein',name:'حسین',num:33,skin:'#c98f66',hair:'#111111'},
+ {id:'kiarash',name:'کیارش',num:80,skin:'#efc29c',hair:'#6a3a14'},
+ {id:'ashkan',name:'اشکان',num:22,skin:'#e0aa82',hair:'#2a1a10'},
+ {id:'mahdyar',name:'مهدیار عامری',num:66,skin:'#f1c9a5',hair:'#3a2a1a'}
+];
+const GKS=[
+ {id:'g1',name:'اعتصامی',num:1,skin:'#e0aa82',hair:'#1a1a1a'},
+ {id:'g0',name:'عقاب آفریقا',num:0,skin:'#8a5a3a',hair:'#0d0d0d'},
+ {id:'g99',name:'علیرضا بیرانوند',num:99,skin:'#d9a07a',hair:'#222222'},
+ {id:'gx',name:'سروش هیچکس',num:'∅',skin:'#efc29c',hair:'#4a2410'},
+ {id:'g96',name:'یاس',num:96,skin:'#f1c9a5',hair:'#4a2410'}
+];
+const COACHES=[
+ {id:'kimia',name:'کیمیاگر بزرگ',tac:'تاکتیک: جادویی و بمب (سوپرگل و ضربه‌های آکروباتیک)',mood:'مهربون ولی جدی',atk:[1.1,1.1],conc:1,favs:['super','super','scissor','scissor'],skin:'#e0aa82',hair:'#cfd3ff',shout:['یه کم جادو بریزید تو بازی!','بمب آماده‌ست، شلیک کن!','خوبه بچه‌ها، ادامه بدید 🙂','تمرکز! جدی بازی کنید']},
+ {id:'bus',name:'اتوبوس مسافربری',tac:'تاکتیک: تیم کامل تو دفاع، امید به ضدحمله',mood:'جدی و خشن',atk:[.65,.65],conc:.6,deep:true,counter:1,favs:['counter','counter','counter','counter'],skin:'#c98f66',hair:'#111111',shout:['عقب بمون! جلو نرو!','دروازه رو ببندید!','نذارید رد بشن!!','منتظر ضدحمله باشید']},
+ {id:'tar',name:'تارتتار',tac:'تاکتیک: معمولی و متعادل',mood:'معمولی',atk:[1,1],conc:1,favs:[],skin:'#efc29c',hair:'#4a2a10',shout:['خوب بازی کنید','پاس بدید، عجله نکنید','فاصله‌ها رو حفظ کنید']},
+ {id:'roh',name:'روح‌پور',tac:'تاکتیک: تمیز، بی‌نقص و شاهکار',mood:'بسیار مهربون؛ ولی وقتی عصبانی بشه کسی جلودارش نیست',atk:[1.3,1.3],conc:.95,rage:true,favs:['normal','normal','header','header'],skin:'#d9a07a',hair:'#222222',shout:['آفرین پسرا! همینطوری','تمیز بازی کنید، عالیه ✨','خیلی قشنگ بود!']},
+ {id:'shi',name:'شیرازی',tac:'تاکتیک: تحلیل‌گر؛ نیمه اول تحلیل، نیمه دوم اصل کار',mood:'شوخ‌طبع و بامزه، در عین حال جدی',atk:[.5,1.7],conc:1,favs:[],skin:'#e8b48a',hair:'#2a1a10',shout:['دارم تحلیل میکنم... 🤔','صبر کنید، هنوز مرحله‌ی شناساییه','نیمه دوم نشونتون میدم!'],shout2:['حالا وقتشه! فشار بیارید!','گفتم نیمه دوم بازی اصلیه 😎','بزنید بچه‌ها، حمله!']}
 ];
 const REFCOL={shirt:'#f2d02a',shorts:'#111',sock:'#111',num:'#000',skin:'#e0aa82',hair:'#222',boot:'#000'};
 
@@ -336,7 +372,7 @@ const FONT={
 '0':['111','101','101','101','111'],'1':['010','110','010','010','111'],'2':['111','001','111','100','111'],'3':['111','001','111','001','111'],'4':['101','101','111','001','001'],
 '5':['111','100','111','001','111'],'6':['111','100','111','101','111'],'7':['111','001','001','001','001'],'8':['111','101','111','101','111'],'9':['111','101','111','001','111'],
 'R':['110','101','110','101','101'],'E':['111','100','110','100','111'],'A':['010','101','111','101','101'],'C':['011','100','100','100','011'],'T':['111','010','010','010','010'],
-'O':['010','101','101','101','010'],'L':['100','100','100','100','111'],'G':['011','100','101','101','011'],'U':['101','101','101','101','111'],' ':['000','000','000','000','000']
+'O':['010','101','101','101','010'],'L':['100','100','100','100','111'],'G':['011','100','101','101','011'],'U':['101','101','101','101','111'],' ':['000','000','000','000','000'],'∅':['011','101','101','101','110']
 };
 function pxText(g,str,x,y,col){
   g.fillStyle=col;
@@ -344,56 +380,42 @@ function pxText(g,str,x,y,col){
 }
 
 /* ================= planning (match script) ================= */
-function lineupKind(a,b){
-  const h=(arr,x)=>arr.indexOf(x)>=0;
-  if(h(a,'armin')&&h(a,'saghar'))return 'W0';
-  if(h(b,'armin')&&h(b,'saghar'))return 'W1';
-  if((h(a,'armin')&&h(b,'saghar'))||(h(a,'saghar')&&h(b,'armin')))return 'EQ';
-  return 'RND';
-}
-function goalOrder(kind){
-  let seq=[];
-  if(kind==='W0'||kind==='W1'){
-    const w=kind==='W0'?0:1,l=1-w,W=rint(6,9),L=rint(0,Math.min(2,W-5));
-    const wg=Array(W).fill(w),lg=Array(L).fill(l);
-    if(L>0&&Math.random()<.4){const first=lg.splice(0,Math.min(L,rint(1,2)));seq=first.concat(shuffle(wg.concat(lg)))}
-    else seq=shuffle(wg.concat(lg));
-  }else if(kind==='EQ'){
-    const n=pick([0,1,1,2,2,3,3,4]);
-    if(n>=2&&Math.random()<.45){const x=rint(0,1);seq=[x,x].concat(shuffle(Array(n-2).fill(x).concat(Array(n).fill(1-x))))}
-    else seq=shuffle(Array(n).fill(0).concat(Array(n).fill(1)));
-  }else{
-    const dd=[0,0,1,1,1,2,2,2,2,3,3,4,5],a=pick(dd),b=pick(dd);
-    seq=shuffle(Array(a).fill(0).concat(Array(b).fill(1)));
-    if(a!==b&&Math.random()<.4){const lo=a<b?0:1,i=seq.indexOf(lo);if(i>0){seq.splice(i,1);seq.unshift(lo)}}
+function goalOrder(c0,c1,N){
+  const C=[c0,c1];let seq=[];
+  for(let i=0;i<N;i++){const h=(3+84/N*(i+.5))<45?0:1,w0=C[0].atk[h]*C[1].conc,w1=C[1].atk[h]*C[0].conc;seq.push(Math.random()<w0/(w0+w1)?0:1)}
+  if(N>=4&&Math.random()<.55){
+    const X=Math.random()<C[0].atk[1]/(C[0].atk[1]+C[1].atk[1])?0:1,O=1-X,k=N>=7?rint(2,3):2,ex=[];
+    for(let i=0;i<N-2*k;i++)ex.push(Math.random()<.6?X:O);
+    seq=Array(k).fill(O).concat(Array(k).fill(X),ex);
   }
+  if(Math.random()<.65){let a=0,b=0;seq.slice(0,-1).forEach(x=>x?b++:a++);if(a!==b&&Math.random()<.6)seq[N-1]=a<b?0:1;seq.late=true}
   return seq;
 }
-function buildPlan(kind){
-  const seq=goalOrder(kind),N=seq.length;
+function buildPlan(c0,c1){
+  const C=[c0,c1],N=pick([3,4,4,5,5,6,6,7,7,8,9]),seq=goalOrder(c0,c1,N);
   const goals=seq.map(t=>({kind:'goal',team:t,type:'normal',done:false}));
+  const base=['normal','normal','normal','header','header','corner','counter','counter','freekick','penalty','super','scissor'];
   let pen=0;
-  goals.forEach(g=>{const r=Math.random();g.type=r<.6?'normal':r<.78?'super':r<.91?'scissor':'penalty';if(g.type==='penalty'&&++pen>2)g.type='normal'});
-  const has=t=>goals.some(g=>g.type===t);
-  if(N>=2){const idx=shuffle([...Array(N).keys()]);if(!has('super'))goals[idx[0]].type='super';if(!has('scissor'))goals[idx[1]].type='scissor'}
-  else if(N===1&&Math.random()<.5)goals[0].type=pick(['super','scissor']);
+  goals.forEach(g=>{g.type=pick(base.concat(C[g.team].favs));if(g.type==='penalty'&&++pen>2)g.type='normal'});
+  const has=t=>goals.some(g=>g.type===t),idx=shuffle([...Array(N).keys()]);
+  if(!has('super'))goals[idx[0]].type='super';
+  if(!has('scissor'))goals[idx[1]].type='scissor';
   goals.forEach(g=>{g.scorer=Math.random()<.5?0:1;g.assist=Math.random()<.7});
   const st=[0,rint(1,3),rint(2,5)];
   goals.forEach((g,i)=>{const seg=85/N;g.planned=3+seg*i+seg*rnd(.2,.8)});
-  if(N>0&&Math.random()<.3)goals[N-1].planned=90+st[2]-rnd(.9,1.6);
-  /* extras */
+  if(seq.late)goals[N-1].planned=90+st[2]-rnd(.5,1.6);
   const ex=[];const add=(k,n)=>{for(let i=0;i<n;i++)ex.push({kind:k,done:false})};
-  add('nearmiss',rint(2,3));add('foul',rint(1,2));add('corner',rint(1,2));add('throwin',rint(1,2));
+  add('nearmiss',rint(3,4));add('foul',rint(1,2));add('corner',rint(1,2));add('throwin',rint(1,2));add('counter',rint(1,2));add('cross',rint(1,2));add('oneone',rint(0,1));
   if(Math.random()<.7)add('blue',rint(1,2));
   if(Math.random()<.85)add('fight',rint(1,2));
   shuffle(['trip','lace','argue','refball','cat','chant','taunt']).slice(0,rint(3,4)).forEach(k=>ex.push({kind:k,done:false}));
-  const budget=Math.max(7,17-Math.floor(N*1.2));
+  const budget=Math.max(9,19-N);
   while(ex.length>budget){const cand=[];ex.forEach((m,i)=>{if(m.kind!=='fight'&&m.kind!=='blue')cand.push(i)});if(!cand.length)break;ex.splice(pick(cand),1)}
   shuffle(ex);
   ex.forEach((m,i)=>{m.planned=4+(i+rnd(.15,.85))*(84/ex.length)});
   const moments=goals.concat(ex).sort((a,b)=>a.planned-b.planned);
   moments.forEach(m=>{m.half=m.planned<45?1:2});
-  return{kind,st,moments,final:[seq.filter(x=>x===0).length,seq.filter(x=>x===1).length]};
+  return{kind:'RND',st,moments,final:[seq.filter(x=>x===0).length,seq.filter(x=>x===1).length]};
 }
 
 /* ================= runner (generator scheduler) ================= */
@@ -430,21 +452,37 @@ const actOf=i=>M.teams[i].players.filter(p=>!p.off);
 const goalXof=T=>T.dir>0?FX+FW:FX;
 const benchX=p=>MID+(p.team===0?-62:62)+(p.team===0?-1:1)*p.idx*16;
 
-function mkTeam(def,ids,idx){
+function mkTeam(def,ids,idx,gid,cid){
   const t={idx,def,name:def.name,score:0,dir:idx===0?1:-1,players:[],scorers:[],maxDef:0,cbDone:false};
   ids.forEach((id,i)=>{const pd=PLAYERS.find(x=>x.id===id);t.players.push(mkPlayer(pd,t,i))});
+  addStaff(t,gid,cid);
   return t;
+}
+const hexRGB=h=>[1,3,5].map(i=>parseInt(h.substr(i,2),16));
+const cdist=(a,b)=>{const x=hexRGB(a),y=hexRGB(b);return Math.hypot(x[0]-y[0],x[1]-y[1],x[2]-y[2])};
+const lum=h=>{const x=hexRGB(h);return .3*x[0]+.59*x[1]+.11*x[2]};
+function gkKits(d0,d1){const L=['#ff8a00','#c6ff2e','#ff3df2','#00e5ff','#f5f5f5','#7a2cff'],sc=k=>Math.min(cdist(k,d0.color),cdist(k,d1.color));return L.slice().sort((a,b)=>sc(b)-sc(a))}
+function addStaff(t,gid,cid){
+  const gd=GKS.find(x=>x.id===gid)||GKS[0];
+  t.gk=mkPlayer(gd,t,2);t.gk.gk=true;
+  t.gk.x=t.gk.tx=t.dir>0?FX+5:FX+FW-5;t.gk.y=t.gk.ty=CY;t.gk.spd=RUN*.9;t.gk.face=t.dir;
+  t.coach=COACHES.find(c=>c.id===cid)||COACHES[2];
+  const c=t.coach,x=MID+(t.idx?72:-72);
+  t.cm={coach:true,def:c,name:c.name,num:'',nn:0,team:t.idx,idx:9,x,y:FY-6,tx:x,ty:FY-6,spd:16,face:t.idx?-1:1,anim:'idle',animT:0,lockT:0,z:0,jt:0,moving:false,off:false,script:false,so:{x:0,y:0},nextShout:rnd(4,9),
+    col:{shirt:'#23253f',shorts:'#23253f',sock:'#23253f',num:'#fff',skin:c.skin,hair:c.hair,boot:'#000',tie:t.def.color}};
 }
 function mkPlayer(pd,t,i){
   const x=benchX({team:t.idx,idx:i}),y=BENCHY;
-  return{def:pd,name:pd.name,num:pd.num,team:t.idx,idx:i,x,y,tx:x,ty:y,spd:RUN,face:t.idx===0?1:-1,anim:'idle',animT:0,lockT:0,z:0,jt:0,moving:false,off:false,script:false,returnAt:null,so:{x:rnd(-6,6),y:rnd(-6,6)},
+  return{def:pd,name:pd.name,num:pd.num,nn:(+pd.num)||0,team:t.idx,idx:i,x,y,tx:x,ty:y,spd:RUN,face:t.idx===0?1:-1,anim:'idle',animT:0,lockT:0,z:0,jt:0,moving:false,off:false,script:false,returnAt:null,so:{x:rnd(-6,6),y:rnd(-6,6)},
     col:{shirt:t.def.color,shorts:t.def.shorts,sock:t.def.sock,num:t.def.num,skin:pd.skin,hair:pd.hair,long:!!pd.long,boot:'#111'}};
 }
-function createMatch(i0,i1,ids0,ids1){
-  const t0=mkTeam(TEAMS[i0],ids0,0),t1=mkTeam(TEAMS[i1],ids1,1);
-  const plan=buildPlan(lineupKind(ids0,ids1));
+function createMatch(i0,i1,ids0,ids1,g0,g1,c0,c1){
+  const t0=mkTeam(TEAMS[i0],ids0,0,g0,c0),t1=mkTeam(TEAMS[i1],ids1,1,g1,c1);
+  const kits=gkKits(t0.def,t1.def);
+  [t0,t1].forEach((t,i)=>{const c=t.gk.col;c.shirt=c.sock=kits[i];c.shorts='#161616';c.num=lum(kits[i])>150?'#000':'#fff'});
+  const plan=buildPlan(t0.coach,t1.coach);
   const ref={ref:true,name:'داور',x:MID+20,y:BENCHY,tx:MID+20,ty:BENCHY,spd:40,face:1,anim:'idle',animT:0,lockT:0,z:0,jt:0,moving:false,script:false,off:false,num:0,team:2,col:REFCOL};
-  M={teams:[t0,t1],players:t0.players.concat(t1.players),ref,plan,queue:plan.moments.slice(),
+  M={teams:[t0,t1],players:t0.players.concat(t1.players),every:t0.players.concat(t1.players,[t0.gk,t1.gk,t0.cm,t1.cm]),ref,plan,queue:plan.moments.slice(),
     ball:{x:MID,y:CY,z:0,mode:'static',owner:null,lastTeam:0,sx:0,sy:0,tx:0,ty:0,dur:1,t:0,arc:0,z0:0,z1:0,curve:0,nx:0,ny:1,spin:0},
     time:0,clock:0,clockEnd:45+plan.st[1],clockOn:false,half:1,ann:{1:false,2:false},phase:'intro',cat:null,bubbles:[],parts:[],
     cam:{zoom:1,tz:1,fx:MID,fy:CY,mode:'full',px:MID,py:CY,shake:0},slow:1,slowT:1,speed:1,paused:false,crowd:.3,vig:0,vigT:0,flash:0,flashC:'255,255,255',
@@ -461,7 +499,8 @@ function updEnt(e,dt){
   if(e.animT>0){e.animT-=dt;if(e.animT<=0){e.animT=0;e.anim='idle'}}
   if(e.anim==='scissor'){e.jt+=dt;e.z=13*Math.sin(Math.PI*clamp(e.jt,0,1));if(e.jt>=1){e.z=0;e.anim='fall';e.animT=.9;e.lockT=.9;e.tx=e.x;e.ty=e.y}}
   else if(e.anim==='jump'){e.jt+=dt/.6;e.z=8*Math.sin(Math.PI*clamp(e.jt,0,1));if(e.jt>=1){e.anim='idle';e.z=0}}
-  else if(e.anim==='cheer'){e.z=Math.abs(Math.sin(M.time*9+e.team*2+(e.num||0)))*3.5}
+  else if(e.anim==='dive'){e.jt+=dt/.7;e.z=6*Math.sin(Math.PI*clamp(e.jt,0,1))}
+  else if(e.anim==='cheer'){e.z=Math.abs(Math.sin(M.time*9+e.team*2+(e.nn||0)))*3.5}
   else e.z=0;
   if(e.lockT>0){e.lockT-=dt;e.moving=false;return}
   const dx=e.tx-e.x,dy=e.ty-e.y,d=Math.hypot(dx,dy);
@@ -498,7 +537,7 @@ function kickBall(tx,ty,dur,arc,o){
 function giveBall(p){const b=M.ball;b.mode='owned';b.owner=p;b.lastTeam=p.team}
 function go(p,x,y,s){p.script=true;p.tx=x;p.ty=y;p.spd=s||RUN}
 function arrived(p,r){return Math.hypot(p.tx-p.x,p.ty-p.y)<(r||2.5)}
-function release(){for(const p of M.players)p.script=false;M.ref.script=false}
+function release(){for(const p of M.every)p.script=false;M.ref.script=false}
 function faceTo(p,x){p.face=x>=p.x?1:-1}
 function fall(p,t){p.anim='fall';p.animT=t;p.lockT=t;p.tx=p.x;p.ty=p.y}
 function say(e,text,sec){M.bubbles.push({e,text,until:M.time+sec})}
@@ -506,26 +545,41 @@ function camReset(){const c=M.cam;c.tz=1;c.mode='full';M.slowT=1;M.trail=null;M.
 
 /* ================= free-play AI ================= */
 function aiStep(){
-  const b=M.ball;
+  const b=M.ball,now=M.time;
   const bx=b.mode==='fly'?b.tx:b.x,by=b.mode==='fly'?b.ty:b.y;
   const posT=b.owner?b.owner.team:(b.lastTeam==null?0:b.lastTeam);
-  const posDir=M.teams[posT].dir;
+  const posDir=M.teams[posT].dir,loose=!b.owner;
   for(const T of M.teams){
-    const act=T.players.filter(p=>!p.off&&!p.script&&p!==b.owner);
-    if(!act.length)continue;
-    if(T.idx===posT){
-      const rf=b.owner||{x:bx,y:by};
-      for(const p of act){
-        p.tx=clamp(rf.x+T.dir*26+p.so.x,FX+8,FX+FW-8);
-        p.ty=clamp(rf.y+(rf.y<CY?30:-30)+p.so.y,FY+8,FY+FH-8);
-        p.spd=RUN*.95;
+    const ox=T.dir>0?FX:FX+FW,act=T.players.filter(p=>!p.off&&!p.script&&p!==b.owner);
+    const wob=k=>Math.sin(now*1.4+k)*9;
+    act.sort((a,c)=>Math.hypot(a.x-bx,a.y-by)-Math.hypot(c.x-bx,c.y-by));
+    act.forEach((p,i)=>{
+      if(T.idx===posT&&!loose){
+        const rf=b.owner;
+        p.tx=clamp(rf.x+T.dir*(40+wob(p.nn)),FX+8,FX+FW-8);
+        p.ty=clamp(CY+(rf.y>CY?-1:1)*(26+Math.abs(wob(i))),FY+8,FY+FH-8);
+        p.spd=RUN*1.02;
+      }else if(i===0){
+        const deep=T.coach.deep&&Math.abs(bx-ox)>130;
+        p.tx=clamp(deep?ox+T.dir*70:bx-posDir*(loose?0:9),FX+4,FX+FW-4);
+        p.ty=clamp(deep?CY+wob(1):by+5,FY+4,FY+FH-4);
+        p.spd=RUN*(deep?.8:.97);
+      }else{
+        p.tx=clamp(lerp(ox,bx,T.coach.deep?.25:.5)+T.dir*8,FX+6,FX+FW-6);
+        p.ty=clamp(lerp(CY,by,.55)+wob(p.nn+3),FY+6,FY+FH-6);
+        p.spd=RUN*.85;
       }
-    }else{
-      act.sort((a,c)=>Math.hypot(a.x-bx,a.y-by)-Math.hypot(c.x-bx,c.y-by));
-      act.forEach((p,i)=>{
-        if(i===0){p.tx=clamp(bx-posDir*9,FX+4,FX+FW-4);p.ty=clamp(by+5,FY+4,FY+FH-4);p.spd=RUN*.92}
-        else{const gx=T.dir>0?FX:FX+FW;p.tx=lerp(gx,bx,.55);p.ty=clamp(lerp(CY,by,.6)+p.so.y,FY+6,FY+FH-6);p.spd=RUN*.8}
-      });
+    });
+    const gk=T.gk;
+    if(!gk.script&&b.owner!==gk){
+      const dng=posT!==T.idx&&Math.abs(bx-ox)<110;
+      gk.tx=ox+T.dir*(5+(dng?clamp((110-Math.abs(bx-ox))*.14,0,12):0));
+      gk.ty=clamp(lerp(CY,by,dng?.85:.4),GY1+2,GY2-2);gk.spd=RUN*.9;
+    }
+    const cm=T.cm;
+    if(!cm.script){
+      const bs=MID+(T.idx?72:-72);cm.tx=clamp(bs+(bx-MID)*.35,bs-40,bs+40);cm.ty=FY-6;cm.spd=16;
+      if(now>cm.nextShout&&!M.finished){cm.nextShout=now+rnd(9,15);say(cm,pick((M.half===2&&T.coach.shout2)||T.coach.shout),2.4)}
     }
   }
   const r=M.ref;
@@ -598,13 +652,124 @@ function* foulTackle(d,vic,T){
   yield until(()=>b.mode!=='fly',2);
   yield .2;
 }
-function* freeKick(kk,ti){
+function pickRes(q){const r=Math.random();return r<q?'goal':r<q+.3?'save':r<q+.38?'super':r<q+.48?'post':r<q+.6?'bar':'wide'}
+function gkDive(gk,T,ty,reach){
+  const s=ty<CY?-1:1,x=goalXof(T)-T.dir*3;
+  const y=reach?ty:(Math.random()<.35?CY-s*rnd(6,12):ty-s*rnd(8,12));
+  gk.face=-T.dir;go(gk,x,clamp(y,GY1-4,GY2+4),reach?150:120);
+  gk.anim='dive';gk.jt=0;gk.animT=.9;
+}
+function* gkDistribute(gk,O){
   const b=M.ball;
-  go(kk,b.x-M.teams[ti].dir*6,b.y,SPR);
-  yield until(()=>arrived(kk,2.5),4);
-  giveBall(kk);yield .5;
+  if(b.mode==='fly')yield until(()=>b.mode!=='fly',4);
+  if(b.owner!==gk){b.owner=null;go(gk,b.x,b.y,SPR);yield until(()=>dist(gk,b)<6,3.5);giveBall(gk)}
+  gk.script=true;gk.tx=gk.x;gk.ty=gk.y;
+  const m=actOf(O.idx);
+  m.forEach(p=>go(p,clamp(p.x+O.dir*rnd(25,45),FX+10,FX+FW-10),clamp(CY+(p.y>CY?1:-1)*rnd(20,40),FY+10,FY+FH-10),SPR));
+  yield .8;
+  if(!m.length){gk.script=false;return}
+  const r=m[Math.random()<.5?0:m.length-1];
+  yield* pass(gk,r,{arc:9,speed:130});
+  gk.script=false;
+  if(Math.random()<.25+(O.coach.counter||0)*.3){const mm=actOf(O.idx).find(p=>p!==r);yield* counterRun(r,mm,O,M.teams[1-O.idx],pickRes(.1),null)}
+}
+function* shoot(sh,T,O,res,o){
+  o=o||{};
+  const b=M.ball,dir=T.dir,gx=goalXof(T),gk=O.gk,side=Math.random()<.5?-1:1;
+  sh.face=dir;sh.tx=sh.x;sh.ty=sh.y;sh.script=true;
+  if(o.head){sh.anim='jump';sh.jt=.3}else{sh.anim='kick';sh.animT=.3}
+  yield o.head?.1:.2;
+  let ty=CY+side*rnd(9,17),tx=gx+dir*4,arc=1.4,z1=rnd(0,3);
+  if(res==='save'){ty=CY+side*rnd(3,12);tx=gx-dir*2}
+  else if(res==='super'){ty=side<0?GY1+3:GY2-3;tx=gx-dir;arc=9;z1=7}
+  else if(res==='post'){ty=side<0?GY1:GY2;tx=gx;z1=2}
+  else if(res==='bar'){ty=CY+rnd(-14,14);tx=gx+dir*9;arc=12;z1=10}
+  else if(res==='wide'){ty=side<0?GY1-13:GY2+13;tx=gx+dir*6}
+  b.lastTeam=T.idx;SFX.kick();M.cam.shake=Math.max(M.cam.shake,2);
+  kickBall(tx,ty,clamp(Math.hypot(tx-b.x,ty-b.y)/(res==='super'?150:210),res==='super'?.5:.22,.8),arc,{z1});
+  if(res==='super'){M.cam.mode='ball';M.cam.tz=1.5;M.slowT=.5;M.vigT=.7}
+  if(res==='goal'||res==='save'||res==='super'||res==='post')gkDive(gk,T,ty,res==='save'||res==='super');
+  yield until(()=>b.mode!=='fly',4);
+  if(res==='goal'){
+    const as=o.as||null;
+    if(o.g){scoreNow(o.g,sh,as,T);return true}
+    const g={kind:'goal',team:T.idx,type:o.type||'normal',done:false};
+    scoreNow(g,sh,as,T);yield* celebrate(g,sh,as,T,O);yield* kickoffReset(O.idx);return true;
+  }
+  const A=sh.name,G=gk.name;
+  if(res==='super'){SFX.super();UI.banner('super',o.pen?'PENALTY SAVED!':'SUPER SAVE!','🧤 '+G+' 🧤',2300);logEv('save','🧤',`سوپر سیو!! ${G} با یه پرواز عجیب شوتِ ${A} رو از تو دروازه درآورد`,O.idx);M.cam.shake=6}
+  else if(res==='save'){SFX.crowd(.8,2);if(o.pen)UI.banner('super','PENALTY SAVED!','🧤 '+G,2000);logEv('save','🧤',o.pen?`${G} پنالتیِ ${A} رو گرفت!`:`${G} شوتِ ${A} رو گرفت`,O.idx)}
+  else if(res==='post'){SFX.post();M.cam.shake=3;logEv('miss','🥅',`تیر دروازه! شوتِ ${A} به تیرک خورد و برگشت`,T.idx)}
+  else if(res==='bar')logEv('miss','😱',`اوووه! شوتِ ${A} از بالای دروازه رد شد`,T.idx);
+  else logEv('miss','💨',`شوتِ ${A} به بیرون رفت!`,T.idx);
+  sh.anim='sad';sh.animT=1.4;say(sh,pick(['آخخخ!','وای نه!','چرا اینجوری شد؟!']),1.5);
+  yield .9;camReset();
+  if(res==='post'){
+    kickBall(gx-dir*rnd(18,28),ty+(ty===GY1?-1:1)*rnd(8,16),.4,3);
+    yield until(()=>b.mode!=='fly',3);yield .3;yield* awardBall(O.idx);return false;
+  }
+  if(res==='bar'||res==='wide'){kickBall(gx-dir*8,CY+rnd(-12,12),.45,2);yield until(()=>b.mode!=='fly',3)}
+  yield* gkDistribute(gk,O);
+  return false;
+}
+function* crossHead(cr,hd,T,O,res,o){
+  o=o||{};const b=M.ball,dir=T.dir,gx=goalXof(T),top=o.corner?Math.random()<.5:cr.y<CY;
+  const wy=o.corner?(top?FY+2:FY+FH-2):(top?FY+12:FY+FH-12),wx=o.corner?gx-dir*2:gx-dir*rnd(55,75);
+  if(o.corner){
+    SFX.whistle('short');logEv('corner','🚩',`کرنر برای ${T.def.short}`,T.idx);UI.banner('info','CORNER','',1100);
+    b.owner=null;kickBall(wx,wy,.5,3);
+  }
+  go(cr,o.corner?wx-dir*5:wx,wy+(o.corner?(top?-4:4):0),o.corner?SPR:DRIB);
+  go(hd,gx-dir*rnd(30,40),CY+rnd(-10,10),SPR);
+  actOf(O.idx).forEach((p,i)=>go(p,gx-dir*(18+i*12),CY+(i?12:-12),SPR));
+  yield until(()=>arrived(cr,4)&&arrived(hd,6)&&b.mode!=='fly',6);
+  yield .5;
+  faceTo(cr,gx-dir*24);cr.anim='kick';cr.animT=.25;b.lastTeam=T.idx;SFX.kick();
+  const hx=gx-dir*rnd(20,27),hy=CY+rnd(-7,7);
+  kickBall(hx,hy,.95,14,{z1:7});
+  go(hd,hx,hy,SPR+20);
+  yield until(()=>b.t/b.dur>.55||b.mode!=='fly',3);
+  const df=nearest(actOf(O.idx),hd);
+  if(df){df.anim='jump';df.jt=.2;go(df,hx+rnd(-3,3),hy+rnd(-3,3),SPR)}
+  yield until(()=>b.mode!=='fly',3);
+  if(res==='clear'&&df){
+    kickBall(clamp(gx-dir*rnd(70,100),FX+6,FX+FW-6),clamp(CY+rnd(-45,45),FY+6,FY+FH-6),.7,12);SFX.kick();
+    logEv('miss','🛡',`${df.name} با ضربه‌ی سر توپو از جلوی دروازه دور کرد`,O.idx);
+    yield until(()=>b.mode!=='fly',3);yield .3;yield* awardBall(O.idx);return false;
+  }
+  return yield* shoot(hd,T,O,res==='clear'?'wide':res,{head:true,g:o.g,as:o.as||cr,type:'header'});
+}
+function* counterRun(sc,as,T,O,res,g){
+  const b=M.ball,dir=T.dir,gx=goalXof(T),car=(g&&as)?as:sc,run=car===sc?as:sc;
+  logEv('counter','⚡',`ضدحمله! ${car.name} با سرعت میره سمت دروازه‌ی ${O.def.short}`,T.idx);
+  if(b.owner&&b.owner!==car)yield* pass(b.owner,car,{speed:150});
+  go(car,clamp(gx-dir*rnd(82,98),FX+14,FX+FW-14),CY+rnd(-22,22),SPR+6);
+  if(run)go(run,clamp(gx-dir*rnd(52,70),FX+14,FX+FW-14),CY+(car.y<CY?28:-28),SPR);
+  yield rnd(.9,1.2);
+  if(b.owner!==car){release();return}
+  let sh=car,ast=null;
+  if(run&&(g?car!==sc:Math.random()<.55)){yield* pass(car,run,{speed:160,arc:1});sh=run;ast=car}
+  yield* shoot(sh,T,O,res,{g,as:ast,type:'counter'});
+}
+function* freeKick(kk,ti,res,o){
+  o=o||{};const b=M.ball,T=M.teams[ti],O=M.teams[1-ti],dir=T.dir,gx=goalXof(T);
+  go(kk,b.x-dir*8,b.y,SPR);
+  actOf(O.idx).forEach((p,i)=>go(p,b.x+dir*(20+i*2),b.y+(i?5:-5),SPR));
   const mate=actOf(ti).find(p=>p!==kk);
-  if(mate)yield* pass(kk,mate,{arc:6});else yield .4;
+  if(mate)go(mate,clamp(gx-dir*rnd(28,40),FX+10,FX+FW-10),CY+rnd(-12,12),SPR);
+  yield until(()=>arrived(kk,2.5),4);
+  giveBall(kk);yield .6;
+  SFX.whistle('short');
+  if(o.g||Math.abs(gx-b.x)<170){
+    logEv('fk','🎯',`${kk.name} پشت توپ ایستاده؛ شوت مستقیم به سمت دروازه!`,ti);
+    yield* shoot(kk,T,O,res||pickRes(.12),{g:o.g,type:'freekick'});
+  }else if(mate){
+    b.lastTeam=ti;faceTo(kk,gx);kk.anim='kick';kk.animT=.25;SFX.kick();
+    const hx=gx-dir*rnd(22,30),hy=CY+rnd(-8,8);
+    kickBall(hx,hy,1.1,14,{z1:7});go(mate,hx,hy,SPR+15);
+    yield until(()=>b.mode!=='fly',4);
+    yield* shoot(mate,T,O,pickRes(.07),{head:true,as:kk,type:'header'});
+  }else yield .4;
 }
 
 /* ================= free-play segment ================= */
@@ -612,24 +777,24 @@ function* playSegment(){
   const b=M.ball;
   if(b.mode==='fly')yield until(()=>b.mode!=='fly',4);
   if(!b.owner){yield* secureBall();return}
-  const o=b.owner,T=M.teams[o.team],O=M.teams[1-o.team],dir=T.dir,gx=goalXof(T);
-  const mates=actOf(T.idx).filter(p=>p!==o);
-  let tx=clamp(o.x+dir*rnd(22,45),FX+12,FX+FW-12),ty=clamp(o.y+rnd(-24,24),FY+12,FY+FH-12);
-  if(Math.abs(gx-o.x)<70)tx=clamp(o.x-dir*rnd(20,40),FX+12,FX+FW-12);
-  go(o,tx,ty,DRIB);
-  yield rnd(1.0,1.7);
+  const o=b.owner;
+  if(o.gk){yield* gkDistribute(o,M.teams[o.team]);release();return}
+  const T=M.teams[o.team],O=M.teams[1-o.team],dir=T.dir,gx=goalXof(T),dg=Math.abs(gx-o.x);
+  const mates=actOf(T.idx).filter(p=>p!==o),defs=actOf(O.idx);
+  go(o,clamp(o.x+dir*rnd(24,46),FX+12,FX+FW-12),clamp(o.y+(CY-o.y)*.35+rnd(-18,18),FY+12,FY+FH-12),DRIB*(T.coach.deep?.9:1.08));
+  yield rnd(.6,1.0);
   if(b.owner!==o||o.off){release();return}
-  const roll=Math.random(),defs=actOf(O.idx),near=nearest(defs,o);
-  if(near&&dist(near,o)<24&&roll<.3){yield* tackle(near,o)}
-  else if(mates.length&&roll<.88){
+  const roll=Math.random(),near=nearest(defs,o),flank=Math.abs(o.y-CY)>40;
+  if(dg<115&&roll<.55)yield* shoot(o,T,O,pickRes(.07),{});
+  else if(flank&&dg<190&&mates.length&&roll<.8)yield* crossHead(o,mates[0],T,O,Math.random()<.25?'clear':pickRes(.07),{});
+  else if(near&&dist(near,o)<24&&roll<.3){
+    yield* tackle(near,o);
+    if(Math.random()<.25+(O.coach.counter||0)*.4)yield* counterRun(near,actOf(O.idx).find(p=>p!==near),O,T,pickRes(.1),null);
+  }else if(mates.length&&roll<.88){
     const m=mates[0],icpt=(Math.random()<.15&&defs.length)?nearest(defs,m):null;
     yield* pass(o,m,{icpt,arc:Math.random()<.2?9:2});
-  }else if(near&&Math.abs(gx-o.x)<150&&Math.random()<.6){
-    o.anim='kick';o.animT=.25;faceTo(o,near.x);b.lastTeam=o.team;SFX.kick();
-    kickBall(near.x,near.y,.3,1);
-    yield until(()=>b.mode!=='fly',2);
-    giveBall(near);
-  }else yield rnd(.3,.8);
+    if(icpt&&Math.random()<.35)yield* counterRun(icpt,actOf(O.idx).find(p=>p!==icpt),O,T,pickRes(.1),null);
+  }else yield .2;
   release();
 }
 
@@ -661,12 +826,16 @@ function scoreNow(g,sc,as,T){
   if(g.type==='super'){ico='🚀';txt=pick([`سوپر گل! ${A} از راه دور موشک شلیک کرد! توپ چسبید به تیر دوم`,`سوپرگل!! ${A} از جایی که هیچکس فکرشو نمیکرد دروازه رو ترکوند`])}
   else if(g.type==='scissor'){ico='🤸';txt=pick([`قیچی برگردون! ${A} تو هوا چرخید و توپ رفت تو دروازه — آکروباتیک خالص!`,`گل آکروباتیک! قیچی برگردونِ ${A} همه رو شوکه کرد`])}
   else if(g.type==='penalty'){ico='🎯';txt=`${A} پنالتی رو با اطمینان تبدیل به گل کرد`}
+  else if(g.type==='header'||g.type==='corner')txt=pick([`گل با ضربه‌ی سر! ${A} بالاتر از همه پرید${B?' (سانتر '+B+')':''}`,`ضربه‌ی سرِ ${A} دروازه رو باز کرد!${B?' سانتر '+B:''}`]);
+  else if(g.type==='counter')txt=pick([`ضدحمله‌ی برق‌آسا! ${A} توپو تو دروازه خوابوند${B?' (پاس '+B+')':''}`,`${A} تو ضدحمله حریف رو جا گذاشت و گل زد`]);
+  else if(g.type==='freekick')txt=`${A} ضربه‌ی ایستگاهی رو مستقیم تو دروازه فرستاد!`;
   else if(as)txt=pick([`گل! ${A} پاسِ ${B} رو تبدیل به گل کرد`,`گل گل گل! ${B} پاس داد و ${A} توپو خوابوند تو تور`,`${A} با ضربه‌ی دقیق دروازه رو باز کرد (پاس ${B})`]);
   else txt=pick([`گل! ${A} همه رو جا گذاشت و تک‌نفره گل زد`,`${A} دریبل زد و توپ رفت تو دروازه`]);
   txt+=` — ${T.def.short} ${T.score} - ${O.score}`.replace(/^ — (.*)$/,(m0)=>m0);
   const kind=g.type==='super'?'super':g.type==='scissor'?'acro':'goal';
   logEv(kind,ico,txt,T.idx);
   UI.goal(T.idx,T.score,entry,g.type,cb);
+  rageCheck(O);
   if(g.type==='super'){SFX.super();UI.banner('super','SUPER GOAL!','🚀 '+A+' 🚀',2700)}
   else if(g.type==='scissor'){SFX.acro();UI.banner('acro','ACROBATIC!','🤸 قیچی برگردون '+A+' 🤸',2900)}
   else{SFX.goal();UI.banner('goal','GOAL!',A+' #'+sc.num,1900)}
@@ -676,6 +845,13 @@ function scoreNow(g,sc,as,T){
     logEv('comeback','🔥',cb==='level'?`کامبک! ${T.def.short} بعد از عقب‌افتادن با اختلاف دو گل، به تساوی رسید`:`کامبک تاریخی! ${T.def.short} بعد از عقب‌افتادن پیش افتاد`,T.idx);
     confetti(MID,CY-20,70,['#b04dff','#ffffff','#ffd23f'],140);
   }
+}
+function rageCheck(O){
+  const c=O.coach;if(!c.rage||Math.random()>.65||M.clock>M.clockEnd-4)return;
+  const cm=O.cm;cm.anim='shove';cm.animT=2.4;
+  say(cm,pick(['این چه وضعشه؟!!','همه‌تون بدوید دیگه!','صبرم تموم شد!!']),2.5);
+  logEv('rage','😡',`${c.name} از کوره در رفت! تیمش داره منفجر میشه`,O.idx);
+  M.queue.push({kind:'goal',team:O.idx,type:pick(['normal','header','counter']),done:false,scorer:rint(0,1),assist:Math.random()<.6,planned:M.clock+rnd(2.5,6),half:M.half});
 }
 function logEv(kind,ico,text,ti){
   const min=fmtMin(M.clock,M.half);
@@ -700,14 +876,32 @@ function* goalMoment(g){
   const T=M.teams[g.team],O=M.teams[1-g.team];
   let sc=T.players[g.scorer];if(sc.off)sc=actOf(g.team)[0];
   const other=T.players.find(p=>p!==sc&&!p.off)||null;
-  const as=(g.assist&&other)?other:null;
+  const as=((g.assist||g.type==='header'||g.type==='corner')&&other)?other:null;
   yield* possessFor(g.team);
   if(g.type==='penalty')yield* penaltyBuild(g,sc,as,T,O);
   else if(g.type==='scissor')yield* scissorBuild(g,sc,as,T,O);
   else if(g.type==='super')yield* superBuild(g,sc,as,T,O);
+  else if(g.type==='header'||g.type==='corner')yield* headBuild(g,sc,as,T,O);
+  else if(g.type==='counter')yield* counterRun(sc,as,T,O,'goal',g);
+  else if(g.type==='freekick')yield* freekickBuild(g,sc,as,T,O);
   else yield* normalBuild(g,sc,as,T,O);
   yield* celebrate(g,sc,as,T,O);
   yield* kickoffReset(O.idx);
+}
+function* headBuild(g,sc,as,T,O){
+  if(!as){yield* normalBuild(g,sc,as,T,O);return}
+  if(M.ball.owner!==as)yield* pass(M.ball.owner,as);
+  yield* crossHead(as,sc,T,O,'goal',{g,as,corner:g.type==='corner'});
+}
+function* freekickBuild(g,sc,as,T,O){
+  const b=M.ball,dir=T.dir,gx=goalXof(T),vic=as||sc;
+  if(b.owner!==vic)yield* pass(b.owner,vic);
+  go(vic,gx-dir*rnd(100,115),CY+rnd(-26,26),DRIB);yield rnd(1.0,1.3);
+  const d=nearest(actOf(O.idx),vic);
+  yield* foulTackle(d,vic,T);SFX.whistle('short');
+  logEv('foul','⚠️',`خطای ${d.name} روی ${vic.name}! ضربه‌ی ایستگاهی نزدیک محوطه برای ${T.def.short}`,T.idx);
+  go(M.ref,vic.x-6,vic.y+14,70);yield 1.0;
+  yield* freeKick(sc,T.idx,'goal',{g});
 }
 function* shotIn(g,sc,as,T,opt){
   opt=opt||{};const b=M.ball,dir=T.dir,gx=goalXof(T);
@@ -717,7 +911,7 @@ function* shotIn(g,sc,as,T,opt){
   const ty=CY+(Math.random()<.5?-1:1)*rnd(8,17),tx=gx+dir*4;
   const d=Math.hypot(tx-b.x,ty-b.y);
   b.lastTeam=T.idx;
-  kickBall(tx,ty,clamp(d/(opt.speed||200),.22,.7),opt.arc||1.5,{z1:rnd(0,3)});
+  kickBall(tx,ty,clamp(d/(opt.speed||200),.22,.7),opt.arc||1.5,{z1:rnd(0,3)});gkDive(M.teams[1-T.idx].gk,T,ty,false);
   SFX.kick();M.cam.shake=Math.max(M.cam.shake,2);
   yield until(()=>b.mode!=='fly',4);
   scoreNow(g,sc,as,T);
@@ -747,7 +941,7 @@ function* superBuild(g,sc,as,T,O){
   yield .5;
   const side=Math.random()<.5?-1:1,ty=side<0?GY1+4:GY2-4;
   b.lastTeam=T.idx;M.trail='fire';
-  kickBall(gx+dir*5,ty,1.0,15,{z1:11,curve:side*14});
+  kickBall(gx+dir*5,ty,1.0,15,{z1:11,curve:side*14});gkDive(O.gk,T,ty,false);
   sc.anim='kick';sc.animT=.35;SFX.kick();SFX.whoosh();M.cam.shake=3;
   yield until(()=>b.mode!=='fly',6);
   M.cam.shake=7;M.trail=null;
@@ -775,7 +969,7 @@ function* scissorBuild(g,sc,as,T,O){
   yield until(()=>b.mode!=='fly',4);
   const ty=CY+(Math.random()<.5?-1:1)*rnd(8,17);
   M.cam.mode='ball';M.trail='star';
-  kickBall(gx+dir*4,ty,.42,0,{z1:3});
+  kickBall(gx+dir*4,ty,.42,0,{z1:3});gkDive(O.gk,T,ty,false);
   SFX.kick();M.cam.shake=5;
   yield until(()=>b.mode!=='fly',4);
   M.trail=null;
@@ -791,9 +985,13 @@ function* penaltyBuild(g,sc,as,T,O){
   SFX.whistle('short');
   logEv('pen','🎯',`خطای ${d.name} روی ${vic.name} داخل محوطه! پنالتی برای ${T.def.short}`,T.idx);
   UI.banner('info','PENALTY','',1500);
-  const spot={x:gx-dir*28,y:CY};
+  yield* penaltyKick(sc,T,O,'goal',{g,as,type:'penalty'});
+}
+function* penaltyKick(sc,T,O,res,o){
+  const b=M.ball,dir=T.dir,gx=goalXof(T),spot={x:gx-dir*28,y:CY};
   b.owner=null;kickBall(spot.x,spot.y,.5,3);
   go(M.ref,gx-dir*52,CY+34,60);
+  go(O.gk,gx-dir*3,CY,70);
   actOf(O.idx).forEach((p,i)=>go(p,gx-dir*(74+i*8),CY+(i?-32:32),60));
   actOf(T.idx).forEach(p=>{if(p!==sc)go(p,gx-dir*74,CY+(p.y<CY?-36:36),60)});
   go(sc,spot.x-dir*18,CY+3,SPR);
@@ -802,11 +1000,7 @@ function* penaltyBuild(g,sc,as,T,O){
   yield 1.0;
   go(sc,spot.x-dir*3,CY,50);
   yield until(()=>arrived(sc,2.5),3);
-  sc.anim='kick';sc.animT=.3;yield .12;
-  const ty=CY+(Math.random()<.5?-1:1)*rnd(9,18);
-  b.lastTeam=T.idx;kickBall(gx+dir*4,ty,.3,.5,{z1:rnd(0,2)});SFX.kick();
-  yield until(()=>b.mode!=='fly',4);
-  scoreNow(g,sc,as,T);
+  yield* shoot(sc,T,O,res,o);
 }
 function* celebrate(g,sc,as,T,O){
   const dir=T.dir,gx=goalXof(T),spec=(g.type==='super'||g.type==='scissor');
@@ -819,6 +1013,7 @@ function* celebrate(g,sc,as,T,O){
   yield until(()=>arrived(sc,3)&&(!as||arrived(as,4)),3.5);
   const dur=spec?3.4:2.4;
   sc.anim='cheer';sc.animT=dur;if(as){as.anim='cheer';as.animT=dur}
+  T.cm.anim='cheer';T.cm.animT=dur;if(O.cm.anim!=='shove'){O.cm.anim='sad';O.cm.animT=dur}
   yield dur;
   if(M.cbNow){yield 1.4;M.cbNow=false}
   camReset();
@@ -848,64 +1043,63 @@ function* nearMissMoment(){
   yield* possessFor(ti);
   const b=M.ball,s=b.owner;
   go(s,gx-dir*rnd(75,95),CY+rnd(-34,34),DRIB);yield rnd(1.2,1.6);
-  const kind=pick(['post','bar','wide']);
-  s.face=dir;s.tx=s.x;s.ty=s.y;s.anim='kick';s.animT=.3;yield .2;
-  b.lastTeam=ti;SFX.kick();
-  if(kind==='post'){
-    const ty=Math.random()<.5?GY1:GY2;
-    kickBall(gx,ty,.45,1);
-    yield until(()=>b.mode!=='fly',3);
-    SFX.post();M.cam.shake=3;
-    logEv('miss','🥅',`تیر دروازه! شوتِ ${s.name} به تیرک خورد و برگشت`,ti);
-    kickBall(gx-dir*rnd(18,28),ty+(ty===GY1?-rnd(8,16):rnd(8,16)),.4,3);
-    yield until(()=>b.mode!=='fly',3);
-  }else if(kind==='bar'){
-    kickBall(gx+dir*9,CY+rnd(-14,14),.5,12);
-    yield until(()=>b.mode!=='fly',3);
-    logEv('miss','😱',`اوووه! شوتِ ${s.name} از بالای دروازه رد شد`,ti);
-  }else{
-    kickBall(gx+dir*6,Math.random()<.5?GY1-12:GY2+12,.5,1);
-    yield until(()=>b.mode!=='fly',3);
-    logEv('miss','💨',`شوتِ ${s.name} به بیرون رفت!`,ti);
-  }
-  s.anim='sad';s.animT=1.6;say(s,pick(['آخخخ!','وای نه!','چرا اینجوری شد؟!']),1.6);
-  yield 1.0;
-  yield* awardBall(O.idx);
+  yield* shoot(s,T,O,pick(['post','bar','wide','save','save','super']),{});
   release();
 }
 function* cornerMoment(){
-  const ti=rint(0,1),T=M.teams[ti],O=M.teams[1-ti],dir=T.dir,gx=goalXof(T);
+  const ti=rint(0,1),T=M.teams[ti],O=M.teams[1-ti];
   yield* possessFor(ti);
-  const b=M.ball,o=b.owner,top=Math.random()<.5,cy=top?FY+2:FY+FH-2;
-  go(o,gx-dir*rnd(60,75),top?FY+16:FY+FH-16,DRIB);yield rnd(1.1,1.4);
-  o.anim='kick';o.animT=.25;b.lastTeam=ti;SFX.kick();
-  kickBall(gx+dir*3,cy+(top?-3:3),.5,3);
-  yield until(()=>b.mode!=='fly',3);
-  SFX.whistle('short');
-  logEv('corner','🚩',`کرنر برای ${T.def.short}`,ti);
-  UI.banner('info','CORNER','',1100);
-  const cx=gx-dir;
-  kickBall(cx,cy,.3,1);
-  go(o,cx-dir*5,cy+(top?-5:5),SPR);
-  const mate=actOf(ti).find(p=>p!==o);
-  if(mate)go(mate,gx-dir*30,CY-8,SPR);
-  actOf(O.idx).forEach((p,i)=>go(p,gx-dir*(18+i*10),CY+(i?10:-10),SPR));
-  yield until(()=>arrived(o,3)&&(!mate||arrived(mate,3))&&b.mode!=='fly',6);
-  yield .6;
-  faceTo(o,gx-dir*26);o.anim='kick';o.animT=.3;SFX.kick();
-  if(mate){
-    kickBall(gx-dir*26,CY,.9,14,{z1:6});
-    yield until(()=>b.t/b.dur>.6||b.mode!=='fly',3);
-    mate.anim='jump';mate.jt=0;
-    yield until(()=>b.mode!=='fly',3);
-    if(Math.random()<.5){
-      kickBall(gx+dir*9,CY+rnd(-22,22),.45,8);SFX.kick();
-      yield until(()=>b.mode!=='fly',3);
-      logEv('miss','🤕',`${mate.name} بعد از کرنر سر زد ولی توپ از بالای دروازه رد شد`,ti);
-    }else logEv('miss','🛡',`دفاع تیم مقابل بعد از کرنر توپو دور کرد`,ti);
-    yield .5;
-    yield* awardBall(O.idx);
-  }else{giveBall(o);yield .5}
+  const o=M.ball.owner,mate=actOf(ti).find(p=>p!==o);
+  if(!mate){yield* nearMissMoment();return}
+  const r=Math.random();
+  yield* crossHead(o,mate,T,O,r<.12?'goal':r<.28?'save':r<.36?'post':r<.5?'wide':'clear',{corner:true});
+  release();
+}
+function* crossMoment(){
+  const ti=rint(0,1),T=M.teams[ti],O=M.teams[1-ti];
+  yield* possessFor(ti);
+  const o=M.ball.owner,h=actOf(ti).find(p=>p!==o);
+  if(!h){yield* nearMissMoment();return}
+  yield* crossHead(o,h,T,O,Math.random()<.25?'clear':pickRes(.14),{});
+  release();
+}
+function* counterMoment(){
+  const ti=rint(0,1),T=M.teams[ti],O=M.teams[1-ti];
+  yield* possessFor(1-ti);
+  const b=M.ball,v=b.owner;
+  go(v,clamp(v.x+O.dir*rnd(20,34),FX+14,FX+FW-14),clamp(v.y+rnd(-12,12),FY+12,FY+FH-12),DRIB);yield rnd(.8,1.1);
+  const d=nearest(actOf(ti),v);
+  yield* tackle(d,v);
+  yield* counterRun(d,actOf(ti).find(p=>p!==d),T,O,pickRes(.14),null);
+  release();
+}
+function* oneOneMoment(){
+  const ti=rint(0,1),T=M.teams[ti],O=M.teams[1-ti],dir=T.dir,gx=goalXof(T),gk=O.gk;
+  yield* possessFor(ti);
+  const b=M.ball,s=b.owner;
+  go(s,gx-dir*rnd(64,76),CY+rnd(-14,14),SPR);yield rnd(1.0,1.3);
+  logEv('gk','🏃',`${s.name} تک‌به‌تک با ${gk.name} شد! دروازه‌بان از دروازه اومد بیرون`,ti);
+  go(gk,s.x+dir*16,s.y,SPR+12);
+  yield until(()=>dist(gk,s)<18,2.5);
+  const r=Math.random();
+  if(r<.36){
+    gk.anim='slide';gk.animT=.5;faceTo(gk,s.x);SFX.tackle();s.anim='stumble';s.animT=.5;
+    b.owner=null;kickBall(gk.x,gk.y,.2,0);yield .3;
+    logEv('save','🧤',`${gk.name} جلوی پای ${s.name} شیرجه زد و توپو قاپید!`,O.idx);
+    UI.banner('super','GREAT SAVE!','🧤 '+gk.name,1900);SFX.crowd(1,2.5);
+    yield* gkDistribute(gk,O);
+  }else if(r<.64){
+    gk.anim='slide';gk.animT=.5;faceTo(gk,s.x);SFX.tackle();fall(s,1.6);
+    b.owner=null;kickBall(clamp(s.x+dir*10,FX+6,FX+FW-6),s.y,.4,2);
+    SFX.whistle('short');
+    logEv('pen','🎯',`${gk.name} ${s.name} رو زد زمین! پنالتی`,ti);UI.banner('info','PENALTY','',1500);
+    yield 1.2;
+    yield* penaltyKick(s,T,O,Math.random()<.68?'goal':'save',{pen:true,type:'penalty'});
+  }else{
+    logEv('gk','😎',`${s.name} دروازه‌بان رو دور زد؛ دروازه خالیه!`,ti);
+    go(s,s.x+dir*16,CY+(s.y<gk.y?16:-16),SPR);yield .7;
+    yield* shoot(s,T,O,'goal',{type:'normal'});
+  }
   release();
 }
 function* throwinMoment(){
@@ -1095,6 +1289,9 @@ function* runMoment(m){
     case'fight':yield* fightMoment();break;
     case'corner':yield* cornerMoment();break;
     case'throwin':yield* throwinMoment();break;
+    case'cross':yield* crossMoment();break;
+    case'counter':yield* counterMoment();break;
+    case'oneone':yield* oneOneMoment();break;
     case'trip':yield* tripMoment();break;
     case'lace':yield* laceMoment();break;
     case'argue':yield* argueMoment();break;
@@ -1161,7 +1358,7 @@ function* halfTime(){
   M.players.forEach(p=>{if(!p.off)go(p,p.team?MID+46+p.idx*14:MID-46-p.idx*14,FY+FH+8,50)});
   go(M.ref,MID,FY+FH+10,50);
   yield 3.6;
-  M.teams.forEach(t=>{t.dir=-t.dir});
+  M.teams.forEach(t=>{t.dir=-t.dir;t.gk.x=t.gk.tx=t.dir>0?FX+5:FX+FW-5;t.gk.face=t.dir});
   M.clock=45;M.half=2;M.clockEnd=90+M.plan.st[2];
   M.players.forEach(p=>{if(p.off&&p.returnAt!=null)p.returnAt-=M.plan.st[1]});
   logEv('start','🔔','شروع نیمه دوم');
@@ -1198,7 +1395,7 @@ function* mainGen(){
 function recover(){
   M.recoveries++;
   release();camReset();M.bubbles=[];M.cat=null;M.card=null;
-  for(const p of M.players){
+  for(const p of M.every){
     if(!isFinite(p.x)||!isFinite(p.y)){p.x=MID;p.y=CY}
     p.anim=p.off?'sit':'idle';p.animT=0;p.lockT=0;p.z=0;p.tx=p.x;p.ty=p.y;
   }
@@ -1232,7 +1429,7 @@ function step(dtR){
   }
   try{M.runner.step(cdt)}catch(err){if(typeof console!=='undefined')console.error(err);recover()}
   aiStep();
-  for(const p of M.players)updEnt(p,cdt);
+  for(const p of M.every)updEnt(p,cdt);
   updEnt(M.ref,cdt);updCat(cdt);updBall(cdt);
   if(M.trail&&M.ball.mode==='fly')trailFx();
   // particles
@@ -1332,7 +1529,7 @@ function drawPlayer(g,p){
   const x=Math.round(p.x),y=Math.round(p.y),f=p.face>=0?1:-1,z=Math.round(p.z||0),yy=y-z,c=p.col,t=M.time,an=p.anim;
   const R=(dx,dy,w,h,col)=>{g.fillStyle=col;g.fillRect(f>0?x+dx:x-dx-w,yy+dy,w,h)};
   g.fillStyle='rgba(0,0,0,.3)';g.fillRect(x-4,y-1,9,2);
-  if(an==='fall'||an==='slide'){
+  if(an==='fall'||an==='slide'||an==='dive'){
     R(-12,-5,5,5,c.skin);R(-12,-6,5,2,c.hair);R(-7,-6,8,5,c.shirt);R(1,-6,3,5,c.shorts);
     R(4,-5,3,2,c.skin);R(7,-5,3,2,c.sock);R(10,-5,2,2,c.boot);R(-3,-8,3,2,c.shirt);
     if(p.ref)for(let i=0;i<8;i+=2){g.fillStyle='#111';g.fillRect(f>0?x-7+i:x+6-i,yy-6,1,5)}
@@ -1347,10 +1544,10 @@ function drawPlayer(g,p){
   if(an==='sit'){
     R(-3,-14,6,5,c.skin);R(-3,-15,6,2,c.hair);R(-4,-9,8,5,c.shirt);R(-4,-4,8,3,c.shorts);
     R(4,-4,3,2,c.skin);R(7,-4,2,2,c.sock);R(9,-4,2,2,c.boot);
-    if(!p.ref)drawDigits(g,String(p.num),x-Math.floor((String(p.num).length*4-1)/2),yy-8,c.num);
+    if(!p.ref&&!p.coach)drawDigits(g,String(p.num),x-Math.floor((String(p.num).length*4-1)/2),yy-8,c.num);
     return;
   }
-  const mv=p.moving,st=mv?(Math.floor(t*(p.spd>55?15:10)+p.num)%2):0;
+  const mv=p.moving,st=mv?(Math.floor(t*(p.spd>55?15:10)+(p.nn||0))%2):0;
   const bob=mv&&st?-1:0,by=bob+(an==='sad'?1:0);
   const leg=(dx,lift)=>{R(dx,-5-lift,2,2,c.skin);R(dx,-3-lift,2,2,c.sock);R(dx,-1-lift,3,1,c.boot)};
   leg(-3,mv&&st?1:0);
@@ -1358,7 +1555,7 @@ function drawPlayer(g,p){
   else if(an==='windup'){R(-4,-6,3,2,c.skin);R(-7,-6,2,2,c.sock);R(-9,-7,2,2,c.boot)}
   else leg(1,mv&&!st?1:0);
   R(-4,-8+by,8,3,c.shorts);
-  R(-4,-15+by,8,7,c.shirt);
+  R(-4,-15+by,8,7,c.shirt);if(p.coach)R(-1,-15+by,2,6,c.tie);
   if(p.ref)for(let i=0;i<8;i+=2){g.fillStyle='#111';g.fillRect(x-4+i,yy-15+by,1,7)}
   const up=(an==='cheer'||an==='throw');
   if(up){R(-6,-20+by,2,6,c.shirt);R(-6,-22+by,2,2,c.skin);R(4,-20+by,2,6,c.shirt);R(4,-22+by,2,2,c.skin)}
@@ -1366,9 +1563,10 @@ function drawPlayer(g,p){
   else{R(-6,-14+by+(st?1:0),2,5,c.shirt);R(-6,-9+by+(st?1:0),2,1,c.skin);R(4,-14+by+(st?0:1),2,5,c.shirt);R(4,-9+by+(st?0:1),2,1,c.skin)}
   R(-3,-20+by,6,5,c.skin);R(-3,-21+by,6,2,c.hair);
   if(c.long)R(-4,-20+by,2,8,c.hair);
+  if(p.gk){R(-6,-9+by,2,2,'#fff');R(4,-9+by,2,2,'#fff')}
   R(1,-18+by,1,1,'#111');
   if(p.ref)R(3,-17+by,2,1,'#fff');
-  if(!p.ref){const s=String(p.num);drawDigits(g,s,x-Math.floor((s.length*4-1)/2),yy-14+by,c.num)}
+  if(!p.ref&&!p.coach){const s=String(p.num);drawDigits(g,s,x-Math.floor((s.length*4-1)/2),yy-14+by,c.num)}
   if(an==='stumble'){R(-4,-17+by,1,1,'#fff')}
 }
 function drawBall(g,b){
@@ -1421,7 +1619,7 @@ function render(){
     g.fillStyle='rgba(255,255,255,'+(M.netT*.55).toFixed(2)+')';g.fillRect(nx,GY1,GD,GY2-GY1);
   }
   const ents=[];
-  for(const p of M.players)ents.push({y:p.off?p.y+30:p.y,k:0,e:p});
+  for(const p of M.every)ents.push({y:p.off?p.y+30:p.y,k:0,e:p});
   ents.push({y:M.ref.y,k:0,e:M.ref});
   if(M.cat)ents.push({y:M.cat.y,k:2,e:M.cat});
   ents.push({y:M.ball.y+(M.ball.mode==='owned'?3:0),k:1,e:M.ball});
@@ -1450,12 +1648,12 @@ function render(){
   ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.lineJoin='round';
   const fs=Math.round(11*Math.min(1.35,z));
   ctx.font='700 '+fs+'px Vazirmatn,Tahoma,sans-serif';
-  for(const p of M.players){
+  for(const p of M.every){
     const sp=toScr(p.x,p.y-24-(p.z||0)-(p.anim==='sit'?-8:0));
     if(sp.x<-30||sp.x>CW+30)continue;
     const has=M.ball.owner===p;
     ctx.lineWidth=4;ctx.strokeStyle='#000';ctx.strokeText(p.name,sp.x,sp.y);
-    ctx.fillStyle=has?'#ffe066':'#fff';ctx.fillText(p.name,sp.x,sp.y);
+    ctx.fillStyle=has?'#ffe066':p.coach?'#9fe8ff':p.gk?'#ffc98a':'#fff';ctx.fillText(p.name,sp.x,sp.y);
   }
   // bubbles
   ctx.font='700 '+Math.round(12*Math.min(1.3,z))+'px Vazirmatn,Tahoma,sans-serif';
@@ -1520,7 +1718,7 @@ const UI=(function(){
       const cur=sc.children[0],nxt=sc.children[1];
       nxt.textContent=score;nxt.className='nxt in';cur.className='cur out';
       setTimeout(()=>{if(!M)return;cur.textContent=M.teams[i].score;cur.className='cur';nxt.className='nxt';nxt.textContent=''},850);
-      const ico=type==='super'?'🚀':type==='scissor'?'🤸':type==='penalty'?'🎯':'⚽';
+      const ico=type==='super'?'🚀':type==='scissor'?'🤸':type==='penalty'?'🎯':(type==='header'||type==='corner')?'🧠':type==='counter'?'⚡':type==='freekick'?'🌀':'⚽';
       const li=document.createElement('li');
       li.innerHTML='<span>'+ico+'</span><b>'+entry.name+'</b><span class="mn">'+entry.min+"'</span>";
       list.appendChild(li);
@@ -1553,6 +1751,7 @@ const UI=(function(){
           s+='<span class="chip" style="border-color:#2a6bff">🟦 '+p.name+' ⏳ '+String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0')+'</span>'}
         else s+='<span class="chip" style="border-color:'+col+'">⚽ '+p.name+' #'+p.num+'</span>';
       }
+      for(const p of M.every)if(p.gk||p.coach)s+='<span class="chip" style="border-color:'+M.teams[p.team].def.glow+'">'+(p.gk?'🧤 ':'🧢 ')+p.name+'</span>';
       if(s!==M.lastBin){M.lastBin=s;$('binBar').innerHTML=s}
     },
     end(){
@@ -1574,7 +1773,7 @@ const UI=(function(){
 })();
 
 /* ================= navigation / selection ================= */
-const sel={t:[null,null],p:[[],[]]};
+const sel={t:[null,null],p:[[],[]],g:[null,null],c:[null,null]};
 let raf=0,lastTs=0;
 function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');window.scrollTo&&window.scrollTo(0,0)}
 function shirtHTML(color,num,numCol,big){return '<div class="shirt" style="background:'+color+';color:'+numCol+'">'+(num!=null?num:'')+'</div>'}
@@ -1604,6 +1803,20 @@ function renderPlayers(){
   }
   $('pStart').disabled=!(sel.p[0].length===2&&sel.p[1].length===2);
 }
+function renderStaff(){
+  for(let i=0;i<2;i++){
+    const t=TEAMS[sel.t[i]];
+    $('sph'+i).innerHTML=shirtHTML(t.color,'',t.num)+'<span>'+t.name+'</span>';
+    let h='';
+    GKS.forEach(g=>{const mine=sel.g[i]===g.id,other=sel.g[1-i]===g.id;
+      h+='<button class="pcard'+(mine?' sel':'')+(other?' dis':'')+'" data-id="'+g.id+'">'+shirtHTML('#dfe3f5',g.num,'#111')+'<span>🧤 '+g.name+'</span></button>'});
+    $('gg'+i).innerHTML=h;h='';
+    COACHES.forEach(c=>{const mine=sel.c[i]===c.id,other=sel.c[1-i]===c.id;
+      h+='<button class="tcard'+(mine?' sel':'')+(other?' dis':'')+'" data-id="'+c.id+'"><span>🧢 <b>'+c.name+'</b><small>'+c.tac+'<br>اخلاق: '+c.mood+'</small></span></button>'});
+    $('cg'+i).innerHTML=h;
+  }
+  $('sStart').disabled=!(sel.g[0]&&sel.g[1]&&sel.c[0]&&sel.c[1]);
+}
 function goTeams(){if(M)M.paused=true;M=null;show('s-teams');renderTeams()}
 function goMenu(){M=null;show('s-menu')}
 function genAndStart(){
@@ -1614,7 +1827,7 @@ function genAndStart(){
 }
 function startMatch(){
   auInit();
-  createMatch(sel.t[0],sel.t[1],sel.p[0].slice(),sel.p[1].slice());
+  createMatch(sel.t[0],sel.t[1],sel.p[0].slice(),sel.p[1].slice(),sel.g[0],sel.g[1],sel.c[0],sel.c[1]);
   show('s-match');
   if(AU.ctx)crowdLevel(.12,60);
   lastTs=0;
@@ -1654,7 +1867,14 @@ function initUI(){
   $('pRand').addEventListener('click',()=>{
     const ids=shuffle(PLAYERS.map(p=>p.id));sel.p=[ids.slice(0,2),ids.slice(2,4)];SFX.click();renderPlayers();
   });
-  $('pStart').addEventListener('click',()=>{SFX.click();genAndStart()});
+  $('pStart').addEventListener('click',()=>{SFX.click();sel.g=[null,null];sel.c=[null,null];show('s-staff');renderStaff()});
+  $('sBack').addEventListener('click',()=>{SFX.click();show('s-players')});
+  $('sStart').addEventListener('click',()=>{SFX.click();genAndStart()});
+  $('sRand').addEventListener('click',()=>{const g=shuffle(GKS.map(x=>x.id)),c=shuffle(COACHES.map(x=>x.id));sel.g=[g[0],g[1]];sel.c=[c[0],c[1]];SFX.click();renderStaff()});
+  for(let i=0;i<2;i++){
+    $('gg'+i).addEventListener('click',e=>{const b=e.target.closest?e.target.closest('.pcard'):null;if(!b)return;const id=b.dataset.id;if(sel.g[1-i]===id)return;sel.g[i]=sel.g[i]===id?null:id;SFX.click();renderStaff()});
+    $('cg'+i).addEventListener('click',e=>{const b=e.target.closest?e.target.closest('.tcard'):null;if(!b)return;const id=b.dataset.id;if(sel.c[1-i]===id)return;sel.c[i]=sel.c[i]===id?null:id;SFX.click();renderStaff()});
+  }
   $('bPause').addEventListener('click',()=>{if(!M)return;M.paused=!M.paused;$('bPause').textContent=M.paused?'▶ ادامه':'⏸ توقف'});
   [1,2,3].forEach(k=>$('bS'+k).addEventListener('click',()=>{if(M){M.speed=k;setSpeedBtn(k)}}));
   $('bMute').addEventListener('click',()=>{setMute(!AU.muted);$('bMute').textContent=AU.muted?'🔇 بی‌صدا':'🔊 صدا'});
