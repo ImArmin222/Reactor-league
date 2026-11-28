@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Reactor League</title>
+<title>Reactor League 11.1</title>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0a0a1f;--panel:#14153a;--panel2:#1d1f52;--neon:#2cffd1;--pink:#ff3df2;--yel:#ffd23f;--red:#ff4d4d;--ink:#eef0ff;--px:'Press Start 2P',monospace;--fa:'Vazirmatn',Tahoma,sans-serif}
@@ -1643,6 +1643,87 @@ html.q0 #nsPanel .npF{display:none}
 #nsb .xRow small.sOut{color:#ff4a58;text-shadow:0 0 .55em #ff1f33;animation:nsSubIn .5s ease-out both}
 #nsb .xRow small.sIn{color:#3dff8f;text-shadow:0 0 .55em #19ff70;animation:nsSubIn .5s ease-out 1s both}
 @keyframes nsSubIn{from{opacity:0;transform:translateX(-.9em)}to{opacity:1;transform:none}}
+/* ===== v11.0 REACTOR WORLD ===== */
+.tile.t-world{background:linear-gradient(135deg,#6a1fb5,#1a0a4d)}
+#rwBody{flex:1;min-height:0;overflow:auto;padding:8px 2px 28px;direction:rtl;color:#eef0ff;font-family:var(--fa);font-size:clamp(13px,2.3vh,15px);-webkit-overflow-scrolling:touch}
+#rwBody *{box-sizing:border-box}
+.rwHead{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px;position:sticky;top:0;z-index:3;background:#0a0a1fee;padding:4px 0}
+#rwSel,#rwQ,#rwTeam{background:#14153a;color:#fff;border:2px solid #4a50b8;border-radius:10px;padding:8px 10px;font:inherit;min-height:40px;max-width:100%}
+#rwSel{flex:1 1 220px}
+.rwTabs{display:flex;gap:6px;flex-wrap:wrap}
+.rwTb,.rwCh{background:#1d1f52;color:#cfd3ff;border:2px solid #3a3f9a;border-radius:999px;padding:7px 13px;font:inherit;font-size:.92em;cursor:pointer;min-height:38px}
+.rwTb.on,.rwCh.on{background:#2cffd1;color:#05261f;border-color:#2cffd1;font-weight:800}
+.rwCh small{opacity:.7}
+.rwChips{display:flex;gap:6px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:thin}
+.rwChips .rwCh{flex:none;white-space:nowrap}
+.rwStat{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.85em;color:#9aa0e6;margin:0 0 8px}
+.rwStat b{color:#ffd23f}
+.rwBar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+#rwQ{flex:2 1 200px}#rwTeam{flex:1 1 140px}
+.rwBreak{display:flex;gap:10px;align-items:center;background:linear-gradient(90deg,#8a0f0f,#3a0a0a);border:2px solid #ff4d4d;border-radius:12px;padding:10px 12px;margin-bottom:10px;cursor:pointer;animation:rwPulse 2.4s infinite}
+.rwBreak b{background:#ff4d4d;color:#fff;border-radius:6px;padding:2px 8px;font-size:.8em;flex:none}
+@keyframes rwPulse{50%{box-shadow:0 0 16px #ff4d4d88}}
+.rwGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
+.rwSt{background:linear-gradient(180deg,#1b1e55,#10123a);border:2px solid #4a50b8;border-radius:12px;padding:11px 12px;cursor:pointer;position:relative;min-width:0}
+.rwSt.feat{grid-column:1/-1;border-color:#ffd23f;background:linear-gradient(135deg,#2a2060,#10123a)}
+.rwSt.feat h3{font-size:1.25em}
+.rwSt.hot{border-color:#ff9f1c}
+.rwSt.c-brk{border-color:#ff4d4d}.rwSt.c-dis,.rwSt.c-inv{border-color:#7dff9a88}.rwSt.c-ctr{border-color:#ff3df2aa}.rwSt.c-pwr{border-color:#2cffd1aa}
+.rwSt h3{margin:6px 0 4px;font-size:1.03em;line-height:1.55;overflow-wrap:anywhere}
+.rwSt p{margin:4px 0 0;color:#c3c7f5;font-size:.9em;line-height:1.7}
+.rwSc{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.rwCat{font-size:.74em;color:#9aa0e6}
+.rwBrk{background:#ff4d4d;color:#fff;border-radius:6px;padding:1px 7px;font-size:.7em;font-weight:800}
+.rwSim{background:#33376e;color:#cfd3ff;border-radius:6px;padding:1px 6px;font-size:.68em}
+.rwNew{width:9px;height:9px;border-radius:50%;background:#2cffd1;box-shadow:0 0 8px #2cffd1}
+.rwMt{font-size:.8em;color:#8a90d8}
+.rwCb{background:#2a2d6a;border-radius:6px;padding:0 6px}
+.rwMore{text-align:center;margin:12px 0}
+.rwEmpty{padding:26px 12px;text-align:center;color:#9aa0e6;line-height:1.9}.rwEmpty.s{padding:8px;font-size:.9em}
+.rwSoc{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:12px;align-items:start}
+.rwPost{display:flex;gap:10px;background:#12143a;border:1px solid #3a3f9a;border-radius:12px;padding:10px;margin-bottom:8px;min-width:0}
+.rwPost.hot{border-color:#ff9f1c}.rwPost.rep{margin-right:22px;background:#0f1132}
+.rwAv{flex:none;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;border:2px solid #fff3;text-shadow:0 1px 2px #000;font-size:1.05em}
+.rwPb{min-width:0;flex:1}
+.rwPh{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline}
+.rwVf{background:#1d9bf0;color:#fff;border-radius:50%;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-size:.65em}
+.rwHd{color:#8a90d8;font-size:.82em;direction:ltr}.rwTm{color:#6b70b8;font-size:.76em;margin-inline-start:auto}
+.rwRe{color:#6b70b8;font-size:.78em;margin-top:2px}
+.rwPt{margin:5px 0;line-height:1.8;overflow-wrap:anywhere}
+.rwPs{display:flex;flex-wrap:wrap;gap:4px 14px;color:#8a90d8;font-size:.8em;align-items:center}
+.rwHt{color:#2cffd1;cursor:pointer;text-decoration:none}.rwHt.blk{display:flex;gap:6px;align-items:baseline;padding:7px 4px;border-bottom:1px solid #ffffff18}.rwHt.blk em{margin-inline-start:auto;color:#8a90d8;font-style:normal;font-size:.8em}
+.rwLk{color:#ffd23f;cursor:pointer;text-decoration:underline}
+.rwTr{background:#12143a;border:1px solid #3a3f9a;border-radius:12px;padding:10px;position:sticky;top:60px}
+.rwTr h4,.rwPanel h4{margin:0 0 6px}
+.rwPanel{background:#12143a;border:1px solid #3a3f9a;border-radius:12px;padding:10px 12px;margin-bottom:10px}
+.rwPanel ul{margin:4px 0;padding-inline-start:20px;line-height:1.9}
+.rwTwo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:10px}
+.rwRl{padding:7px 0;border-bottom:1px solid #ffffff14}
+.rwBr{height:6px;background:#0008;border-radius:4px;margin:4px 0;overflow:hidden}.rwBr i{display:block;height:100%}
+.rwRl small{color:#8a90d8}
+.rwCase{background:#12143a;border:2px solid #3a3f9a;border-radius:12px;margin-bottom:8px}
+.rwCase summary{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;padding:10px 12px;cursor:pointer;list-style:none}
+.rwCase summary::-webkit-details-marker{display:none}
+.rwCid{background:#2a2d6a;border-radius:6px;padding:1px 8px;font-size:.8em;direction:ltr}
+.rwSt2{margin-inline-start:auto;border-radius:999px;padding:2px 10px;font-size:.78em;background:#33376e}
+.rwSt2.s-final{background:#1a7f4b}.rwSt2.s-inv,.rwSt2.s-hear,.rwSt2.s-dec,.rwSt2.s-app{background:#8a6a12}
+.rwCb2{padding:2px 14px 12px;line-height:1.85}.rwRow{margin-top:6px}.rwCb2 ul{margin:2px 0;padding-inline-start:20px}.rwLog{margin:2px 0;padding-inline-start:20px;color:#c3c7f5}
+.rwTl{position:relative;padding-inline-start:18px}
+.rwTl::before{content:"";position:absolute;inset-block:0;inset-inline-start:5px;width:2px;background:#3a3f9a}
+.rwTlD{margin:14px 0 6px;font-weight:800;color:#ffd23f;font-size:.92em}
+.rwTlI{position:relative;padding:6px 8px;margin-bottom:5px;background:#12143a;border-radius:8px;line-height:1.7;cursor:default}
+.rwTlI[data-st],.rwTlI[data-ev]{cursor:pointer}
+.rwTlI i{position:absolute;inset-inline-start:-18px;top:14px;width:10px;height:10px;border-radius:50%;background:#2cffd1;border:2px solid #0a0a1f}
+.rwTlI.k-dis i,.rwTlI.k-inv i{background:#7dff9a}.rwTlI.k-brk i,.rwTlI.k-ev i{background:#ff4d4d}.rwTlI.k-hist i{background:#b04dff}.rwTlI.k-comp i{background:#ffd23f}
+#rwOv{position:absolute;inset:0;z-index:60;background:#000b;display:flex;align-items:center;justify-content:center;padding:10px}
+.rwBox{background:#10123a;border:3px solid #4a50b8;border-radius:14px;width:min(720px,100%);max-height:92%;display:flex;flex-direction:column;direction:rtl;color:#eef0ff;font-family:var(--fa)}
+.rwBd{padding:14px 16px;overflow:auto;flex:1;min-height:0;font-size:clamp(13px,2.3vh,15px);line-height:1.9}
+.rwBd h2{margin:8px 0 4px;line-height:1.5}.rwBody{margin:10px 0}.rwRef{background:#1d1f52;border-radius:8px;padding:6px 10px;margin:6px 0}
+.rwTags{display:flex;gap:6px;flex-wrap:wrap}.rwTags span{background:#2a2d6a;border-radius:999px;padding:2px 10px;font-size:.82em}
+.rwBox .bar{padding:8px;text-align:center}
+.rwFlow{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0}.rwFlow span{font-size:.7em;padding:3px 8px;border-radius:6px;background:#22255e;color:#7a80c8;direction:ltr}.rwFlow span.on{background:#2cffd1;color:#05261f;font-weight:800}
+@media (max-width:720px){.rwSoc{grid-template-columns:1fr}.rwTr{position:static;order:-1}.rwPost.rep{margin-right:10px}.rwTb{flex:1 1 auto;text-align:center}}
+
 </style>
 </head>
 <body>
@@ -1663,6 +1744,7 @@ html.q0 #nsPanel .npF{display:none}
     <button class="tile t-bot" id="btnBot"><i>🤖</i><b>Versus Bot</b><small>مقابل تیم رندوم ربات</small></button>
     <button class="tile t-sbx" id="btnSbx"><i>🎬</i><b>Sandbox</b><small>سناریوی بازی رو خودت بچین</small></button>
     <button class="tile t-news" id="btnNews"><i>📰</i><b>NEWS &amp; MEDIA CENTER</b><small>اخبار و گزارش بازی‌های انجام‌شده</small></button>
+    <button class="tile t-world" id="btnWorld"><i>🌐</i><b>REACTOR WORLD</b><small>دنیای زنده‌ی فوتبال: رسانه، شبکه اجتماعی، پرونده‌ها</small></button>
     <button class="tile t-rec" id="btnRec"><i>🏆</i><b>رکوردها</b><small>رکوردهای همه‌ی بازی‌هات</small></button>
     <button class="tile t-set" id="btnSet"><i>⚙</i><b>تنظیمات</b><small>صدا · تمام‌صفحه · حالت سبک</small></button>
   </div>
@@ -1754,16 +1836,20 @@ html.q0 #nsPanel .npF{display:none}
   <div class="bar"><button class="btn big" id="koDraw" disabled>🎲 قرعه‌کشی</button></div>
 </section>
 <section id="s-kobr" class="screen">
-  <div class="top"><button class="btn ghost" id="kbBack">🏠 منو</button><h2 id="kbTitle">🏆 Knockout</h2></div>
+  <div class="top"><button class="btn ghost" id="kbBack">🏠 منو</button><h2 id="kbTitle">🏆 Knockout</h2><div class="topR"><button class="btn" id="koMedia">📰 CUP MEDIA</button></div></div>
   <div id="koBr"></div>
 </section>
 <section id="s-lg" class="screen">
-  <div class="top"><button class="btn ghost" id="lgBack">🏠 منو</button><h2 id="lgTitle">🏅 League</h2></div>
+  <div class="top"><button class="btn ghost" id="lgBack">🏠 منو</button><h2 id="lgTitle">🏅 League</h2><div class="topR"><button class="btn" id="lgMedia">📰 LEAGUE MEDIA</button></div></div>
   <div id="lgBody"></div>
 </section>
 <section id="s-lineup" class="screen"></section>
 <section id="s-report" class="screen"></section>
 <section id="s-media" class="screen"></section>
+<section id="s-world" class="screen">
+  <div class="top"><button class="btn ghost" id="rwBack">🏠 منو</button><h2 id="rwTitle">🌐 REACTOR WORLD</h2></div>
+  <div id="rwBody"></div>
+</section>
 <div id="koTrophy"></div>
 
 <section id="s-match" class="screen">
@@ -1890,7 +1976,7 @@ function renderSettings(){
     h='<div class="setRow"><div>🏆 تورنمنت ذخیره‌شده<small>'+(KO?'یک تورنمنت در جریانه':'چیزی ذخیره نشده')+'</small></div><button class="btn ghost" id="setKoClr"'+(KO?'':' disabled')+'>حذف</button></div>'
      +'<div class="setRow"><div>🏅 لیگ ذخیره‌شده<small>'+(LG?'یک لیگ در جریانه':'چیزی ذخیره نشده')+'</small></div><button class="btn ghost" id="setLgClr"'+(LG?'':' disabled')+'>حذف</button></div>'
      +'<div class="setRow"><div>📊 رکوردها<small>رکوردهای همه‌ی بازی‌ها</small></div><button class="btn ghost" id="setRecClr">پاک کردن</button></div>'
-     +'<div class="setRow"><div>ℹ Reactor League 10.1<small>سیوها، لیگ‌ها و رکوردهای نسخه‌های قبل حفظ میشن</small></div></div>';
+     +'<div class="setRow"><div>ℹ Reactor League 11.1 — Reactor World<small>سیوها، لیگ‌ها و رکوردهای نسخه‌های قبل حفظ میشن</small></div></div>';
   }
   $('setGrid').innerHTML=h;
 }
@@ -3802,11 +3888,13 @@ function celebPick(sc,g,T){
 function* wait(sec,fn){const e=M.time+sec;while(M.time<e){if(fn)fn();yield .05}}
 function invadeKind(g,T,O){
   if(M.sbx||M.so||M.last||M.inv)return null;
-  const imp=!!(M.ko||M.derby||M.intl||M.lg);
-  if(imp)return 'big';
+  if(M.invN>=1)return null;
   const nd=T.score-O.score,prev=nd-1,pw=teamPower(T),po=teamPower(O);
-  const sw=(pw.atk+pw.def)<(po.atk+po.def)*.93;
-  if(sw&&(nd===0||(prev===0&&nd===1)))return nd===0?'eq':'lead';
+  /* derby: only the goal that levels the game or takes the lead */
+  if(M.derby&&(nd===0||(prev===0&&nd===1))){M.invN=(M.invN||0)+1;return 'big'}
+  /* underdog: a clearly weaker team scores against a much stronger one */
+  const sw=(pw.atk+pw.def)<(po.atk+po.def)*.88;
+  if(sw){M.invN=(M.invN||0)+1;return nd===0?'eq':nd===1&&prev===0?'lead':'dog'}
   return null;
 }
 function* celebrate(g,sc,as,T,O){
@@ -6144,7 +6232,7 @@ function std3dInit(){
   const lum=r*.3+g*.59+b*.11;if(lum<52){const k=52/Math.max(1,lum);r*=k;g*=k;b*=k}
   const mix=(k,a)=>'rgb('+Math.round(Math.min(255,r*k+a))+','+Math.round(Math.min(255,g*k+a))+','+Math.round(Math.min(255,b*k+a))+')';
   S.wall=mix(.7,0);S.tread=[mix(.95,14),mix(.85,8)];S.riser=mix(.5,0);S.apron=mix(.45,0);S.dark=mix(.3,0);
-  const F=M.venue&&M.venue.fans,small=!!(F&&F.dens<.4);S.nN=small?6:13;S.nS=small?4:8;S.nW=small?8:16;
+  const F=M.venue&&M.venue.fans,small=!!(F&&F.dens<.4);S.nN=small?6:13;S.nS=small?9:18;S.nW=small?8:16;
   const d0=M.fanDefs[0],d1=M.fanDefs[1],dd=M.derby?1.3:1;
   const dens=F?Math.max(.5,Math.min(.97,F.dens*1.5+.34)):.7,pal=F?F.pal:['#e05a5a','#5a8be0','#e0c85a','#8a5ae0','#5ae0a0','#f4f4f4','#f08a3a'];
   const mk=(u,side0)=>{let side=-1,c;
@@ -6281,6 +6369,14 @@ function renderAngled(c,z0){
   }
   // ---- apron + back walls ----
   poly(S.apron,[-260,-120,0,660,-120,0,660,380,0,-260,380,0]);
+  /* v11.1: running-track surround (instead of a dark empty apron) */
+  {const trk=night?'#7d3522':wx?'#94452b':'#c4562e',trk2=night?'#8d3d27':wx?'#a24d31':'#d2663a';
+   poly(trk,[12,26,0,388,26,0,388,238,0,12,238,0]);
+   poly(trk2,[12,196,0,388,196,0,388,238,0,12,238,0]);
+   ctx.strokeStyle=night?'rgba(255,255,255,.38)':'rgba(255,255,255,.7)';
+   for(const k of[3,9,15]){pj(0,0,0);ctx.lineWidth=Math.max(1,PK*.7);polyL([12+k,26+k*.5,0,388-k,26+k*.5,0,388-k,238-k*.6,0,12+k,238-k*.6,0,12+k,26+k*.5,0])}
+   ctx.strokeStyle=night?'rgba(255,255,255,.2)':'rgba(255,255,255,.32)';pj(0,0,0);ctx.lineWidth=Math.max(1,PK*.5);
+   for(let x=40;x<=360;x+=40)polyL([x,200,0,x,236,0])}
   const tN=26-ST3.dep*S.nN,zN=2+ST3.rise*S.nN,xW=12-ST3.dep*S.nW,xE=388+ST3.dep*S.nW,zW=2+ST3.rise*S.nW;
   poly(S.wall,[-260,tN,0,660,tN,0,660,tN,zN+16,-260,tN,zN+16]);
   poly(S.dark,[-260,tN,zN+13,660,tN,zN+13,660,tN,zN+16,-260,tN,zN+16]);
@@ -6766,7 +6862,7 @@ const LSB=(function(){
       cw=lab.length>12?28:24;ch=3.3;
     }else if(c==='comeback'){
       const g=M.lsbG;tc=g?d[g.team].def.glow:'#9b3dff';
-      const lab=/LAST/i.test(it.big)?'LAST SECOND!':'COMEBACK!';
+      const lab=/LAST/i.test(it.big)?'LAST SECOND!':/INVASION/i.test(it.big)?'PITCH INVASION!':/UNDERDOG/i.test(it.big)?'UNDERDOG!':'COMEBACK!';
       h='<div class="evGoal" style="--ec:'+tc+'"><div class="gl">'+letters(lab)+'</div><div class="gd"><b>'+esc(g?d[g.team].def.ab:'')+(g&&g.name?' · '+esc(g.name):'')+'</b>'+(g?'<small>'+esc(g.min)+"'</small>":'')+'</div>'+parts(tc)+'</div>';
       cw=26;ch=3.2;
     }else if(c==='sub'&&it.x.out){
@@ -6995,7 +7091,7 @@ const WCB=(function(){
     if(c==='varrev'){const v=M.varS||{};return{h:'<span class="vr"></span><b>VAR REVIEW</b><span class="sp"></span><small id="wbVt">'+esc((v.title||'')+' · 00:00')+'</small>',cls:'',ms:0,sticky:true}}
     if(c==='varok'||c==='varno'){const ok=c==='varok',r=VR[it.vk]||VR.goal;return{h:'<i class="cd" style="--cc:'+(ok?'#16c060':'#e11d1d')+'"></i><b>VAR · '+(ok?'CONFIRMED':'OVERTURNED')+'</b><span class="sp"></span><small>'+(ok?r[0]:r[1])+'</small>',cls:ok?'':'gold',ms:3200}}
     if(c==='save'){const k=LSB.key(it.sub),nm=k?ENMAP[k]:'',ti=k?LSB.teamOf(k):-1;return{h:'<b>'+(/PENALTY/i.test(it.big)?'PENALTY SAVED':'GREAT SAVE')+'</b><span class="sp"></span><small>'+(ti>=0?esc(d[ti].def.ab)+' · ':'')+esc(nm||'GOALKEEPER')+'</small>',cls:'',ms:3200}}
-    if(c==='comeback'){const g=M.lsbG;return{h:'<b>'+(/LAST/i.test(it.big)?'LAST SECOND':'COMEBACK')+'</b><span class="sp"></span><small>'+(g?esc(d[g.team].def.ab)+' · '+esc(g.name):'')+'</small>',cls:'',ms:3600}}
+    if(c==='comeback'){const g=M.lsbG;return{h:'<b>'+(/LAST/i.test(it.big)?'LAST SECOND':/INVASION/i.test(it.big)?'PITCH INVASION':/UNDERDOG/i.test(it.big)?'UNDERDOG':'COMEBACK')+'</b><span class="sp"></span><small>'+(g?esc(d[g.team].def.ab)+' · '+esc(g.name):'')+'</small>',cls:'',ms:3600}}
     const big=lat(it.big),sub=lat(it.sub);if(!big)return null;
     return{h:'<b>'+esc(big)+'</b><span class="sp"></span><small>'+esc(sub)+'</small>',cls:'',ms:Math.max(2600,it.ms)};
   }
@@ -7164,7 +7260,7 @@ const p=$('nsPanel');if(p)p.innerHTML='';
     if(c==='varrev'){const v=M.varS||{};return{h:'<span class="vr"></span><span>VAR REVIEW</span><span class="sp"></span><small>'+esc(lat(v.title)||'CHECKING')+'</small>',cls:'',ms:0,sticky:true}}
     if(c==='varok'||c==='varno'){const ok=c==='varok',r=VR[it.vk]||VR.goal;return{h:'<i class="cd" style="--cc:'+(ok?'#22c55e':'#ef4444')+'"></i><span>VAR '+(ok?'CONFIRMED':'OVERTURNED')+'</span><span class="sp"></span><small>'+(ok?r[0]:r[1])+'</small>',cls:ok?'':'alert',ms:3400}}
     if(c==='save'){const k=LSB.key(it.sub),ti=k?LSB.teamOf(k):-1;return{h:'<span>GREAT SAVE</span><span class="sp"></span><small>'+(ti>=0?esc(code(d[ti].def)):'')+' '+esc(k?String(ENMAP[k]).toUpperCase():'')+'</small>',cls:'',ms:3200}}
-    if(c==='comeback')return{h:'<span>COMEBACK</span>',cls:'',ms:3400};
+    if(c==='comeback')return{h:'<span>'+(/LAST/i.test(it.big)?'LAST SECOND':/INVASION/i.test(it.big)?'PITCH INVASION':/UNDERDOG/i.test(it.big)?'UNDERDOG':'COMEBACK')+'</span>',cls:'',ms:3400};
     const big=lat(it.big),sub=lat(it.sub);if(!big)return null;
     return{h:'<span>'+esc(big)+'</span><span class="sp"></span><small>'+esc(sub)+'</small>',cls:'',ms:Math.max(2600,it.ms)};
   }
@@ -8995,7 +9091,7 @@ function lgRender(){
   if(tab==='t'){
     h+='<table><thead><tr><th>#</th><th></th><th>تیم</th><th>بازی</th><th>برد</th><th>مساوی</th><th>باخت</th><th>زده</th><th>خورده</th><th>تفاضل</th><th>فرم</th><th>امتیاز</th></tr></thead><tbody>';
     tb.forEach((r,k)=>{const T=TEAMS[LG.teams[r.i].t],mv=LG.mv&&LG.mv[r.i]||0,z=k===0?'z1':k<4?'z2':k>=N-3?'zr':'';
-      h+='<tr style="--i:'+k+'" class="'+z+(r.i===0?' me'+(mv>0?' up':mv<0?' dn':''):'')+'"><td>'+(k+1)+'</td><td class="mv '+(mv>0?'u':mv<0?'d':'')+'">'+(mv>0?'▲'+mv:mv<0?'▼'+(-mv):'')+'</td><td class="tm">'+lgLogo(r.i)+' '+menuN(T)+'</td><td>'+r.p+'</td><td>'+r.w+'</td><td>'+r.d+'</td><td>'+r.l+'</td><td>'+r.gf+'</td><td>'+r.ga+'</td><td>'+(r.gd>0?'+':'')+r.gd+'</td><td>'+lgFormH(r.f)+'</td><td class="pt">'+r.pts+'</td></tr>'});
+      h+='<tr style="--i:'+k+'" class="'+z+(r.i===0?' me'+(mv>0?' up':mv<0?' dn':''):'')+'"><td>'+(k+1)+'</td><td class="mv '+(mv>0?'u':mv<0?'d':'')+'">'+(mv>0?'▲'+mv:mv<0?'▼'+(-mv):'')+'</td><td class="tm">'+lgLogo(r.i)+' '+menuN(T)+'</td><td>'+r.p+'</td><td>'+r.w+'</td><td>'+r.d+'</td><td>'+r.l+'</td><td>'+r.gf+'</td><td>'+r.ga+'</td><td>'+(r.gd>0?'+':'')+r.gd+'</td><td>'+lgFormH(r.f)+'</td><td class="pt">'+r.pts+(r.ded?' <small title="کسر امتیاز انضباطی" style="color:#ff6b6b">−'+r.ded+'</small>':'')+'</td></tr>'});
     h+='</tbody></table><div style="margin-top:5px;font-size:.8em;color:#aab0ee">🟡 قهرمان · 🟢 سهمیه‌ی آسیا · 🔴 سقوط</div>';
   }else if(tab==='w'){
     const rd=Math.min(NR-1,Math.max(0,lgRd<0?LG.round:lgRd)),R=LG.rounds[rd];
@@ -10097,7 +10193,7 @@ function* lastSecond(T,sc,ik){
   else if(ik==='big'){UI.banner('comeback','PITCH INVASION!','🔥 هواداران ریختن تو زمین!',2800);
     logEv('comeback','🏟️',`بازی حساسه و گل ${sc.name} هواداران ${T.def.short} رو از کوره در برد؛ ریختن تو زمین!`,T.idx)}
   else{UI.banner('comeback','UNDERDOG!','🔥 هواداران ریختن تو زمین!',2800);
-    logEv('comeback','🏟️',ik==='eq'?`${T.def.short} که ضعیف‌تر بود به تساوی رسید و هواداران از شادی ریختن تو زمین!`:`شگفتی! ${T.def.short} ضعیف‌تر بود ولی جلو افتاد؛ هواداران ریختن تو زمین!`,T.idx)}
+    logEv('comeback','🏟️',ik==='eq'?`${T.def.short} که ضعیف‌تر بود به تساوی رسید و هواداران از شادی ریختن تو زمین!`:ik==='dog'?`${T.def.short} که خیلی ضعیف‌تر بود به تیم قدرتمندتر گل زد و هواداران از شادی ریختن تو زمین!`:`شگفتی! ${T.def.short} ضعیف‌تر بود ولی جلو افتاد؛ هواداران ریختن تو زمین!`,T.idx)}
   M.inv={t0:M.time,until:M.time+38,side:T.idx};
   const mates=actOf(T.idx).filter(p=>p!==sc),opp=actOf(O.idx);
   opp.forEach(p=>{go(p,p.x,p.y,10);p.anim='sad';p.animT=6});
@@ -10380,6 +10476,7 @@ function newsRec(){
       goals:M.goals.map(g=>({m:g.min,t:g.team,s:g.scorer,a:g.assist,ty:g.type})),ev,st:[st(A),st(B)],poss:R?R.poss:[50,50],
       vr:M.varN||0,vno:M.varNo||0,mvp:R&&R.mvp?{n:R.mvp.name,t:R.mvp.team,r:+R.mvp.rating.toFixed(1)}:null,
       sdn:M.sbx?(M.sbSO?'ساندباکس + پنالتی':'ساندباکس'):''};
+    try{rwHookRec(rec,null)}catch(e){}
     const d=newsLoad();d.m.unshift(rec);if(d.m.length>500)d.m.length=500;newsSave(d);
   }catch(e){try{console.error('news',e)}catch(_){}}
 }
@@ -10548,12 +10645,1244 @@ function newsSim(kind,ai,bi,o){
     const rec={id:ts+'-s'+Math.floor(Math.random()*1e6),ts,kind,sim:true,derby:false,rd,comp:kind==='lg'?'League':'Knockout',
       teams:D.map(menuN),ab:D.map(x=>x.ab||''),col:D.map(x=>x.color||'#888'),score:sc,so:o.pen?o.pen.slice():null,et:!!o.et,w,
       coach:co,ref:refN,venue:(VENUES[vk]&&VENUES[vk].title)||'',wx:'',goals,ev,st,poss:[po,100-po],vr,vno,mvp:{n:mvpN,t:mvpT,r:+(7+Math.random()*2+(top?.4:0)).toFixed(1)},sdn:''};
+    try{rwHookRec(rec,{sim:1,kind,ai,bi})}catch(e){}
     const db=newsLoad();db.m.unshift(rec);if(db.m.length>500)db.m.length=500;newsSave(db);
   }catch(e){try{console.error('newsSim',e)}catch(_){}}
 }
 
+/* ===== v11.0 REACTOR WORLD ===== */
+/* ================= REACTOR WORLD ENGINE 11.0 — core ================= */
+const RWK='rl110_world';
+const RW={s:null,ix:{},dirty:false,t:null};
+const rwNew=()=>({v:1,seq:1,gday:0,comps:{},acc:{},st:[],po:[],ev:[],cs:[],rel:{},rv:{},su:[],de:[],qt:[],tl:[],rd:{},used:{},tr:{},cq:{},hc:{}});
+/* ---- deterministic RNG (all generation is seeded, so reopening a screen can never re-roll history) ---- */
+function rwHash(s){let h=1779033703^s.length;for(let i=0;i<s.length;i++){h=Math.imul(h^s.charCodeAt(i),3432918353);h=h<<13|h>>>19}return()=>{h=Math.imul(h^h>>>16,2246822507);h=Math.imul(h^h>>>13,3266489909);return(h^=h>>>16)>>>0}}
+function rwRng(seed){const g=rwHash(String(seed));let a=g();const f=()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+  return{f,i:(x,y)=>x+Math.floor(f()*(y-x+1)),p:arr=>arr[Math.floor(f()*arr.length)],c:p=>f()<p,sh:arr=>{const a2=arr.slice();for(let i=a2.length-1;i>0;i--){const j=Math.floor(f()*(i+1));[a2[i],a2[j]]=[a2[j],a2[i]]}return a2}}}
+const rwClamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const rwTeam=id=>TEAMS.find(t=>t.id===id);
+const rwTN=id=>{const t=rwTeam(id);return t?menuN(t):String(id)};
+const rwAB=id=>{const t=rwTeam(id);return t?(TEAMAB[id]||t.ab||id.toUpperCase()):String(id)};
+const rwPl=id=>PLAYERS.find(p=>p.id===id)||GKS.find(g=>g.id===id);
+const rwPN=id=>{const p=rwPl(id);return p?p.name:'بازیکن'};
+const rwCo=id=>COACHES.find(c=>c.id===id);
+const rwCN=id=>{const c=rwCo(id);return c?c.name:'سرمربی'};
+const rwRef=id=>(REFS.concat(REFS_STREET,REFS_SCHOOL,REFS_ALIEN)).find(r=>r.id===id);
+const rwRN=id=>{const r=rwRef(id);return r?r.name:'داور'};
+const rwF=(t,c)=>String(t).replace(/\{(\w+)\}/g,(m,k)=>c[k]!=null?c[k]:'');
+function rwPick(key,arr,R){
+  if(!arr||!arr.length)return'';
+  const u=RW.s.used[key]=RW.s.used[key]||[];let idx=[];for(let i=0;i<arr.length;i++)if(u.indexOf(i)<0)idx.push(i);
+  if(!idx.length){u.length=0;idx=arr.map((_,i)=>i)}
+  const k=R?idx[Math.floor(R.f()*idx.length)]:idx[Math.floor(Math.random()*idx.length)];
+  u.push(k);if(u.length>Math.max(1,Math.min(6,arr.length-1)))u.shift();
+  return arr[k];
+}
+/* ---- persistence (existing localStorage architecture; own key, versioned, safe migration) ---- */
+function rwLoad(){
+  let o=null;try{o=JSON.parse(localStorage.getItem(RWK)||'null')}catch(e){o=null}
+  const base=rwNew();
+  if(o&&typeof o==='object'){
+    for(const k in base){if(o[k]==null||typeof o[k]!==typeof base[k]||Array.isArray(o[k])!==Array.isArray(base[k]))o[k]=base[k]}
+    if(o.v<1)o.v=1;
+  }else o=base;
+  RW.s=o;rwReindex();rwValidate();
+}
+function rwReindex(){const s=RW.s;RW.ix={st:new Set(s.st.map(x=>x.id)),po:new Set(s.po.map(x=>x.id)),ev:new Set(s.ev.map(x=>x.id)),cs:new Set(s.cs.map(x=>x.id))}}
+function rwSaveNow(){
+  if(!RW.s)return;RW.dirty=false;
+  const s=RW.s;
+  if(s.st.length>1100||s.po.length>1200||s.tl.length>600)rwPrune(1);
+  for(let attempt=0;attempt<4;attempt++){
+    try{localStorage.setItem(RWK,JSON.stringify(s));return true}catch(e){rwPrune(attempt+1)}
+  }
+  return false;
+}
+function rwSave(){RW.dirty=true;if(RW.t)return;RW.t=setTimeout(()=>{RW.t=null;if(RW.dirty)rwSaveNow()},350)}
+/* keep history lean: low-importance old items go first; important/case-linked items stay */
+function rwPrune(level){
+  const s=RW.s,capS=[1100,850,650,450][Math.min(3,level-1)],capP=[1200,900,650,450][Math.min(3,level-1)],capT=[600,450,320,220][Math.min(3,level-1)];
+  const keepS=x=>(level>=3?x.imp>=3:x.imp>=2)||x.cs||x.ev;
+  if(s.st.length>capS){const drop=s.st.length-capS;let n=0;const out=[];for(let i=s.st.length-1;i>=0;i--){const x=s.st[i];if(n<drop&&!keepS(x)&&i>40){n++;continue}out.push(x)}s.st=out.reverse();if(s.st.length>capS+300)s.st.length=capS+300}
+  if(s.po.length>capP){const drop=s.po.length-capP;let n=0;const out=[];for(let i=s.po.length-1;i>=0;i--){const x=s.po[i];if(n<drop&&!x.keep&&!x.ev&&i>40){n++;continue}out.push(x)}s.po=out.reverse()}
+  if(s.tl.length>capT)s.tl=s.tl.slice(-capT);
+  rwReindex();
+}
+/* ---- referential integrity: nothing may point at a player/team/event that does not exist ---- */
+function rwValidate(){
+  const s=RW.s;let bad=0;
+  const evIds=new Set(s.ev.map(x=>x.id)),csIds=new Set(s.cs.map(x=>x.id));
+  s.su=s.su.filter(x=>{const ok=x&&x.k&&x.cid&&(x.k==='ref'?!!rwRef(x.id2):x.k==='coach'?!!rwCo(x.id2):!!rwPl(x.id2))&&(!x.cs||csIds.has(x.cs));if(!ok)bad++;return ok});
+  s.de=s.de.filter(x=>{const ok=x&&rwTeam(x.tid)&&(!x.cs||csIds.has(x.cs));if(!ok)bad++;return ok});
+  s.cs.forEach(c=>{if(c.ev&&!evIds.has(c.ev)){c.ev=null;bad++}});
+  for(const k of Object.keys(s.comps)){const c=s.comps[k];if(!c||!c.id){delete s.comps[k];bad++;continue}c.tids=(c.tids||[]).filter(t=>rwTeam(t))}
+  RW.health={bad,at:Date.now()};
+}
+/* ---- competitions: one independent media environment + history per league / cup instance ---- */
+function rwCid(kind){
+  if(kind==='lg'&&LG)return 'L'+(LG.t0||0).toString(36);
+  if(kind==='ko'&&KO)return 'K'+(KO.t0||0).toString(36);
+  return null;
+}
+function rwComp(kind,create){
+  if(kind==='gen'){let c=RW.s.comps.G;if(!c&&create){c=RW.s.comps.G={id:'G',kind:'gen',title:'فوتبال عمومی',pool:'',t0:0,act:true,tids:[],ro:{},md:{},fm:{},pr:{},ml:{},inc:[],day:0,done:{},pd:{},pvd:{},cd:{},fu:[],pw:{},dm:-1,fin:0}}return c}
+  const id=rwCid(kind);if(!id)return null;
+  let c=RW.s.comps[id];
+  if(!c&&create){
+    const L=kind==='lg'?LG:KO;
+    const tids=L.teams.map(t=>TEAMS[t.t].id);
+    const ro={};L.teams.forEach((t,i)=>{ro[tids[i]]={p:t.p.slice(),s:(t.s||[]).slice(),g:t.g,c:t.c}});
+    const title=kind==='lg'?(L.pool==='ipl'?'لیگ برتر ایران':'لیگ تیم‌های داخلی'):('تورنمنت حذفی '+L.n+' تیمی');
+    c=RW.s.comps[id]={id,kind,pool:L.pool||'',title,t0:L.t0||0,act:true,tids,ro,md:{},fm:{},pr:{},ml:{},inc:[],day:0,done:{},sub:{},evN:0,csN:0,pd:{},pvd:{},cd:{},fu:[],pw:{},dm:(L.over?L.rounds.length:L.round)-1,fin:L.over?1:0};
+    tids.forEach(t=>{c.fm[t]=[];c.pr[t]={pr:30,un:10,cf:50,fs:50}});
+    Object.keys(RW.s.comps).forEach(k=>{const o=RW.s.comps[k];if(o.kind===kind&&k!==id)o.act=false});
+    rwTl(c,'comp','🏁 «'+title+'» شروع شد؛ '+tids.length+' تیم در رقابت‌اند',0,2);
+    rwSave();
+  }
+  return c;
+}
+const rwActive=kind=>{const id=rwCid(kind);return id?RW.s.comps[id]:null};
+function rwTeamIdx(c,tid){return c.tids.indexOf(tid)}
+/* ---- timeline ---- */
+function rwTl(c,k,t,d,imp,ref){RW.s.tl.push({c:c.id,k,t,d:d==null?c.day:d,imp:imp||1,r:ref||null,i:RW.s.seq++})}
+/* ---- accounts: persistent identities, each with a fixed voice, credibility and influence ---- */
+const RW_JR=[
+ {n:'سمیرا کاویانی',o:'ورزش‌نامه',st:'serious',cr:90,inf:82},{n:'پیمان رستگار',o:'خط‌هافبک',st:'serious',cr:86,inf:76},
+ {n:'نیلوفر عطایی',o:'تحلیل‌روز',st:'humble',cr:82,inf:66},{n:'کاوه مرادی',o:'گل‌گزارش',st:'aggr',cr:58,inf:72},
+ {n:'ساناز فرهمند',o:'رادار فوتبال',st:'cocky',cr:64,inf:70},{n:'بهنام آریایی',o:'پشت‌خط',st:'serious',cr:78,inf:60},
+ {n:'مهسا طاهری',o:'پرتو ورزش',st:'emo',cr:74,inf:58},{n:'آرش دیلمی',o:'توپ‌خبر',st:'joker',cr:55,inf:62}];
+const RW_AN=[
+ {n:'دکتر فرزاد نصیری',st:'serious',cr:88,inf:70,b:'تحلیلگر تاکتیکی'},{n:'مهندس بابک شریفی',st:'cocky',cr:62,inf:64,b:'آمار و داده'},
+ {n:'استاد کیوان ملکی',st:'humble',cr:80,inf:58,b:'مربی بازنشسته'},{n:'نگین صالحی',st:'serious',cr:84,inf:60,b:'کارشناس داوری'}];
+const RW_MEME=[{n:'میم‌خونه ورزشی',st:'joker',cr:30,inf:60},{n:'توپ‌خند',st:'joker',cr:28,inf:52},{n:'کاریکاتور فوتبال',st:'joker',cr:34,inf:46}];
+const RW_ANON=[{n:'منبع نزدیک به باشگاه',st:'emo',cr:46,inf:44},{n:'یک عضو سابق کادر',st:'aggr',cr:40,inf:38}];
+const RW_CTR=[{n:'حامد جنجالی',st:'aggr',cr:26,inf:78},{n:'آقای همه‌چی‌دان',st:'cocky',cr:32,inf:66}];
+const RW_FANN=['ارسلان','رها','پوریا','ندا','شایان','مینا','کامران','لیلا','سروش','آیدا','بردیا','ترانه','فرشاد','هستی','وحید','سیما'];
+const RW_FANS=['emo','joker','aggr','humble','cocky','serious'];
+const RW_REP=['مدیر رسانه‌ای باشگاه','سخنگوی باشگاه','مدیر روابط‌عمومی'];
+function rwAcc(id){
+  let a=RW.s.acc[id];if(a)return a;
+  const [k,x,y]=id.split(':');let n=null;
+  const R=rwRng('acc:'+id);
+  if(k==='t'){const t=rwTeam(x);if(!t)return null;n={id,k:'club',t:x,n:menuN(t),h:'@'+rwAB(x).toLowerCase()+'_official',st:'serious',cr:92,inf:74+R.i(0,12),v:1,bio:'حساب رسمی '+menuN(t)}}
+  else if(k==='c'){const c=rwCo(x);if(!c)return null;n={id,k:'coach',c:x,n:c.name,h:'@coach_'+x,st:rwStyleOf(x,R),cr:80,inf:60+R.i(0,15),v:1,bio:'سرمربی'}}
+  else if(k==='p'){const p=rwPl(x);if(!p)return null;n={id,k:'player',p:x,n:p.name,h:'@'+x.replace(/\W/g,'')+'_10',st:rwStyleOf(x,R),cr:76,inf:48+R.i(0,25),v:1,bio:'بازیکن'}}
+  else if(k==='rep'){const t=rwTeam(x);if(!t)return null;n={id,k:'rep',t:x,n:R.p(RW_REP)+' '+menuN(t),h:'@'+rwAB(x).toLowerCase()+'_media',st:'serious',cr:84,inf:42,v:1,bio:'نماینده‌ی رسمی'}}
+  else if(k==='j'){const j=RW_JR[+x];if(!j)return null;n={id,k:'jr',n:j.n,h:'@'+['samira','peyman','niloo','kaveh','sanaz','behnam','mahsa','arash'][+x]+'_rl',st:j.st,cr:j.cr,inf:j.inf,v:1,bio:'خبرنگار · '+j.o,o:j.o}}
+  else if(k==='a'){const j=RW_AN[+x];if(!j)return null;n={id,k:'an',n:j.n,h:'@analyst'+x,st:j.st,cr:j.cr,inf:j.inf,v:1,bio:j.b}}
+  else if(k==='f'){const t=rwTeam(x);if(!t)return null;const nm=RW_FANN[(rwHash(id)()%RW_FANN.length)];n={id,k:'fan',t:x,n:nm+' هوادار',h:'@'+nm.slice(0,2)+'_'+rwAB(x).toLowerCase()+(+y+1),st:RW_FANS[(rwHash(id+'s')()%RW_FANS.length)],cr:20+R.i(0,30),inf:6+R.i(0,24),bio:'هوادار '+menuN(t)}}
+  else if(k==='g'){const t=rwTeam(x);if(!t)return null;n={id,k:'grp',t:x,n:'اولتراس '+menuN(t),h:'@ultras_'+rwAB(x).toLowerCase(),st:'aggr',cr:40,inf:50+R.i(0,15),bio:'گروه هواداران'}}
+  else if(k==='m'){const j=RW_MEME[+x];if(!j)return null;n={id,k:'meme',n:j.n,h:'@meme'+x,st:j.st,cr:j.cr,inf:j.inf,bio:'پارودی و میم'}}
+  else if(k==='x'){const j=RW_ANON[+x];if(!j)return null;n={id,k:'anon',n:j.n,h:'@source'+x,st:j.st,cr:j.cr,inf:j.inf,bio:'حساب ناشناس'}}
+  else if(k==='k'){const j=RW_CTR[+x];if(!j)return null;n={id,k:'ctr',n:j.n,h:'@hot'+x,st:j.st,cr:j.cr,inf:j.inf,bio:'چهره‌ی جنجالی'}}
+  else if(k==='o'){n=x==='disc'?{id,k:'org',n:'کمیته‌ی انضباطی',h:'@rl_discipline',st:'serious',cr:96,inf:80,v:1,bio:'حساب رسمی'}:{id,k:'org',n:'سازمان لیگ',h:'@rl_league',st:'serious',cr:96,inf:90,v:1,bio:'حساب رسمی'}}
+  if(n){n.hist=0;RW.s.acc[id]=n}
+  return n;
+}
+function rwStyleOf(id,R){const S=['serious','cocky','joker','aggr','humble','emo'];return S[rwHash('sty'+id)()%S.length]}
+const RW_STY_FA={serious:'جدی',cocky:'مغرور',joker:'شوخ',aggr:'تند',humble:'متواضع',emo:'احساسی'};
+
+/* ================= REACTOR WORLD — Persian text library (voices differ by personality) ================= */
+const SAY={
+ boast:{serious:['برنامه‌ی ما روشنه؛ برای بردن {B} آماده‌ایم.','روی کاغذ و توی زمین، فکر می‌کنم {A} جلوتره.'],cocky:['از {B} نمی‌ترسیم؛ اون‌ها باید نگران ما باشن!','فردا مال ماست، بنویسید و نگه دارید.'],joker:['به بچه‌ها گفتم فردا گل بزنن، بقیه‌ش با خودشونه 😄','{B}؟ شنیدم تیم خوبیه... ولی ما که بهتریم!'],aggr:['فردا {B} رو له می‌کنیم. بی‌رحم و بی‌گذشت.','هرکی جلوی ما بایسته، له میشه.'],humble:['به همه‌ی حریف‌ها احترام می‌ذاریم، ولی برای بردن اومدیم.','کار سختیه، ولی بچه‌ها آماده‌ان.'],emo:['این بازی برای هوادارامونه؛ تا نفس آخر می‌جنگیم!','قلبمون با هواداراست، فردا همه‌چی میدیم.']},
+ respect:{serious:['{B} تیم منظمیه و باید با احترام بهش نگاه کنیم.','حریف قوی‌ای در پیش داریم؛ جزئیات تعیین‌کننده‌ست.'],cocky:['{B} بد نیست... برای یه تیم متوسط.','احترام می‌ذارم، ولی حرف آخر رو ما می‌زنیم.'],joker:['{B} خیلی قویه، من از الان دارم می‌ترسم 😅','حریفمون سخته؛ مخصوصاً سبیل‌های مربیشون!'],aggr:['{B} قوی‌ان؟ ما قوی‌تریم. تمام.','هرچی هستن، زیر فشار خرد میشن.'],humble:['{B} حریف خطرناکیه و کوچیک‌ترین اشتباه گرون تموم میشه.','همه‌ی توجهمون روی جزئیاته.'],emo:['{B} هم هوادار داره و هم دل؛ بازی قشنگی میشه.','فقط می‌خوام بچه‌هام با افتخار بازی کنن.']},
+ win:{serious:['برنامه‌ی بازی دقیقاً اجرا شد؛ از بچه‌ها ممنونم.','سه امتیاز مهم بود و عملکرد قابل قبول.'],cocky:['گفته بودم! همین‌طور میشه وقتی {A} بازی می‌کنه.','حریف شانسی نداشت؛ ما بهتر بودیم.'],joker:['بردیم! فکر کنم شام امشب رو بچه‌ها می‌دن 😄','قول داده بودم گل بزنیم؛ زدیم دیگه!'],aggr:['له‌شون کردیم. ببینیم بعدی کیه.','این فقط شروعه؛ بقیه‌ی تیم‌ها بترسن.'],humble:['خوشحالم، ولی هنوز کار داریم؛ به حریف احترام می‌ذارم.','برد مال بازیکنان و هواداران بود، نه من.'],emo:['از شدت خوشحالی گریه‌م گرفته؛ این برد برای هواداراست.','بچه‌ها همه‌چی دادن؛ افتخار می‌کنم.']},
+ lose:{serious:['باختیم و مسئولیتش با منه؛ باید تحلیلش کنیم.','نتیجه عادلانه نبود، ولی بهانه نمی‌آورم.'],cocky:['{B} شانس آورد؛ توی ۹ بازی دیگه ۸ تاش مال ما بود!','این باخت چیزی رو عوض نمی‌کنه، ما همچنان بهتریم.'],joker:['خب... گاهی باید ببازیم تا بقیه خوشحال بشن 😅','توپ رو گم کردیم؛ دنبالش می‌گردیم هنوز!'],aggr:['از این باخت متنفرم؛ تیمم باید جواب پس بده.','داور و شرایط هرچی، من قبول ندارم!'],humble:['حریف بهتر بود، باید بپذیریم و سخت‌تر کار کنیم.','عذرخواهی می‌کنم از هواداران؛ جبران می‌کنیم.'],emo:['دلم شکست... هواداران لایق بیشتری بودن.','امشب سخت‌ترین شب فصل بود برام.']},
+ draw:{serious:['تساوی نتیجه‌ی منصفانه‌ای بود، هرچند دنبال برد بودیم.'],cocky:['یه امتیاز؟ ما برای سه امتیاز اومده بودیم!'],joker:['تساوی یعنی هیچ‌کس نمی‌تونه ما رو سرزنش کنه 😄'],aggr:['این تساوی طعم باخت می‌ده برام.'],humble:['یه امتیاز ارزشمند بود؛ ادامه میدیم.'],emo:['نه شاد و نه ناراحتم... فقط می‌خوام زود بازی بعدی برسه.']},
+ critref:{serious:['تصمیم داور در دقیقه‌ی حساس قابل دفاع نبود و رسماً اعتراض می‌کنیم.','انتظار داوری یکسان داریم؛ این بازی چنین نبود.'],cocky:['با این داوری نباید انتظار نتیجه‌ی دیگه‌ای داشت. همه دیدن!','داور بازی رو تعیین کرد، نه تیم‌ها.'],joker:['فکر کنم داور تماشاگر بود و بازیکن‌ها فقط مهمون 😂','اگه عینک داور رو بدیم ما تا الان بازی تموم شده بود!'],aggr:['این رسوایی داوریه! باید جواب بدن!','داور یا کوره یا طرف حساب شده!'],humble:['من احترام داور رو نگه می‌دارم ولی این تصمیم‌ها قابل توضیحه.','فقط می‌خوام کمیته نگاهی دوباره بندازه.'],emo:['دلم می‌سوزه... ما زحمت کشیدیم و داوری همه‌چی رو خراب کرد.','هواداران لایق عدالت بودن.']},
+ critown:{serious:['انتظارم از بازیکنان بیشتر بود و جدی باهاشون صحبت می‌کنم.'],cocky:['بعضی‌ها فکر می‌کنن ستاره‌ن؛ توی زمین نشون ندادن.'],joker:['دفاع‌مون امشب مرخصی بود! یادم نبود بهشون خبر بدم 😅'],aggr:['این‌جوری بازی کردن توهین به پیراهنه!'],humble:['من مقصرم که آماده‌شون نکردم.'],emo:['ناراحتم... انتظار نداشتم این‌طور تسلیم بشیم.']},
+ critcoach:{serious:['از نظر من ترکیب و تعویض‌ها اشتباه بود و صراحتاً می‌گم.'],cocky:['اگه من جای مربی بودم، بازی چیز دیگه‌ای بود.'],joker:['مربی هر هفته یه ترکیب جدید می‌چینه، جدول لوتو نیست که 😄'],aggr:['این‌جوری نمیشه! مربی خودش می‌دونه چی کار کرده!'],humble:['نمی‌خواستم بگم ولی درباره‌ی انتخاب‌ها حرف‌هام رو دارم.'],emo:['دلم شکسته... حس می‌کنم بهم اعتماد نشد.']},
+ defend:{serious:['حرف‌هام تحریف شد و توضیح کاملش رو در جلسه‌ی خبری می‌دم.'],cocky:['حرفی رو زدم که همه فکرش رو می‌کردن؛ پشتش هم هستم.'],joker:['یه شوخی بود! نمی‌دونستم این‌قدر جدی می‌گیرین 😅'],aggr:['پشت حرفم هستم و عقب‌نشینی نمی‌کنم.'],humble:['اگه ناراحتی ایجاد شد، منظورم این نبود.'],emo:['بی‌انصافیه! اون لحظه عصبی بودم.']},
+ apology:{serious:['به‌خاطر صحبت‌هام عذرخواهی رسمی می‌کنم.','این رفتار شایسته‌ی من نبود و پوزش می‌خوام.'],cocky:['خب... شاید لحنم تند بود. بگذریم.'],joker:['ببخشید جمع! خودمم از شوخی بدم اومد 🙏'],aggr:['می‌پذیرم زیاده‌روی کردم؛ عذرخواهی می‌کنم.'],humble:['صمیمانه عذرخواهی می‌کنم و تکرار نمی‌شه.'],emo:['از ته دل معذرت می‌خوام؛ احساساتم بر من غلبه کرد.']},
+ deny:{serious:['این ادعا کاملاً بی‌اساسه و مدارکش رو به کمیته می‌دم.'],cocky:['من کاری نکردم و اثباتش با شماست!'],joker:['این‌که من؟! من حتی پارک دوبل هم بلد نیستم 😂'],aggr:['اتهام‌زنی بی‌سند؟ شکایت می‌کنم!'],humble:['من خودم هم منتظر نتیجه‌ی بررسی‌ام؛ ادعا درست نیست.'],emo:['این اتهام قلبم رو شکست؛ من بی‌گناهم.']},
+ accuse:{serious:['مدارکی در اختیارمونه و آن‌ها را رسماً تحویل می‌دیم.'],cocky:['همه‌چی روشنه؛ فقط کمیته چشم‌هاشو باز کنه.'],joker:['اگه این رفتار جرم نیست، پس من از فردا هم تیم‌داری می‌کنم 😂'],aggr:['می‌خوام همه بدونن چی شده؛ این تقلبه!'],humble:['فقط خواستم موضوع بررسی بشه.'],emo:['نمی‌تونم ساکت بمونم؛ بی‌عدالتیه.']},
+ mock:{serious:['ترجیح می‌دم به جای این حرف‌ها در زمین جواب بدم.'],cocky:['شنیدم عصبیه؛ طبیعیه وقتی داری می‌بازی.'],joker:['بعد از بازی براش یه جام شیرین می‌فرستم 😄'],aggr:['جرأت داره بیاد جلوم بگه!'],humble:['من جواب نمی‌دم؛ زمین حرف می‌زنه.'],emo:['ازش ناراحت شدم ولی کینه ندارم.']},
+ recon:{serious:['موضوع تمام شده و همدیگه را درک می‌کنیم.'],cocky:['باشه، بگذریم؛ مرد باید بزرگ‌منش باشه.'],joker:['با هم یه چایی خوردیم، حالا همه‌چی عالیه ☕'],aggr:['اشتباه هر دو طرف بود؛ دست دادیم.'],humble:['خوشحالم که این سوءتفاهم برطرف شد.'],emo:['در آغوش هم گریه کردیم؛ همه‌چی تموم شد.']}
+};
+const FANT={
+ win:{emo:['امشب از خوشحالی خوابم نمی‌بره!! {A} فوق‌العاده بود 💙','اشک شوق ریختم! {A} بزرگه!'],joker:['{B}؟ کجا بودین؟ خبر نداشتیم بازی داشتیم 😂','نتیجه: {s}؛ دلیل: ما اینیم!'],aggr:['اینه {A}! {B} رو خرد کردیم!','اون‌هایی که شک داشتن، بیان ببینن!'],humble:['بازی خوبی بود؛ ممنون از بازیکنان {A}.','خدا رو شکر، سه امتیاز.'],cocky:['گفتم که {A} قهرمانه، ولی کسی گوش نکرد 😎','{s}؟ این فقط یه تمرین بود!'],serious:['سه امتیاز مهم برای {A}؛ ولی نیمه‌ی دوم باید منسجم‌تر باشیم.']},
+ lose:{emo:['دلم شکست... {A} ما بهتر از این بود 😭','اشک‌هام بند نمیاد؛ {s}.'],joker:['{A} اعلام کرد که امشب به {B} هدیه می‌ده 😅','لطفاً کسی تلویزیون رو خاموش کنه.'],aggr:['شرم‌آوره! مدیریت باید جواب بده!','این بازی‌کردن بود؟ توهین به هواداره!'],humble:['باختیم؛ ولی حمایت می‌کنیم.','کم‌کاری بود؛ دوباره برمی‌گردیم.'],cocky:['{B} شانس آورد؛ تکرار نمیشه.','نتیجه واقعیت نیست! {A} بهتر بود.'],serious:['این باخت نشون داد دفاع‌مون مشکل ساختاری داره.']},
+ draw:{emo:['قلبم نه شاده نه غمگین... یه امتیاز.'],joker:['تساوی یعنی همه برنده‌ایم، درسته؟ 🤡'],aggr:['این تساوی هم باخت حساب میشه!'],humble:['یه امتیاز هم از هیچی بهتره.'],cocky:['ما بهتر بودیم؛ فقط شانس یاری نکرد.'],serious:['تساوی منطقی؛ فرصت‌ها بیشتر مال ما بود.']},
+ pre:{emo:['فردا بازیه! قلبم از الان تند می‌زنه ⚽💙','کاش زودتر فردا بشه!'],joker:['پیش‌بینی من: {A} {x}-{y} {B}. اگه نشد کامنت‌ها رو پاک می‌کنم 😂'],aggr:['فردا {B} رو می‌خوایم له کنیم!'],humble:['امیدوارم بازی تمیز و زیبایی ببینیم.'],cocky:['{A} فردا قطعاً می‌بره؛ روی حرفم هستم.'],serious:['تحلیل من: کلید بازی میانه‌ی زمینه.']},
+ ref:{emo:['اینم عدالته؟! دلم خون شد از این داوری...','داور چرا؟!'],joker:['داور امشب مهمان ویژه‌ی تیم مقابل بود 😂','بیاید برای داور سگ راهنما جمع کنیم 🐕'],aggr:['داور رسوا شد! کمیته کجاست؟!','این داوری نبود، دزدی بود!'],humble:['اینو بازبینی کنن لطفاً.'],cocky:['حتی با داور هم برنده بودیم ولی خب...'],serious:['تصمیم داور خلاف قانون بود؛ با تصویر نشون می‌دم.']},
+ protest:{emo:['مدیریت! کجایی؟ تیم داره از دست میره 😢'],joker:['مدیرمون هنوز فکر می‌کنه تیم خوب بازی می‌کنه 😂'],aggr:['مدیریت باید استعفا بده! همین حالا!','فردا جلوی ورزشگاه جمع میشیم!'],humble:['کاش مدیریت به حرف هواداران گوش بده.'],cocky:['اگه این مدیر بره، فصل بعد قهرمانیم.'],serious:['درخواست رسمی ما: جلسه‌ی شفاف‌سازی.']}
+};
+const RWH={ // headlines for post-match
+ win:['{W} با {s} {L} را شکست داد','سه امتیاز برای {W}؛ {L} دست‌خالی ماند','پیروزی {W} در دیدار با {L} ({s})','{W} از سد {L} گذشت ({s})','{W} امتیاز گرفت و {L} را شکست داد'],
+ narrow:['برد نزدیک {W} مقابل {L} ({s})','{W} با یک گل اختلاف {L} را برد','لبه‌ی تیغ: {W} به‌زحمت {L} را شکست داد'],
+ rout:['غوغای گل! {W} {L} را {s} درهم کوبید','{L} زیر طوفان {W} له شد ({s})','نمایش پرگل {W}؛ {s} مقابل {L}','کابوس {L}؛ {W} با {s} برنده شد'],
+ draw:['{A} و {B} به تساوی رسیدند ({s})','تقسیم امتیاز در {A} - {B}؛ نتیجه {s}','{A} و {B} امتیاز را تقسیم کردند ({s})'],
+ draw0:['{A} و {B} در دیداری بی‌گل مساوی کردند','تساوی بدون گل؛ هیچ‌کدام از {A} و {B} دروازه را باز نکردند'],
+ late:['گل دقیقه‌ی {m}! {P} {W} را نجات داد','دقایق پایانی تعیین‌کننده شد: {P} در دقیقه‌ی {m} گل برد را زد','{P} در دقیقه‌ی {m} رویای {L} را به باد داد'],
+ shoot:['درام پنالتی: {W} در ضربات پنالتی برنده شد ({p})','{W} در ضربات پنالتی {L} را حذف کرد ({p})']
+};
+const RWANA=['تحلیل نشان می‌دهد {W} در کنترل میانه‌ی زمین برتر بود و {L} نتوانست ریتم را بگیرد.','آمار می‌گوید: {A} {sh0} شوت و {B} {sh1} شوت زدند؛ اما کیفیت موقعیت‌ها فرق داشت (xG {x0} در برابر {x1}).','کلید بازی، فاصله‌ی خطوط {L} بود؛ {W} بارها از پشت‌سر دفاع نفوذ کرد.','مالکیت {pA}٪ در برابر {pB}٪ نشان از تسلط نسبی {pw} داشت، ولی تسلط همیشه به گل منجر نمی‌شود.','تعویض‌ها و تغییر شکل تیم، خط شکننده‌ی این بازی بود.'];
+const RWINT={ // interview Q/A (question, answer kind)
+ q:['اولین حس بعد از بازی؟','درباره‌ی نقش خودتون در این نتیجه چه می‌گویید؟','پیام‌تون برای هواداران؟','بازی بعد چطور؟','درباره‌ی داوری چه نظری دارید؟']
+};
+
+/* ================= REACTOR WORLD — publishing, relationships, match coverage ================= */
+const RW_SUBN=['پس از بازی','میان‌هفته','شب بازی'];
+const RW_CATN={brk:'🚨 BREAKING NEWS',pre:'🔜 PRE-MATCH',post:'🏁 POST-MATCH',press:'🎙 PRESS CONFERENCES',int:'🗣 INTERVIEWS',soc:'💬 SOCIAL MEDIA',ctr:'🔥 CONTROVERSIES',inv:'🔎 INVESTIGATIONS',dis:'⚖ DISCIPLINARY CASES',stm:'📣 CLUB STATEMENTS',ana:'🧠 ANALYSIS',pwr:'📊 POWER RANKINGS',hist:'📜 HISTORY'};
+const rwHH=R=>{const h=R.i(9,22),m=R.i(0,59);return (h<10?'0':'')+h+':'+(m<10?'0':'')+m};
+function rwLabel(c,x){const md=Math.floor((x.d||0)/3);const isKO=c.kind==='ko';const sub=RW_SUBN[(x.d||0)%3];return (c.kind==='gen'?'عمومی':isKO?'مرحله '+(md+1):'هفته '+(md+1))+' · '+sub+(x.hh?' · '+x.hh:'')}
+/* publish a story once (deterministic id => never duplicated) */
+function rwStory(c,o){
+  const id='S.'+c.id+'.'+o.key;if(RW.ix.st.has(id))return null;
+  const R=rwRng(id),x={id,c:c.id,cat:o.cat,h:o.h,b:o.b||'',d:o.d!=null?o.d:c.day,hh:rwHH(R),imp:o.imp||1,tg:o.tg||[],ev:o.ev||null,cs:o.cs||null,m:o.m||null,by:o.by||null,i:RW.s.seq++,sim:o.sim?1:0};
+  RW.s.st.push(x);RW.ix.st.add(id);
+  if(x.imp>=3&&x.cat!=='pre'&&x.cat!=='pwr')rwTl(c,x.cat,x.h,x.d,x.imp,{st:id});
+  rwSave();return x;
+}
+function rwPost(c,o){
+  const id='P.'+c.id+'.'+o.key;if(RW.ix.po.has(id))return null;
+  const a=rwAcc(o.a);if(!a)return null;
+  const R=rwRng(id),imp=o.imp||1,vw=Math.round((a.inf*R.i(35,140)+R.i(20,300))*(1+imp*.7)),lk=Math.round(vw*(.04+R.f()*.1)*(a.k==='fan'?.6:1)),rp=Math.round(lk*(.08+R.f()*.18)),cm=Math.round(lk*(.05+R.f()*.15));
+  const p={id,c:c.id,a:o.a,t:o.t,k:o.k||'post',re:o.re||null,d:o.d!=null?o.d:c.day,hh:rwHH(R),vw,lk,rp,cm,tg:o.tg||[],ev:o.ev||null,cs:o.cs||null,del:o.del?1:0,keep:o.keep?1:0,poll:o.poll||null,i:RW.s.seq++,tag:o.tag||null,imp};
+  RW.s.po.push(p);RW.ix.po.add(id);a.hist++;
+  if(o.re){const tgt=RW.s.po.find(q=>q.id===o.re);if(tgt){tgt.cm+=1+Math.floor(cm/6);if(p.k==='repost')tgt.rp+=1+Math.floor(rp/4)}}
+  rwSave();return p;
+}
+const rwPostById=id=>RW.s.po.find(p=>p.id===id);
+/* ---- relationship & rivalry engine (persistent, event-driven; never resets) ---- */
+const rwRK=(a,b)=>a<b?a+'|'+b:b+'|'+a;
+function rwRel(a,b,delta,why,c){
+  if(!a||!b||a===b)return;const k=rwRK(a,b);let r=RW.s.rel[k];if(!r)r=RW.s.rel[k]={v:0,h:[],cid:c?c.id:null};
+  r.v=rwClamp(r.v+delta,-100,100);r.h.push([c?c.day:0,delta,why]);if(r.h.length>14)r.h.shift();r.cid=r.cid||(c?c.id:null);
+}
+const rwRelV=(a,b)=>{const r=RW.s.rel[rwRK(a,b)];return r?r.v:0};
+function rwRelLabel(v){return v>=60?'دوستی عمیق':v>=30?'احترام':v>=10?'همکاری':v>-10?'خنثی':v>-30?'بی‌اعتمادی':v>-60?'خصومت':'دشمنی بلندمدت'}
+function rwRiv(a,b,heat,why,c){
+  const k=rwRK(a,b);let r=RW.s.rv[k];if(!r)r=RW.s.rv[k]={heat:derbyOf(a,b)?35:5,h:[],a,b};
+  r.heat=rwClamp(r.heat+heat,0,100);if(why){r.h.push([c?c.day:0,why,c?c.id:null]);if(r.h.length>12)r.h.shift()}
+}
+const rwRivHeat=(a,b)=>{const r=RW.s.rv[rwRK(a,b)];return r?r.heat:(derbyOf(a,b)?35:0)};
+/* ---- team state inside one competition ---- */
+function rwFormStr(c,tid,n){const f=c.fm[tid]||[];return f.slice(-(n||5)).map(x=>x==='w'?'برد':x==='d'?'مساوی':'باخت').join(' · ')||'—'}
+function rwStreak(c,tid){const f=c.fm[tid]||[];if(!f.length)return{k:'',n:0};const k=f[f.length-1];let n=0;for(let i=f.length-1;i>=0&&f[i]===k;i--)n++;return{k,n}}
+function rwActiveSusp(cid,tid){return RW.s.su.filter(s=>s.cid===cid&&s.st==='act'&&s.tid===tid)}
+const rwOpenCases=(c,tid)=>RW.s.cs.filter(x=>x.cid===c.id&&x.st!=='final'&&(x.cmp===tid||x.def===tid||x.defT===tid));
+function rwCoachAcc(c,tid){const ro=c.ro[tid];return ro?'c:'+ro.c:null}
+function rwFan(tid,n){return 'f:'+tid+':'+n}
+/* roster helpers (a world's roster is the one that competition actually uses) */
+function rwFindP(c,tid,name){const ro=c.ro[tid];if(!ro)return null;const all=ro.p.concat(ro.s,[ro.g]);return all.find(id=>rwPN(id)===name)||null}
+function rwRosterP(c,tid,R){const ro=c.ro[tid];if(!ro)return null;const all=ro.p.concat(ro.s);return R?R.p(all):all[0]}
+/* ---- match coverage (post-match package for BOTH teams, for simulated and user-played matches alike) ---- */
+function rwMatchRec(c,key){return c.ml[key]}
+function rwScoreStr(m){return m.sc[0]+'-'+m.sc[1]}
+function rwIngest(rec,ctx){
+  const c=ctx.kind==='gen'?rwComp('gen',true):rwComp(ctx.kind,true);if(!c)return;
+  const key=ctx.kind==='gen'?'g'+String(rec.id||Date.now()):'m'+ctx.round+'-'+ctx.ai+'-'+ctx.bi;
+  if(c.ml[key])return;
+  const tids=ctx.tids,[A,B]=tids,sc=rec.score;
+  const gl=(rec.goals||[]).map(g=>[parseInt(g.m,10)||0,g.t,g.s,g.ty||'normal']);
+  const cards=(rec.ev||[]).filter(e=>/blue|red|yellow|var|pen/.test(e.k)).slice(0,10).map(e=>[parseInt(e.m,10)||0,e.tm==null?-1:e.tm,e.k,String(e.t).slice(0,120)]);
+  const w=rec.w;const diff=Math.abs(sc[0]-sc[1]),tot=sc[0]+sc[1];
+  const dv=!!rec.derby||derbyOf(A,B);
+  const m=c.ml[key]={d:ctx.round||0,a:A,b:B,sc:sc.slice(),sim:ctx.user?0:1,so:rec.so?rec.so.slice():null,et:!!rec.et,w,gl,cards,dv,rf:rec.ref||'',st:rec.st,po:rec.poss,mvp:rec.mvp||null,ts:rec.ts,k:ctx.kind,imp:0,user:ctx.user?1:0};
+  if(ctx.kind==='gen'){m.imp=ctx.user?1:0}
+  else{m.imp=ctx.user?3:dv?3:(diff>=3||rec.so)?2:1}
+  c.day=Math.max(c.day,(ctx.round||0)*3);
+  const day=ctx.kind==='gen'?c.day:(ctx.round||0)*3;
+  if(ctx.kind!=='gen')rwApplyResult(c,m,key,day);
+  rwCoverMatch(c,m,key,day);
+  rwSave();
+}
+function rwApplyResult(c,m,key,day){
+  const res=m.w===0?['w','l']:m.w===1?['l','w']:['d','d'];
+  [m.a,m.b].forEach((t,i)=>{if(!c.fm[t])c.fm[t]=[];c.fm[t].push(res[i]);if(c.fm[t].length>12)c.fm[t].shift();
+    const p=c.pr[t]||(c.pr[t]={pr:30,un:10,cf:50,fs:50}),st=rwStreak(c,t);
+    if(res[i]==='w'){p.cf=rwClamp(p.cf+7,0,100);p.pr=rwClamp(p.pr-6,0,100);p.fs=rwClamp(p.fs+8,0,100);p.un=rwClamp(p.un-4,0,100)}
+    else if(res[i]==='l'){p.cf=rwClamp(p.cf-8-(st.k==='l'?st.n:0),0,100);p.pr=rwClamp(p.pr+8+(st.k==='l'?st.n*2:0),0,100);p.fs=rwClamp(p.fs-9,0,100);p.un=rwClamp(p.un+(st.k==='l'&&st.n>=2?6:2),0,100)}
+    else{p.cf=rwClamp(p.cf-1,0,100);p.pr=rwClamp(p.pr+1,0,100)}});
+  if(m.dv)rwRiv(m.a,m.b,6,'دربی '+rwTN(m.a)+' - '+rwTN(m.b)+' با نتیجه‌ی '+rwScoreStr(m),c);
+  else rwRiv(m.a,m.b,m.imp>=2?2:.4,null,c);
+  /* controversial incidents become seeds for the event engine (cause first, drama after) */
+  const seeds=m.cards.filter(x=>/blue|red|var|pen/.test(x[2]));
+  seeds.forEach((x,k)=>{if(k<2)c.inc.push({d:day,key,k:x[2],tm:x[1],txt:x[3],min:x[0]})});
+  if(c.inc.length>14)c.inc=c.inc.slice(-14);
+}
+function rwStyleCoach(tid,c){const ro=c.ro[tid];return ro?rwStyleOf(ro.c,null):'serious'}
+function rwSay(kind,style,ctx,key,R){const set=SAY[kind]&&(SAY[kind][style]||SAY[kind].serious);return rwF(rwPick('say.'+kind+'.'+style,set,R),ctx)}
+function rwFanSay(kind,style,ctx,R){const set=FANT[kind]&&(FANT[kind][style]||FANT[kind].serious);return rwF(rwPick('fan.'+kind+'.'+style,set,R),ctx)}
+function rwResultKind(m){
+  const d=Math.abs(m.sc[0]-m.sc[1]);
+  if(m.so)return'shoot';
+  if(m.w<0||m.sc[0]===m.sc[1])return m.sc[0]+m.sc[1]===0?'draw0':'draw';
+  const lg=m.gl[m.gl.length-1];if(lg&&lg[0]>=85&&d<=1&&lg[1]===m.w)return'late';
+  return d>=3?'rout':d===1?'narrow':'win';
+}
+function rwCoverMatch(c,m,key,day){
+  const R=rwRng('cov:'+c.id+':'+key);
+  const A=m.a,B=m.b,nA=rwTN(A)||'',nB=rwTN(B);
+  const W=m.w===0?A:m.w===1?B:null,Lz=m.w===0?B:m.w===1?A:null;
+  const sStr=rwScoreStr(m);
+  const kind=rwResultKind(m);
+  const lg=m.gl[m.gl.length-1];
+  const mp=m.mvp&&m.mvp.n?m.mvp.n:(lg?lg[2]:'');
+  const ctx={A:nA,B:nB,W:W?rwTN(W):'',L:Lz?rwTN(Lz):'',s:sStr,m:lg?lg[0]:'',P:lg?lg[2]:'',p:m.so?m.so[0]+'-'+m.so[1]:''};
+  const hl=rwF(rwPick('h.'+kind,RWH[kind==='draw0'?'draw0':kind],R),ctx);
+  /* ---- report body: only facts that exist in the stored match ---- */
+  const lines=[];
+  lines.push((m.sim?'🤖 این دیدار در شبیه‌سازی '+(c.kind==='gen'?'':'«'+c.title+'»')+' انجام شد و گزارش از همان نتیجه‌ی ثبت‌شده ساخته شده است.':'🎮 این دیدار را خودت بازی کردی؛ همه‌ی اعداد و رویدادها واقعی‌اند.'));
+  lines.push(nA+' '+sStr+' '+nB+(m.so?' (پنالتی '+m.so[0]+'-'+m.so[1]+')':'')+(m.et?' · با وقت اضافه':'')+(m.dv?' · 🔥 دربی':'')+'.');
+  if(m.gl.length){const gA=m.gl.filter(g=>g[1]===0),gB=m.gl.filter(g=>g[1]===1);
+    lines.push('گلزنان: '+(gA.length?nA+' — '+gA.map(g=>g[2]+" "+g[0]+"'"+(g[3]==='penalty'?' (پ)':'')).join('، '):'')+(gA.length&&gB.length?' | ':'')+(gB.length?nB+' — '+gB.map(g=>g[2]+" "+g[0]+"'"+(g[3]==='penalty'?' (پ)':'')).join('، '):'')+'.')}
+  else lines.push('در این بازی گلی به ثمر نرسید.');
+  if(m.cards.length)lines.push('رویدادهای مهم: '+m.cards.slice(0,3).map(x=>x[0]+"' "+x[3]).join(' — ')+'.');
+  if(m.st&&m.st[0]){lines.push('آمار: شوت '+m.st[0].sh+'-'+m.st[1].sh+' · روی دروازه '+m.st[0].sot+'-'+m.st[1].sot+' · مالکیت '+(m.po?m.po[0]+'٪-'+m.po[1]+'٪':'—')+' · xG '+m.st[0].xg+'-'+m.st[1].xg+'.')}
+  if(mp)lines.push('بهترین بازیکن: '+mp+(m.mvp&&m.mvp.r?' ('+m.mvp.r+')':'')+'.');
+  rwStory(c,{key:'rep.'+key,cat:'post',h:hl,b:lines.join('\n'),imp:m.imp,tg:[A,B],m:key,d:day,sim:m.sim,by:'j:'+R.i(0,7)});
+  if(c.kind==='gen')return rwCoverLite(c,m,key,day,R,ctx);
+  const full=m.imp>=2||R.c(.4);
+  /* ---- manager reactions (character voice) + quote continuity ---- */
+  const cA=rwCoachAcc(c,A),cB=rwCoachAcc(c,B);
+  const sty={};sty[A]=rwStyleCoach(A,c);sty[B]=rwStyleCoach(B,c);
+  const outc=t=>m.w<0?'draw':(m.w===0)===(t===A)?'win':'lose';
+  const mkQ=t=>{const o=outc(t),k=o==='win'?'win':o==='lose'?'lose':'draw';return rwSay(k,sty[t],{A:rwTN(t),B:rwTN(t===A?B:A),s:sStr,C:rwCN(c.ro[t].c)},'q',R)};
+  const qa=mkQ(A),qb=mkQ(B);
+  if(full||m.imp>=2){
+    rwStory(c,{key:'prs.'+key,cat:'press',h:'کنفرانس خبری پس از بازی: '+rwCN(c.ro[A].c)+' و '+rwCN(c.ro[B].c),b:'«'+qa+'»\n— '+rwCN(c.ro[A].c)+' ('+nA+')\n\n«'+qb+'»\n— '+rwCN(c.ro[B].c)+' ('+nB+')',imp:m.imp>=3?2:1,tg:[A,B],m:key,d:day,by:cA});
+    const sp=[[A,rwCoachAcc(c,A),qa],[B,rwCoachAcc(c,B),qb]];
+    sp.forEach(([t,acc,q],i)=>{if(acc&&(i===0||R.c(.6)))rwPost(c,{key:'cq.'+key+'.'+i,a:acc,t:q,tg:[A,B],imp:1,d:day})});
+  }else{
+    const t=m.w===0?B:m.w===1?A:(R.c(.5)?A:B);rwPost(c,{key:'cq.'+key+'.0',a:rwCoachAcc(c,t),t:mkQ(t),tg:[A,B],imp:1,d:day});
+  }
+  rwResolveQuotes(c,key,m,day);
+  /* ---- player interview (scorer / MVP) ---- */
+  if(full){
+    const pn=mp,pid=pn?(rwFindP(c,A,pn)||rwFindP(c,B,pn)):null,pt=pid?(rwFindP(c,A,pn)?A:B):null;
+    if(pid){
+      const ps=rwStyleOf(pid,null),o=outc(pt),k=o==='win'?'win':o==='lose'?'lose':'draw';
+      const ans=rwSay(k,ps,{A:rwTN(pt),B:rwTN(pt===A?B:A),s:sStr},'pi',R);
+      rwStory(c,{key:'int.'+key,cat:'int',h:'گفتگو با '+pn+': '+rwPick('h.int',['«'+ans.slice(0,60)+(ans.length>60?'…':'')+'»','پس از بازی با '+rwTN(pt===A?B:A)+' چه گفت؟','حرف‌های داغ '+pn+' پس از بازی'],R),b:'— '+RWINT.q[R.i(0,1)]+'\n«'+ans+'»\n— '+RWINT.q[2]+'\n«'+rwSay('win',rwStyleOf(pid,null),{A:rwTN(pt),B:'',s:sStr},'pi2',R)+'»',imp:1,tg:[pt],m:key,d:day,by:'p:'+pid});
+    }
+  }
+  /* ---- expert analysis ---- */
+  if(full&&m.st&&m.st[0]){
+    const an=rwF(rwPick('ana',RWANA,R),{W:ctx.W||nA,L:ctx.L||nB,A:nA,B:nB,sh0:m.st[0].sh,sh1:m.st[1].sh,x0:m.st[0].xg,x1:m.st[1].xg,pA:m.po?m.po[0]:50,pB:m.po?m.po[1]:50,pw:(m.po&&m.po[0]>=m.po[1])?nA:nB});
+    rwStory(c,{key:'ana.'+key,cat:'ana',h:'تحلیل: '+nA+' - '+nB+' ('+sStr+')',b:an,imp:1,tg:[A,B],m:key,d:day,by:'a:'+R.i(0,3)});
+  }
+  /* ---- referee discussion when the match actually contained refereeing flashpoints ---- */
+  const flash=m.cards.filter(x=>/var|pen|red|blue/.test(x[2]));
+  if(flash.length&&m.rf){
+    rwStory(c,{key:'ref.'+key,cat:'ctr',h:'داوری '+m.rf+' در '+nA+' - '+nB+' زیر ذره‌بین',b:'رویدادهای داوری این دیدار: '+flash.slice(0,3).map(x=>x[0]+"' "+x[3]).join(' — ')+'.\nکارشناسان درباره‌ی تصمیم‌های داور اختلاف نظر دارند.',imp:m.imp>=3?2:1,tg:[A,B],m:key,d:day,by:'a:3'});
+  }
+  /* ---- fans + clubs ---- */
+  const fa=rwFan(A,R.i(0,2)),fb=rwFan(B,R.i(0,2));
+  const fk=t=>{const o=outc(t);return o==='win'?'win':o==='lose'?'lose':'draw'};
+  const faP=rwPost(c,{key:'fa.'+key,a:fa,t:rwFanSay(fk(A),rwAcc(fa).st,{A:nA,B:nB,s:sStr},R),tg:[A,B],imp:m.imp,d:day});
+  const fbP=rwPost(c,{key:'fb.'+key,a:fb,t:rwFanSay(fk(B),rwAcc(fb).st,{A:nB,B:nA,s:sStr},R),tg:[A,B],imp:m.imp,d:day});
+  if(faP&&fbP&&(m.dv||m.w<0||R.c(.5))){const g=rwFan(m.w===1?A:B,R.i(0,2)),aa=rwAcc(g);const tgt=m.w===1?faP:fbP;
+    rwPost(c,{key:'fr.'+key,a:g,k:'reply',re:tgt.id,t:rwPick('fr',['بذار بازی بعدی ببینیم کی می‌خنده 😏','{s}؟ همین یه بازی رو نباید زیاد جدی بگیری.','اینقدر سر و صدا نکن، فصل خیلی مونده.','ببینیم آخر فصل چی میگی!'],R).replace('{s}',sStr),tg:[A,B],imp:1,d:day})}
+  if(W&&R.c(.8))rwPost(c,{key:'ow.'+key,a:'t:'+W,t:(m.dv?'🔥 دربی را بردیم! ':'✅ سه امتیاز. ')+rwTN(W)+' '+sStr+' '+rwTN(Lz)+'. ممنون از هواداران.',tg:[A,B],imp:m.imp,d:day,keep:m.imp>=3});
+  if(m.imp>=2||R.c(.3)){const jr='j:'+R.i(0,7);rwPost(c,{key:'jp.'+key,a:jr,t:'🏁 '+hl+(flash.length?' — و بحث‌های داوری ادامه دارد.':''),tg:[A,B],imp:m.imp,d:day})}
+  if((m.imp>=3||kind==='rout')&&R.c(.7)){rwPost(c,{key:'mm.'+key,a:'m:'+R.i(0,2),t:kind==='rout'?'کابوس '+ctx.L+' ادامه دارد 🤣 #'+rwAB(A)+'_'+rwAB(B):'میم امشب: دربی که همه‌چیز رو فراموش کرد 😂 #'+rwAB(A)+'_'+rwAB(B),tg:[A,B],imp:2,d:day})}
+  /* big result stories */
+  if(kind==='rout'||kind==='shoot'||(kind==='late'&&m.imp>=2)||m.dv)rwStory(c,{key:'brk.'+key,cat:'brk',h:hl,b:'',imp:m.imp>=3?3:2,tg:[A,B],m:key,d:day,by:'j:'+R.i(0,1)});
+  if(kind==='rout')rwRel(rwCoachAcc(c,W),rwCoachAcc(c,Lz),-4,'نتیجه‌ی سنگین '+sStr,c);
+}
+function rwCoverLite(c,m,key,day,R,ctx){
+  const A=m.a,B=m.b;
+  const f=rwFan(A,R.i(0,2));
+  if(m.user)rwPost(c,{key:'fa.'+key,a:f,t:'دوستانه تموم شد: '+rwTN(A)+' '+rwScoreStr(m)+' '+rwTN(B)+' ⚽',tg:[A,B],imp:1,d:day});
+}
+/* press-conference promises are remembered and used again when the result is known */
+function rwResolveQuotes(c,key,m,day){
+  RW.s.qt.filter(q=>q.cid===c.id&&q.key===key&&q.res==null).forEach(q=>{
+    const R=rwRng('qt:'+q.id),t=q.tid,won=m.w>=0&&((m.w===0)===(t===m.a)),lost=m.w>=0&&!won;
+    q.res=won?'w':lost?'l':'d';
+    const nT=rwTN(t),opp=t===m.a?m.b:m.a;
+    if(q.kind==='boast'&&lost){
+      rwStory(c,{key:'qb.'+q.id,cat:'ctr',h:'«'+q.text.slice(0,48)+(q.text.length>48?'…':'')+'» — و سپس باخت!',b:rwCN(q.co)+' پیش از بازی گفته بود: «'+q.text+'».\nاما '+nT+' در نهایت '+rwScoreStr(m)+' شکست خورد و رسانه‌ها آن اظهارات را به یاد آوردند.',imp:2,tg:[t,opp],ev:null,m:key,d:day,by:'j:'+R.i(3,4)});
+      const fo=rwFan(opp,R.i(0,2));rwPost(c,{key:'qbf.'+q.id,a:fo,t:'«'+q.text+'» 😂😂 '+rwCN(q.co)+' حالا چی میگی؟ #'+rwAB(t),tg:[t,opp],imp:2,d:day,keep:1});
+      c.fu=c.fu||[];c.fu.push({due:day+1,k:'defend',q:q.id});
+      rwRel('c:'+q.co,rwCoachAcc(c,opp),-3,'مسخره‌شدن اظهارات پیش از بازی',c);
+    }else if(q.kind==='boast'&&won){
+      rwStory(c,{key:'qw.'+q.id,cat:'press',h:rwCN(q.co)+' پای حرفش ایستاد: «'+q.text.slice(0,40)+(q.text.length>40?'…':'')+'»',b:'پیش از بازی گفته بود «'+q.text+'» و '+nT+' با '+rwScoreStr(m)+' برنده شد.',imp:1,tg:[t,opp],m:key,d:day,by:'j:'+R.i(0,2)});
+      rwRel('c:'+q.co,rwCoachAcc(c,opp),2,'عمل‌کردن به وعده',c);
+    }
+  });
+}
+
+/* ================= REACTOR WORLD — cases, consequences, events ================= */
+const RW_EVD={
+ ref:[['تصاویر ویدیویی تصمیم داور را زیر سؤال می‌برد',.55],['گزارش رسمی داور با تصاویر هم‌خوانی ندارد',.5],['ناظر داوری رویه‌ی غیرعادی را تأیید کرد',.6],['کارشناس داوری: تصمیم قابل دفاع بود',-.4],['کمک‌داور روایت داور را تأیید کرد',-.5],['ارتباط VAR نشان می‌دهد بازبینی انجام شده',-.25]],
+ player:[['تصویر نشان می‌دهد برخورد عمدی بوده',.6],['گزارش داور: رفتار خشن',.5],['سابقه‌ی انضباطی قبلی بازیکن',.3],['بازیکن مقابل ادعای عمد را رد کرد',-.35],['عذرخواهی صمیمانه‌ی بازیکن',-.2]],
+ coach:[['ویدیوی کنفرانس خبری اظهارات را تأیید می‌کند',.55],['سابقه‌ی اخطار قبلی',.3],['اظهارات خارج از زمینه نقل شده',-.35],['مربی بلافاصله عذرخواهی کرد',-.3]],
+ club:[['گزارش ناظر امنیتی',.5],['ویدیوهای ضبط‌شده از سکوها',.55],['باشگاه می‌گوید کنترل جمعیت خارج از توان بود',-.3],['گروه محدودی از هواداران مسئول بودند',-.25]],
+ corr:[['شاهد: دیدار پنهانی داور و نماینده‌ی باشگاه',.7],['سابقه‌ی تصمیم‌های مشکوک داور در بازی‌های قبلی',.45],['گزارش مالی غیرمعمول (مبهم)',.5],['امضای سند منتشرشده تأیید نشد',-.45],['ناسازگاری فنی در فایل سند',-.25],['داور مستندات قابل‌قبول ارائه داد',-.5]]
+};
+const RW_OUT={proven:'اتهام اثبات شد',partial:'اتهام تا حدی اثبات شد',insuff:'مدارک ناکافی',dismiss:'اتهام رد شد',closed:'پرونده بدون مجازات بسته شد'};
+function rwEnt(e){ // entity -> display name
+  const [k,id]=String(e||'').split(':');
+  return k==='r'?rwRN(id):k==='p'?rwPN(id):k==='c'?rwCN(id):k==='t'?rwTN(id):String(e||'');
+}
+function rwOpenCase(c,ev,sp){
+  const n=(c.csN=(c.csN||0)+1),id='CS-'+c.id.slice(0,4).toUpperCase()+'-'+(n<10?'0'+n:n);
+  if(RW.ix.cs.has(id))return RW.s.cs.find(x=>x.id===id);
+  const R=rwRng('case:'+id);
+  const pool=RW_EVD[sp.kind]||RW_EVD.ref;
+  const pos=pool.filter(x=>x[1]>0),neg=pool.filter(x=>x[1]<0);
+  const pick=R.sh(pos).slice(0,R.i(1,2)).concat(R.sh(neg).slice(0,R.i(1,2)));
+  const cs={id,cid:c.id,ev:ev?ev.id:null,t:sp.t,od:c.day,cmp:sp.cmp,def:sp.def,defT:sp.defT||null,kind:sp.kind,al:sp.al,evd:[],pend:R.sh(pick).map(x=>({t:x[0],w:x[1]})),wt:[],stm:[],dfn:'',st:'open',hd:null,dec:null,ap:null,fin:null,out:null,pen:[],log:[[c.day,'پرونده باز شد']],nx:c.day+1,sev:sp.sev||1,mx:sp.mx||1};
+  RW.s.cs.push(cs);RW.ix.cs.add(id);if(ev)ev.cs=id;
+  return cs;
+}
+/* each comp-day a case moves one step: evidence -> hearing -> decision -> (appeal) -> final */
+function rwCaseStep(c,cs){
+  if(cs.st==='final'||cs.nx>c.day)return;
+  const R=rwRng('cs:'+cs.id+':'+cs.st+':'+c.day),ev=cs.ev?RW.s.ev.find(e=>e.id===cs.ev):null;
+  const tg=[cs.cmp,cs.defT,cs.def&&cs.def.startsWith('t:')?cs.def.slice(2):null].filter(x=>x&&rwTeam(x));
+  const nm=rwEnt(cs.def),S=(k,cat,h,b,imp)=>rwStory(c,{key:cs.id+'.'+k,cat,h,b,imp:imp||2,tg,cs:cs.id,ev:cs.ev,d:c.day,by:'o:disc'});
+  const P=(k,a,t,o)=>rwPost(c,Object.assign({key:cs.id+'.'+k,a,t,tg,cs:cs.id,ev:cs.ev,d:c.day,imp:2},o||{}));
+  if(cs.st==='open'){
+    cs.st='inv';cs.nx=c.day+1;cs.log.push([c.day,'بررسی مقدماتی آغاز شد']);
+    S('o','inv','پرونده '+cs.id+' باز شد: '+cs.t,'کمیته‌ی انضباطی رسماً پرونده را ثبت کرد.\nشاکی: '+(cs.cmp&&rwTeam(cs.cmp)?rwTN(cs.cmp):'سازمان لیگ')+' · متهم: '+nm+'\nاتهام‌ها: '+cs.al.join('؛ ')+'.\nیادآوری: اتهام اثبات‌شده نیست و فرد مورد نظر حق دفاع دارد.',2);
+    P('o','o:disc','📂 پرونده '+cs.id+' ثبت شد: '+cs.t+'. بررسی ادله آغاز می‌شود. #'+cs.id.replace('-','_'),{keep:1});
+    rwRiv(cs.cmp,cs.defT||cs.cmp,1,null,c);
+    return;
+  }
+  if(cs.st==='inv'){
+    const e=cs.pend.shift();
+    if(e){cs.evd.push({t:e.t,w:e.w,d:c.day});cs.log.push([c.day,'مدرک جدید: '+e.t]);
+      S('e'+cs.evd.length,'inv','تازه‌ترین یافته‌ها در پرونده '+cs.id,'مدرک بررسی‌شده: «'+e.t+'».\nوضعیت: بررسی ادامه دارد؛ هنوز تصمیمی گرفته نشده است.',1);
+      if(cs.evd.length===1)P('ev','j:'+R.i(0,5),'🔎 مدرک تازه در پرونده '+cs.id+': «'+e.t+'». هنوز حکمی نیست.',{});}
+    if(cs.pend.length===0){cs.st='hear';cs.hd=c.day+1;cs.nx=c.day+1;cs.log.push([c.day,'جلسه‌ی رسیدگی برای روز '+cs.hd+' تعیین شد'])}else cs.nx=c.day+1;
+    return;
+  }
+  if(cs.st==='hear'){
+    const wp=R.p(['شاهد ۱: ناظر مسابقه','شاهد ۲: کمک‌داور','شاهد: مسئول امنیت ورزشگاه','شاهد: مدیر رسانه‌ای باشگاه']);
+    cs.wt.push(wp);
+    const sty=cs.def.startsWith('p:')?rwStyleOf(cs.def.slice(2),null):cs.def.startsWith('c:')?rwStyleOf(cs.def.slice(2),null):'serious';
+    cs.dfn=rwSay('deny',sty,{},'dfn',R);cs.stm.push([nm,cs.dfn]);
+    cs.log.push([c.day,'جلسه‌ی رسیدگی برگزار شد؛ دفاعیات '+nm+' شنیده شد']);
+    S('h','dis','جلسه‌ی رسیدگی پرونده '+cs.id,'متهم: '+nm+'\nدفاعیه: «'+cs.dfn+'»\n'+wp+' شهادت داد.\nمدارک: '+cs.evd.map(x=>x.t).join(' | ')+'.\nرأی بعد از مشورت اعضا اعلام می‌شود.',2);
+    cs.st='dec';cs.nx=c.day+1;return;
+  }
+  if(cs.st==='dec'){
+    let sc=cs.evd.reduce((s,x)=>s+x.w,0)+R.f()*.5-.25;
+    const out=sc>=.95?'proven':sc>=.55?'partial':sc>=.2?'insuff':'dismiss';
+    cs.dec={o:out,d:c.day,sc:+sc.toFixed(2)};cs.out=out;cs.log.push([c.day,'رأی اولیه: '+RW_OUT[out]]);
+    const pens=rwPenalties(c,cs,out,R);cs.pen=pens.map(x=>x.txt);
+    pens.forEach((p,i)=>rwApplyPenalty(c,cs,p,i));
+    S('d','dis','رأی اولیه‌ی پرونده '+cs.id+': '+RW_OUT[out],'متهم: '+nm+'\nنتیجه: '+RW_OUT[out]+'.\n'+(pens.length?'مجازات‌ها: '+pens.map(x=>x.txt).join('؛ ')+'.':'مجازاتی اعمال نشد.')+'\nاستدلال کمیته: مجموع وزن مدارک '+cs.dec.sc+' بود.'+(pens.length?'\nمحکوم‌علیه می‌تواند ظرف یک روز تجدیدنظر بخواهد.':''),3);
+    cs.st=pens.length?'app':'final';cs.nx=c.day+1;
+    if(!pens.length){cs.fin=out;rwCaseFinal(c,cs,ev,R)}
+    return;
+  }
+  if(cs.st==='app'){
+    const sevr=rwClamp(.38-(cs.dec.sc-.55)*.25,.08,.5);
+    const ap=R.f();
+    if(ap<.07){ // new evidence appears -> investigation reopened once
+      if(!cs.reop){cs.reop=1;cs.st='inv';cs.pend=[{t:'مدرک تازه‌ای کشف شد که در رسیدگی اولیه دیده نشده بود',w:R.c(.5)?.5:-.5}];cs.nx=c.day+1;cs.ap='reopen';cs.log.push([c.day,'در جریان تجدیدنظر مدرک جدید کشف شد؛ بررسی دوباره باز شد']);
+        S('re','inv','پرونده '+cs.id+' دوباره باز شد','با کشف مدرک جدید، کمیته‌ی تجدیدنظر پرونده را به مرحله‌ی بررسی برگرداند. مجازات‌های قبلی تا رأی جدید به قوت خود باقی‌اند.',3);return}
+    }
+    if(ap<.07+sevr){ // appeal accepted
+      cs.ap='accepted';cs.fin='appeal-accepted';cs.log.push([c.day,'تجدیدنظر پذیرفته شد']);
+      rwReverseCases(cs,c,true);
+      S('a','dis','تجدیدنظر پذیرفته شد: پرونده '+cs.id,'کمیته‌ی تجدیدنظر رأی اولیه را نقض و مجازات‌ها را لغو/کاهش داد.\nنتیجه: تجدیدنظر پذیرفته شد؛ پیامدهای قبلی برگردانده شد.',3);
+    }else{
+      cs.ap='rejected';cs.fin=cs.out;cs.log.push([c.day,'تجدیدنظر رد شد']);
+      S('a','dis','تجدیدنظر رد شد: پرونده '+cs.id,'کمیته‌ی تجدیدنظر رأی اولیه را تأیید کرد؛ مجازات‌ها قطعی است.',3);
+    }
+    cs.st='final';rwCaseFinal(c,cs,ev,R);return;
+  }
+}
+function rwPenalties(c,cs,out,R){
+  const p=[];if(out==='dismiss')return p;
+  const full=out==='proven',part=out==='partial';
+  const nmx=cs.mx||1;
+  if(cs.kind==='ref'||cs.kind==='corr'){
+    const id=cs.def.slice(2),n=full?(cs.kind==='corr'?R.i(5,7):R.i(2,3)):part?1:0;
+    if(n)p.push({k:'ref',id2:id,n,txt:'تعلیق داور '+rwRN(id)+' برای '+n+' هفته'});
+    else if(out==='insuff')p.push({k:'warn',txt:'تذکر رسمی'});
+    if(cs.kind==='corr'&&full&&cs.defT&&LG&&c.kind==='lg'){p.push({k:'ded',tid:cs.defT,n:3,txt:'کسر ۳ امتیاز از '+rwTN(cs.defT)})}
+    else if(cs.kind==='corr'&&(full||part)&&cs.defT)p.push({k:'warn',txt:'اخطار رسمی به '+rwTN(cs.defT)});
+  }else if(cs.kind==='player'){
+    const id=cs.def.slice(2),n=full?R.i(2,3):part?1:0;
+    if(n)p.push({k:'player',id2:id,tid:cs.defT,n,txt:'محرومیت '+rwPN(id)+' از '+n+' دیدار'});else p.push({k:'warn',txt:'اخطار رسمی به '+rwPN(id)});
+  }else if(cs.kind==='coach'){
+    const id=cs.def.slice(2),n=full?2:part?1:0;
+    if(n)p.push({k:'coach',id2:id,tid:cs.defT,n,txt:'محرومیت '+rwCN(id)+' از نیمکت برای '+n+' دیدار'});else p.push({k:'warn',txt:'اخطار رسمی به '+rwCN(id)});
+  }else if(cs.kind==='club'){
+    const t=cs.def.slice(2),n=full?2:part?1:0;
+    if(n)p.push({k:'closure',tid:t,n,txt:'بسته‌شدن بخشی از سکوهای '+rwTN(t)+' در '+n+' بازی خانگی'});else p.push({k:'warn',txt:'اخطار رسمی به '+rwTN(t)});
+  }
+  return p;
+}
+function rwApplyPenalty(c,cs,p,i){
+  const key='cq:'+cs.id+':'+i;if(RW.s.cq[key])return;
+  const id='SU.'+cs.id+'.'+i;
+  if(p.k==='warn'){RW.s.cq[key]={w:1};return}
+  if(p.k==='ded'){RW.s.de.push({id,cid:c.id,tid:p.tid,n:p.n,cs:cs.id,st:'act'});RW.s.cq[key]={de:id};return}
+  RW.s.su.push({id,cid:c.id,k:p.k==='closure'?'closure':p.k,id2:p.id2||'',tid:p.tid||null,n:p.n,left:p.n,cs:cs.id,st:'act',txt:p.txt,d:c.day});
+  RW.s.cq[key]={su:id};
+}
+function rwReverseCases(cs,c,all){
+  RW.s.su.forEach(s=>{if(s.cs===cs.id&&s.st==='act'){s.st='rev'}});
+  RW.s.de.forEach(s=>{if(s.cs===cs.id&&s.st==='act'){s.st='rev'}});
+}
+function rwCaseFinal(c,cs,ev,R){
+  rwSave();
+  if(ev){ev.nx=c.day;ev.x=ev.x||{};ev.x.csFin=1}
+}
+/* ---- availability (consequences feeding the real game) ---- */
+const rwSuspP=(cid,pid)=>RW.s.su.some(s=>s.st==='act'&&s.cid===cid&&(s.k==='player'||s.k==='bench')&&s.id2===pid);
+const rwSuspC=(cid,coid)=>RW.s.su.some(s=>s.st==='act'&&s.cid===cid&&s.k==='coach'&&s.id2===coid);
+const rwRefBanned=rid=>RW.s.su.some(s=>s.st==='act'&&s.k==='ref'&&s.id2===rid);
+const rwClosed=(cid,tid)=>RW.s.su.some(s=>s.st==='act'&&s.cid===cid&&s.k==='closure'&&s.tid===tid);
+function rwDedFor(cid,tid){return RW.s.de.filter(d=>d.st==='act'&&d.cid===cid&&d.tid===tid).reduce((s,d)=>s+d.n,0)}
+function rwSuspTick(c,md){
+  const played=new Set(),home=new Set();
+  Object.values(c.ml).forEach(m=>{if(m.d===md&&m.k===c.kind){played.add(m.a);played.add(m.b);home.add(m.a)}});
+  RW.s.su.forEach(s=>{
+    if(s.cid!==c.id||s.st!=='act')return;
+    let dec=false;
+    if(s.k==='ref')dec=true;else if(s.k==='closure')dec=home.has(s.tid);else dec=played.has(s.tid);
+    if(dec){s.left--;if(s.left<=0){s.st='done';
+      rwStory(c,{key:'sv.'+s.id,cat:'dis',h:(s.k==='ref'?rwRN(s.id2):s.k==='coach'?rwCN(s.id2):s.k==='closure'?rwTN(s.tid):rwPN(s.id2))+(s.k==='closure'?': محدودیت سکوها تمام شد':': مجازات به پایان رسید'),b:'دوره‌ی «'+s.txt+'» (پرونده '+s.cs+') تمام شد.'+(s.k==='ref'?' داور دوباره قابل انتصاب است.':s.k==='player'?' بازیکن برای دیدار بعد آماده است.':''),imp:1,tg:s.tid?[s.tid]:[],cs:s.cs,d:c.day})}}
+  });
+}
+/* ---- coach replacement used by an accepted resignation (AI teams only) ---- */
+function rwReplaceCoach(c,tid){
+  const L=c.kind==='lg'?LG:KO;if(!L||rwCid(c.kind)!==c.id)return null;
+  const idx=c.tids.indexOf(tid);if(idx<=0||isDbrT(L.teams[idx].t))return null;
+  const used=new Set(L.teams.map(t=>t.c));
+  const cand=COACHES.filter(x=>!x.dbr&&!x.intl&&!used.has(x.id));if(!cand.length)return null;
+  const R=rwRng('rc:'+c.id+':'+tid+':'+c.day),nc=R.p(cand),old=L.teams[idx].c;
+  L.teams[idx].c=nc.id;c.ro[tid].c=nc.id;(c.kind==='lg'?lgSave:koSave)();
+  return {old,nw:nc.id};
+}
+
+/* ================= REACTOR WORLD — dynamic event engine (EVENT → REACTION → INVESTIGATION → DECISION → CONSEQUENCE → RECORD) ================= */
+const RW_EVN={ref_controversy:'جنجال داوری',corruption_doc:'سند جنجالی علیه داور',player_conduct:'رفتار خشن بازیکن',mgr_crit_ref:'انتقاد مربی از داور',mgr_feud:'جدال دو مربی',dressing_room:'درگیری رختکن',player_vs_mgr:'اختلاف بازیکن و مربی',board_crisis:'بحران مدیریتی',fan_protest:'اعتراض هواداران',fan_clash:'درگیری هواداران',leak_media:'افشای گفتگو',wrong_report:'گزارش نادرست',reconcile:'آشتی عمومی'};
+const rwEC=ev=>({A:ev.A?rwTN(ev.A):'',B:ev.B?rwTN(ev.B):'',PA:ev.pa?rwPN(ev.pa):'',PB:ev.pb?rwPN(ev.pb):'',CA:ev.ca?rwCN(ev.ca):'',CB:ev.cb?rwCN(ev.cb):'',RF:ev.rf?rwRN(ev.rf):'',M:(ev.x&&ev.x.mt)||'',T:(ev.x&&ev.x.txt)||''});
+const rwEvTags=ev=>[ev.A,ev.B].filter(x=>x);
+function rwNewEv(c,type,o){
+  const n=(c.evN=(c.evN||0)+1),id='E.'+c.id+'.'+n;
+  const ev=Object.assign({id,cid:c.id,type,d0:c.day,s:0,nx:c.day,stat:'open',cs:null,x:{},log:[]},o);
+  RW.s.ev.push(ev);RW.ix.ev.add(id);
+  return ev;
+}
+function rwEvHelpers(c,ev){
+  const E=rwEC(ev),tg=rwEvTags(ev);
+  const F=s=>rwF(s,E);
+  const S=(k,cat,h,b,imp,by)=>rwStory(c,{key:ev.id+'.'+k,cat,h:F(h),b:F(b),imp:imp||2,tg,ev:ev.id,cs:ev.cs,d:c.day,by:by||'j:'+rwRng(ev.id+k).i(0,5)});
+  const P=(k,a,t,o)=>rwPost(c,Object.assign({key:ev.id+'.'+k,a,t:F(t),tg,ev:ev.id,cs:ev.cs,d:c.day,imp:2},o||{}));
+  return {E,F,S,P,tg};
+}
+const rwCoachOf=(c,tid)=>c.ro[tid]?c.ro[tid].c:null;
+function rwCaseLine(cs){return cs?('پرونده '+cs.id+' · وضعیت: '+({open:'ثبت‌شده',inv:'در حال بررسی',hear:'در انتظار جلسه',dec:'در انتظار رأی',app:'در مرحله‌ی تجدیدنظر',final:'نهایی'})[cs.st]+(cs.fin?' · نتیجه: '+(cs.fin==='appeal-accepted'?'تجدیدنظر پذیرفته شد':RW_OUT[cs.fin]||''):'')):''}
+/* ---- scripts. Each stage returns: number>0 = days until next stage, 0 = wait for the linked case, -1 = finished ---- */
+const EVT={};
+EVT.ref_controversy=[
+ (ev,c,R,H)=>{const x=ev.x;
+  H.S('0','ctr',R.p(['جنجال داوری در دیدار {A} - {B}','نگاه‌ها به داور: تصمیمی که {A} را عصبانی کرد','تصمیم بحث‌برانگیز {RF} در بازی {A} و {B}']),'«'+x.txt+'»\nدر دیدار {A} - {B} ('+x.mt+') داور {RF} تصمیمی گرفت که طرفداران {A} آن را غیرمنصفانه می‌دانند.\nهنوز هیچ شکایت رسمی یا تصمیم انضباطی وجود ندارد.',2);
+  [0,1].forEach(i=>H.P('f'+i,rwFan(ev.A,i),rwFanSay('ref',rwAcc(rwFan(ev.A,i)).st,{},R)+' #'+rwAB(ev.A),{imp:2}));
+  if(R.c(.5))H.P('mm','m:'+R.i(0,2),'برای داور '+'{RF}'+' یه ست عینک ساده کمک‌هزینه جمع می‌کنیم 🕶️ #داور_کجاست',{imp:2});
+  rwRel('r:'+ev.rf,'f:'+ev.A,-8,'تصمیم بحث‌برانگیز در '+x.mt,c);return 1},
+ (ev,c,R,H)=>{const co=rwCoachOf(c,ev.A),sty=rwStyleOf(co,null);
+  H.S('1','stm','بیانیه‌ی {A}: اعتراض رسمی به داوری','«'+rwSay('critref',sty,{},'cr',R)+'»\nباشگاه {A} در بیانیه‌ای تصمیم داور {RF} را ناعادلانه خواند و از کمیته‌ی داوران توضیح خواست.',2,'t:'+ev.A);
+  H.P('o',  't:'+ev.A,'📣 بیانیه‌ی رسمی: {A} نسبت به تصمیم داور در دیدار با {B} اعتراض رسمی ثبت می‌کند.',{keep:1,imp:3});
+  H.P('j','j:'+R.i(0,5),'🔎 تحقیق خبرنگاری: بررسی تصاویر نشان می‌دهد تصمیم {RF} محل بحث است؛ منتظر واکنش کمیته‌ی داوران هستیم.',{imp:2});
+  if(rwRelV('c:'+co,'c:'+rwCoachOf(c,ev.B))>-20)rwRel('c:'+co,'c:'+rwCoachOf(c,ev.B),-3,'جدال بر سر داوری',c);
+  const openCase=R.c(.64);ev.x.open=openCase;
+  if(!openCase){return 1}
+  return 1},
+ (ev,c,R,H)=>{
+  if(!ev.x.open){H.S('2','stm','کمیته‌ی داوران: تصمیم {RF} قابل‌دفاع بود','پس از بازبینی، کمیته‌ی داوران اشتباه آشکاری نیافت و پرونده‌ای باز نمی‌شود.\nاعتراض {A} بی‌نتیجه ماند، اما باشگاه می‌گوید پیگیری می‌کند.',1,'o:league');
+   rwRel('r:'+ev.rf,'f:'+ev.A,2,'تأیید تصمیم توسط کمیته',c);ev.stat='done';return -1}
+  const cs=rwOpenCase(c,ev,{t:'شکایت {A} علیه داور {RF}'.replace('{A}',rwTN(ev.A)).replace('{RF}',rwRN(ev.rf)),cmp:ev.A,def:'r:'+ev.rf,defT:ev.B,kind:'ref',al:['اشتباه آشکار در اعمال قانون','احتمال تأثیر بر نتیجه‌ی دیدار'],sev:2});
+  H.S('2','inv','باشگاه {A} شکایت رسمی ثبت کرد؛ پرونده '+cs.id+' باز شد','کمیته‌ی انضباطی با شکایت {A} علیه {RF} پرونده را باز کرد. داور اتهام را رد می‌کند: «تصمیم من بر اساس دیده‌ام بود».',2);
+  return 0},
+ (ev,c,R,H)=>{const cs=RW.s.cs.find(x=>x.id===ev.cs);
+  const fin=cs.fin;const win=fin&&fin!=='dismiss'&&fin!=='appeal-accepted'&&fin!=='insuff'&&fin!=='closed';
+  H.S('3','ctr',win?'پایان ماجرا: {RF} مجازات شد':'پایان ماجرا: داور {RF} تبرئه شد',rwCaseLine(cs)+'\n'+(win?'کمیته شکایت {A} را به‌طور کامل یا بخشی وارد دانست. مجازات: '+cs.pen.join('؛ ')+'.':'شکایت {A} نتیجه‌ای در پی نداشت: '+(fin==='appeal-accepted'?'تجدیدنظر داور پذیرفته شد.':RW_OUT[fin]||'بسته شد')+'.'),3);
+  H.P('v','t:'+ev.A,win?'✅ تصمیم کمیته را محترم می‌شماریم؛ داوری باید پاسخ‌گو باشد.':'⚠ از نتیجه‌ی بررسی ناراضی‌ایم ولی به مسیر رسمی احترام می‌گذاریم.',{keep:1});
+  [0,1].forEach(i=>H.P('v'+i,rwFan(win?ev.A:ev.B,i),win?'عدالت اجرا شد 👏 #'+rwAB(ev.A):'کمیته عینک نداره؟! 😤 #'+rwAB(ev.A),{imp:2}));
+  rwRel('r:'+ev.rf,'f:'+ev.A,win?5:-3,'حکم نهایی',c);rwRiv(ev.A,ev.B,win?3:1,null,c);
+  ev.stat='done';return -1}];
+EVT.corruption_doc=[
+ (ev,c,R,H)=>{
+  H.P('l','x:'+R.i(0,1),'🚨 به دست من رسیده: گفتگوی منتسب به داور {RF} با نماینده‌ی {B} پیش از دیدار با {A}. هنوز تأیید نشده! #سند_داوری',{keep:1,imp:3});
+  H.S('0','brk','افشای سند: ادعای ارتباط مشکوک داور {RF} با {B}','حساب ناشناسی سندی منتسب به داور {RF} را منتشر کرده است.\nاین سند هنوز تأیید نشده و اعتبار منبع پایین است؛ هیچ مدرک قطعی وجود ندارد.',3,'j:'+R.i(0,1));
+  [0,1].forEach(i=>H.P('f'+i,rwFan(ev.A,i),R.p(['دیدین؟ گفتم داور رو خریده بودن!','اگه درست باشه رسوایی بزرگیه. منتظر کمیته‌ایم.'])+' #'+rwAB(ev.A),{imp:2}));
+  rwRel('r:'+ev.rf,'f:'+ev.A,-10,'افشای سند',c);rwRel('r:'+ev.rf,'f:'+ev.B,-4,'افشای سند',c);return 1},
+ (ev,c,R,H)=>{
+  H.S('1','stm','واکنش‌ها: داور و {B} هرگونه تبانی را رد کردند','«این سند ساختگی است؛ شکایت می‌کنم» — {RF}\nباشگاه {B} نیز در بیانیه‌ای ادعا را «بی‌اساس» خواند. {A} خواستار بررسی مستقل شد.',2,'t:'+ev.B);
+  H.P('d','t:'+ev.B,'🛑 ادعاهای مطرح‌شده کاملاً بی‌اساس است و از مسیر قانونی پیگیری می‌کنیم.',{keep:1,imp:3});
+  H.P('c','t:'+ev.A,'⚖ از کمیته‌ی انضباطی می‌خواهیم سند منتشرشده را با دقت بررسی کند.',{imp:3});
+  return 1},
+ (ev,c,R,H)=>{
+  const cs=rwOpenCase(c,ev,{t:'ادعای ارتباط مشکوک داور {RF}'.replace('{RF}',rwRN(ev.rf)),cmp:ev.A,def:'r:'+ev.rf,defT:ev.B,kind:'corr',al:['ادعای ارتباط مشکوک با یک باشگاه','احتمال تأثیر بر نتیجه‌ی دیدار'],sev:3,mx:2});
+  H.S('2','inv','کمیته پرونده '+cs.id+' را باز کرد: سند، شاهدان و سوابق بررسی می‌شود','کمیته‌ی انضباطی برای بررسی صحت سند، شاهدان و سوابق داور پرونده باز کرد.\nتأکید می‌شود: ادعا اثبات‌شده نیست و حکمی صادر نشده است.',3,'o:disc');return 0},
+ (ev,c,R,H)=>{const cs=RW.s.cs.find(x=>x.id===ev.cs);const bad=cs.fin&&!/dismiss|insuff|appeal-accepted|closed/.test(cs.fin);
+  H.S('3','ctr',bad?'حکم نهایی: ارتباط مشکوک داور {RF} تأیید شد':'حکم نهایی: ادعای ارتباط مشکوک ثابت نشد',rwCaseLine(cs)+'\n'+(bad?'مجازات‌ها: '+cs.pen.join('؛ ')+'.':'سند معتبر شناخته نشد یا مدرک کافی نبود؛ ادعاها اثبات نشد.'),3);
+  rwRel('r:'+ev.rf,'f:'+ev.B,bad?-6:6,'حکم نهایی',c);rwRel('r:'+ev.rf,'f:'+ev.A,bad?4:-8,'حکم نهایی',c);
+  const a=rwAcc('x:0');if(a)a.cr=rwClamp(a.cr+(bad?8:-10),5,90);
+  ev.stat='done';return -1}];
+EVT.player_conduct=[
+ (ev,c,R,H)=>{
+  H.S('0','ctr','تنش در دیدار {A} - {B}: رفتار {PA} زیر سؤال','«'+ev.x.txt+'»\nرفتار {PA} در دیدار با {B} ('+ev.x.mt+') موضوع بحث شد. هنوز اتهامی ثابت نشده است.',2);
+  H.P('f',rwFan(ev.B,R.i(0,2)),'{PA} باید جدی تنبیه بشه! اینجا فوتبال بازیه نه جنگ. #'+rwAB(ev.B),{imp:2});
+  H.P('p','p:'+ev.pa,rwSay('defend',rwStyleOf(ev.pa,null),{},'pd',R),{imp:2});
+  rwRel('p:'+ev.pa,'f:'+ev.B,-6,'برخورد خشن',c);return 1},
+ (ev,c,R,H)=>{
+  const sev=ev.x.red?.9:.5;
+  if(!R.c(sev)){H.S('1','stm','کمیته: برای {PA} پرونده‌ای باز نشد','کارت داور کافی دانسته شد و پرونده‌ی انضباطی باز نخواهد شد.',1,'o:disc');ev.stat='done';return -1}
+  const cs=rwOpenCase(c,ev,{t:'رفتار {PA} در دیدار {A}-{B}'.replace('{PA}',rwPN(ev.pa)).replace('{A}',rwTN(ev.A)).replace('{B}',rwTN(ev.B)),cmp:ev.B,def:'p:'+ev.pa,defT:ev.A,kind:'player',al:['رفتار خشن و غیرورزشی'],sev:2});
+  H.S('1','inv','کمیته‌ی انضباطی برای {PA} پرونده '+cs.id+' باز کرد','به‌دنبال حادثه‌ی دیدار {A}-{B}، رفتار {PA} در دستور کار کمیته است. بازیکن می‌تواند از خود دفاع کند.',2,'o:disc');return 0},
+ (ev,c,R,H)=>{const cs=RW.s.cs.find(x=>x.id===ev.cs);const bad=cs.fin&&!/dismiss|insuff|appeal-accepted|closed/.test(cs.fin);
+  H.S('2','dis',bad?'{PA} محروم شد':'{PA} تبرئه شد یا فقط تذکر گرفت',rwCaseLine(cs)+'\n'+(cs.pen.length&&bad?'مجازات: '+cs.pen.join('؛ ')+'.':'مجازات سنگینی اعمال نشد.'),2);
+  H.P('ap','p:'+ev.pa,bad?rwSay('apology',rwStyleOf(ev.pa,null),{},'ap',R):'ممنون از حمایت همه. از اشتباهاتم درس می‌گیرم.',{imp:2});
+  rwRel('p:'+ev.pa,'f:'+ev.B,bad?3:-1,'پایان پرونده',c);
+  ev.stat='done';return -1}];
+EVT.mgr_crit_ref=[
+ (ev,c,R,H)=>{const sty=rwStyleOf(ev.ca,null);const q=rwSay('critref',sty,{},'mcr',R);
+  H.S('0','ctr','{CA} علیه داور: «'+q.slice(0,50)+(q.length>50?'…':'')+'»','«'+q+'»\n{CA} پس از باخت {A} به {B} ('+ev.x.mt+') درباره‌ی داوری {RF} صحبت کرد.',2,'c:'+ev.ca);
+  H.P('c','c:'+ev.ca,q,{keep:1,imp:3});
+  H.P('f',rwFan(ev.B,R.i(0,2)),'مربی {A} به‌جای دفاع بهانه می‌آره 🙄 #'+rwAB(ev.B),{imp:2});
+  rwRel('c:'+ev.ca,'r:'+ev.rf,-8,'انتقاد علنی',c);return 1},
+ (ev,c,R,H)=>{
+  const sty=rwStyleOf(ev.ca,null);
+  if(!R.c(.55)){H.S('1','stm','سازمان لیگ: اظهارات {CA} بررسی شد؛ تذکر شفاهی','پس از بررسی، لحن اظهارات {CA} هنوز در محدوده‌ی انتقاد مجاز ارزیابی شد.',1,'o:league');rwRel('c:'+ev.ca,'r:'+ev.rf,2,'تذکر',c);ev.stat='done';return -1}
+  const cs=rwOpenCase(c,ev,{t:'اظهارات {CA} علیه داور'.replace('{CA}',rwCN(ev.ca)),cmp:'league',def:'c:'+ev.ca,defT:ev.A,kind:'coach',al:['توهین یا زیر سؤال بردن عمومی داور'],sev:1});
+  H.S('1','inv','پرونده '+cs.id+': اظهارات {CA} در کمیته','سازمان لیگ اظهارات {CA} را به کمیته‌ی انضباطی ارجاع داد.',2,'o:league');
+  H.P('d','c:'+ev.ca,rwSay('accuse',sty,{},'cac',R),{imp:2});return 0},
+ (ev,c,R,H)=>{const cs=RW.s.cs.find(x=>x.id===ev.cs);const bad=cs.fin&&!/dismiss|insuff|appeal-accepted|closed/.test(cs.fin);
+  H.S('2','dis',bad?'{CA} از نیمکت محروم شد':'پایان پرونده‌ی {CA}',rwCaseLine(cs)+'\n'+(bad?'مجازات: '+cs.pen.join('؛ ')+'.':'مجازاتی اعمال نشد.'),2);
+  if(bad)H.P('ap','c:'+ev.ca,rwSay('apology',rwStyleOf(ev.ca,null),{},'ap',R),{imp:2});
+  ev.stat='done';return -1}];
+EVT.mgr_feud=[
+ (ev,c,R,H)=>{const q=rwSay('mock',rwStyleOf(ev.ca,null),{},'f0',R);
+  ev.x.q0=q;H.S('0','ctr','جدال تازه: {CA} به {CB} تیکه انداخت','«'+q+'»\n{CA} در مصاحبه‌ای از {CB} انتقاد کرد. این دو مربی پیش‌تر هم با هم رقابت داشته‌اند.',2,'c:'+ev.ca);
+  H.P('a','c:'+ev.ca,q,{imp:2,keep:1});rwRel('c:'+ev.ca,'c:'+ev.cb,-12,'تیکه‌ی علنی',c);
+  RW.s.qt.push({id:'Q.'+ev.id,cid:c.id,tid:ev.A,co:ev.ca,text:q,kind:'feud',key:null,res:null});
+  return 1},
+ (ev,c,R,H)=>{const q=rwSay('mock',rwStyleOf(ev.cb,null),{},'f1',R);
+  H.S('1','press','{CB} جواب داد: «'+q.slice(0,45)+'»','«'+q+'»\n{CB} به اظهارات {CA} واکنش نشان داد؛ هواداران دو تیم درگیر بحث شدند.',2,'c:'+ev.cb);
+  H.P('b','c:'+ev.cb,q,{imp:2});[ev.A,ev.B].forEach((t,i)=>H.P('fa'+i,rwFan(t,R.i(0,2)),rwFanSay('protest',rwAcc(rwFan(t,0)).st,{},R).replace(/^.*$/,s=>R.p(['مربی ما حقش رو گرفت!','این جدال هیجان بازی بعدی رو بیشتر کرد 🔥','مربی‌ها بیان رو زمین حرف بزنن!'])),{imp:1}));
+  rwRel('c:'+ev.ca,'c:'+ev.cb,-6,'جواب علنی',c);rwRiv(ev.A,ev.B,6,'جدال مربیان',c);return 2},
+ (ev,c,R,H)=>{
+  const v=rwRelV('c:'+ev.ca,'c:'+ev.cb);
+  if(R.c(.55)){
+    H.S('2','press','آشتی در نیمکت: {CA} و {CB} دست دادند','پس از چند روز تنش، دو مربی در بیانیه‌ای مشترک اعلام کردند: «'+rwSay('recon',rwStyleOf(ev.ca,null),{},'rc',R)+'»',2,'c:'+ev.ca);
+    H.P('r','c:'+ev.cb,'🤝 با {CA} صحبت کردیم و موضوع تمام شد. '+rwSay('recon',rwStyleOf(ev.cb,null),{},'rc2',R),{imp:2,keep:1});
+    rwRel('c:'+ev.ca,'c:'+ev.cb,22,'آشتی عمومی',c);
+  }else{
+    H.S('2','stm','سازمان لیگ به {CA} و {CB} هشدار داد','سازمان لیگ از هر دو مربی خواست اظهارات‌شان را مهار کنند؛ تنش هنوز تمام نشده است.',2,'o:league');
+    rwRel('c:'+ev.ca,'c:'+ev.cb,-4,'هشدار لیگ',c);rwRiv(ev.A,ev.B,4,'تنش مربیان ادامه یافت',c);
+  }
+  ev.stat='done';return -1}];
+EVT.dressing_room=[
+ (ev,c,R,H)=>{
+  H.P('l','x:'+R.i(0,1),'منبع نزدیک به {A}: دیروز در تمرین {PA} و {PB} سر یک مسئله‌ی تاکتیکی درگیر شدند. #رختکن_{A}'.replace(/#.*$/,'#'+rwAB(ev.A)),{imp:2});
+  H.S('0','ctr','تنش در رختکن {A}: درگیری {PA} و {PB}','گزارش‌هایی از اختلاف {PA} و {PB} در تمرین منتشر شده است؛ باشگاه هنوز واکنشی نشان نداده.\nاین خبر از منبع ناشناس است و اعتبار قطعی ندارد.',2,'x:0');
+  rwRel('p:'+ev.pa,'p:'+ev.pb,-14,'درگیری در تمرین',c);const p=c.pr[ev.A];if(p)p.un=rwClamp(p.un+14,0,100);return 1},
+ (ev,c,R,H)=>{const sty=rwStyleOf(rwCoachOf(c,ev.A),null);const q=rwSay(R.c(.5)?'calm':'critown',sty,{},'dr',R);
+  H.S('1','press','سرمربی {A} درباره‌ی ماجرای رختکن حرف زد','«'+(q||'اختلاف‌ها را در خانه‌ی خودمان حل می‌کنیم.')+'»\nسرمربی {A} با حضور در جلسه‌ی خبری درباره‌ی ماجرا توضیح داد.',2,'c:'+rwCoachOf(c,ev.A));return 1},
+ (ev,c,R,H)=>{
+  if(R.c(.62)){H.S('2','stm','{PA} و {PB} آشتی کردند','دو بازیکن با انتشار عکس مشترک اعلام کردند اختلاف تمام شده. باشگاه {A} نیز آن را «موضوع بسته‌شده» اعلام کرد.',2,'t:'+ev.A);
+   H.P('r','p:'+ev.pa,'🤝 با {PB} صحبت کردیم؛ اشتباه از هر دو طرف بود. حالا فقط {A}.',{imp:2,keep:1});rwRel('p:'+ev.pa,'p:'+ev.pb,24,'آشتی',c);const p=c.pr[ev.A];if(p)p.un=rwClamp(p.un-10,0,100)}
+  else{H.S('2','stm','{A} {PB} را از ترکیب کنار گذاشت','باشگاه {A} برای حفظ آرامش، {PB} را موقتاً کنار گذاشت (منشأ: ماجرای رختکن).',2,'t:'+ev.A);
+   ev.x.bench=1;const cA=c.ro[ev.A];const idx=cA&&cA.p.indexOf(ev.pb)>=0;
+   const isUser=c.kind&&rwUserTid(c)===ev.A;
+   if(!isUser&&idx){RW.s.su.push({id:'SU.'+ev.id+'.b',cid:c.id,k:'bench',id2:ev.pb,tid:ev.A,n:2,left:2,cs:null,ev:ev.id,st:'act',txt:'کنار گذاشته‌شدن '+rwPN(ev.pb)+' توسط مربی',d:c.day})}
+   rwRel('p:'+ev.pb,'c:'+rwCoachOf(c,ev.A),-8,'کنار گذاشته شد',c)}
+  ev.stat='done';return -1}];
+EVT.player_vs_mgr=[
+ (ev,c,R,H)=>{const q=rwSay('critcoach',rwStyleOf(ev.pa,null),{},'pm',R);
+  H.S('0','ctr','{PA} علیه مربی: «'+q.slice(0,45)+'»','«'+q+'»\n{PA} در گفتگو با رسانه‌ها از سرمربی {A} انتقاد کرد.',2,'p:'+ev.pa);
+  H.P('p','p:'+ev.pa,q,{imp:2,keep:1});rwRel('p:'+ev.pa,'c:'+ev.ca,-16,'انتقاد علنی',c);const p=c.pr[ev.A];if(p)p.un=rwClamp(p.un+10,0,100);return 1},
+ (ev,c,R,H)=>{const q=rwSay(R.c(.5)?'defend':'mock',rwStyleOf(ev.ca,null),{},'pm2',R);
+  H.S('1','press','{CA} به {PA} پاسخ داد','«'+q+'»\nسرمربی {A} در پاسخ به انتقاد {PA} موضع‌گیری کرد.',2,'c:'+ev.ca);H.P('c','c:'+ev.ca,q,{imp:2});
+  H.P('t','t:'+ev.A,'باشگاه {A}: اختلاف‌نظرها درون تیم حل می‌شود و تمرکز ما بر بازی بعدی است.',{imp:2});return 1},
+ (ev,c,R,H)=>{
+  if(R.c(.55)){H.S('2','stm','{PA} عذرخواهی کرد؛ {CA} پذیرفت','{PA} با انتشار پیام عذرخواهی، رابطه با {CA} را ترمیم کرد.',2,'p:'+ev.pa);
+   H.P('ap','p:'+ev.pa,rwSay('apology',rwStyleOf(ev.pa,null),{},'ap',R),{imp:2,keep:1});rwRel('p:'+ev.pa,'c:'+ev.ca,26,'عذرخواهی',c)}
+  else{H.S('2','stm','{CA}: {PA} باید ثابت کند','{CA} اعلام کرد انتخاب‌ها بر اساس عملکرد خواهد بود. {PA} فعلاً در حاشیه است.',2,'c:'+ev.ca);
+   const isUser=rwUserTid(c)===ev.A,cA=c.ro[ev.A];
+   if(!isUser&&cA&&cA.p.indexOf(ev.pa)>=0)RW.s.su.push({id:'SU.'+ev.id+'.b',cid:c.id,k:'bench',id2:ev.pa,tid:ev.A,n:2,left:2,cs:null,ev:ev.id,st:'act',txt:'کنار گذاشته‌شدن '+rwPN(ev.pa)+' توسط مربی',d:c.day});
+   rwRel('p:'+ev.pa,'c:'+ev.ca,-6,'عدم آشتی',c)}
+  ev.stat='done';return -1}];
+EVT.board_crisis=[
+ (ev,c,R,H)=>{const p=c.pr[ev.A],st=rwStreak(c,ev.A);
+  H.S('0','ctr','بحران در {A}: اختلاف هیئت‌مدیره و {CA}','پس از '+st.n+' باخت پیاپی، گزارش‌هایی از اختلاف هیئت‌مدیره‌ی {A} با {CA} منتشر شده است.\nفشار بر باشگاه: '+(p?p.pr:'—')+'٪ · اعتماد هواداران: '+(p?p.fs:'—')+'٪.',3,'j:'+R.i(0,5));
+  H.P('j','j:'+R.i(0,5),'🗞 جلسه‌ی اضطراری در {A}؛ آینده‌ی {CA} در هاله‌ای از ابهام است. #'+rwAB(ev.A),{imp:3});
+  [0,1].forEach(i=>H.P('f'+i,rwFan(ev.A,i),rwFanSay('protest',rwAcc(rwFan(ev.A,i)).st,{},R)+' #'+rwAB(ev.A),{imp:2}));
+  rwRel('t:'+ev.A,'c:'+ev.ca,-14,'اختلاف مدیریت و مربی',c);return 1},
+ (ev,c,R,H)=>{H.S('1','stm','هیئت‌مدیره‌ی {A}: «به {CA} اعتماد داریم»... فعلاً','سخنگوی {A} شایعه‌ها را رد کرد، اما هواداران قانع نشده‌اند.',2,'rep:'+ev.A);
+  H.P('o','rep:'+ev.A,'ما به سرمربی خود اعتماد داریم و فشار رسانه‌ای را بی‌پاسخ نمی‌گذاریم.',{imp:2});return 1},
+ (ev,c,R,H)=>{const p=c.pr[ev.A];const resign=p&&p.pr>=70&&R.c(.7);
+  if(!resign){H.S('2','stm','{CA} می‌ماند؛ هیئت‌مدیره تصمیم گرفت صبر کند','{A} اعلام کرد تا چند هفته‌ی دیگر تغییری در کادر نخواهد داد.',2,'t:'+ev.A);if(p){p.pr=rwClamp(p.pr-12,0,100)}rwRel('t:'+ev.A,'c:'+ev.ca,10,'تمدید اعتماد',c);ev.stat='done';return -1}
+  const isUser=rwUserTid(c)===ev.A;
+  const rc=isUser?null:rwReplaceCoach(c,ev.A);
+  H.S('2','brk',rc?'استعفای {CA}؛ '+rwCN(rc.nw)+' سرمربی جدید {A}':'استعفای {CA}؛ هیئت‌مدیره آن را نپذیرفت','{CA} اعلام کرد از سمت خود استعفا می‌دهد.'+(rc?'\nهیئت‌مدیره استعفا را پذیرفت و '+rwCN(rc.nw)+' هدایت {A} را بر عهده گرفت. (تغییر واقعی کادر در این رقابت اعمال شد.)':'\nهیئت‌مدیره‌ی {A} استعفا را نپذیرفت و از سرمربی خواست بماند.'),3,'c:'+ev.ca);
+  H.P('r','c:'+ev.ca,rwSay('lose',rwStyleOf(ev.ca,null),{A:rwTN(ev.A),B:''},'rs',R),{imp:3,keep:1});
+  if(rc){rwRel('c:'+rc.nw,'t:'+ev.A,10,'سرمربی جدید',c);ev.x.nc=rc.nw;if(p){p.pr=rwClamp(p.pr-25,0,100);p.cf=rwClamp(p.cf+10,0,100);p.un=rwClamp(p.un-10,0,100)}}
+  else if(p)p.pr=rwClamp(p.pr-8,0,100);
+  ev.stat='done';return -1}];
+EVT.fan_protest=[
+ (ev,c,R,H)=>{H.P('g','g:'+ev.A,'⚠ اولتراس {A}: در بازی بعدی نماد اعتراض به عملکرد مدیریت اجرا می‌شود. #مدیریت_پاسخ_بده',{imp:3,keep:1});
+  H.S('0','ctr','هواداران {A} دست به اعتراض می‌زنند','گروه هواداران {A} به عملکرد اخیر تیم و پاسخ‌گو نبودن مدیریت اعتراض کرده است.',2,'g:'+ev.A);const p=c.pr[ev.A];if(p)p.fs=rwClamp(p.fs-8,0,100);return 1},
+ (ev,c,R,H)=>{H.S('1','stm','پاسخ {A} به معترضان','سخنگوی باشگاه: «'+R.p(['با نمایندگان هواداران جلسه می‌گذاریم.','نظر همه‌ی هواداران برایمان مهم است و برنامه‌ی بهبود اعلام می‌شود.'])+'»',1,'rep:'+ev.A);
+  const p=c.pr[ev.A];if(p){p.pr=rwClamp(p.pr+8,0,100)}return 1},
+ (ev,c,R,H)=>{const ok=R.c(.6);H.S('2','stm',ok?'نشست هواداران و {A}؛ تنش فروکش کرد':'{A}: اعتراض‌ها ادامه دارد',ok?'پس از نشست مشترک، گروه هواداران پیگیری را متوقف کرد.':'هواداران قانع نشدند و فشار بر مدیریت ادامه دارد.',1,'rep:'+ev.A);
+  const p=c.pr[ev.A];if(p){p.fs=rwClamp(p.fs+(ok?10:-4),0,100);p.pr=rwClamp(p.pr+(ok?-8:6),0,100)}ev.stat='done';return -1}];
+EVT.fan_clash=[
+ (ev,c,R,H)=>{H.S('0','ctr','درگیری هواداران {A} و {B} پس از دربی','پس از دیدار پرتنش، گزارش‌هایی از درگیری گروه‌هایی از هواداران دو تیم منتشر شد. هنوز عامل درگیری مشخص نیست.',3,'j:'+R.i(0,5));
+  H.P('a',rwFan(ev.A,0),'ما شروع نکردیم! همه فیلم‌ها هست. #'+rwAB(ev.A),{imp:2});H.P('b',rwFan(ev.B,0),'اولتراس‌های {A} حمله کردند! #'+rwAB(ev.B),{imp:2});
+  rwRiv(ev.A,ev.B,10,'درگیری هواداران پس از دربی',c);rwRel('f:'+ev.A,'f:'+ev.B,-18,'درگیری',c);return 1},
+ (ev,c,R,H)=>{
+  if(!R.c(.7)){H.S('1','stm','کمیته: درگیری هواداران پرونده نشد','گزارش ناظر نشان داد درگیری محدود و خارج از مسئولیت باشگاه بوده است.',1,'o:disc');ev.stat='done';return -1}
+  const home=ev.x.home||ev.A,cs=rwOpenCase(c,ev,{t:'درگیری هواداران پس از دیدار '+rwTN(ev.A)+'-'+rwTN(ev.B),cmp:ev.A===home?ev.B:ev.A,def:'t:'+home,defT:home,kind:'club',al:['اخلال در نظم و امنیت ورزشگاه'],sev:2});
+  H.S('1','inv','پرونده '+cs.id+': مسئولیت باشگاه '+rwTN(home)+' در درگیری هواداران','کمیته‌ی انضباطی نظم و امنیت ورزشگاه '+rwTN(home)+' را بررسی می‌کند. هنوز حکمی نیست.',2,'o:disc');return 0},
+ (ev,c,R,H)=>{const cs=RW.s.cs.find(x=>x.id===ev.cs);const bad=cs.fin&&!/dismiss|insuff|appeal-accepted|closed/.test(cs.fin);
+  H.S('2','dis',bad?'سکوهای {A} یا {B} محدود شد':'پرونده‌ی درگیری هواداران بسته شد',rwCaseLine(cs)+'\n'+(bad?'مجازات: '+cs.pen.join('؛ ')+'.':'مجازات سنگینی لحاظ نشد.'),2);
+  rwRel('f:'+ev.A,'f:'+ev.B,bad?-4:6,'پایان پرونده',c);ev.stat='done';return -1}];
+EVT.leak_media=[
+ (ev,c,R,H)=>{ev.x.truth=R.c(rwAcc('x:'+(ev.x.xi||0)).cr/100+.05);
+  H.P('l','x:'+(ev.x.xi||0),'🔊 فایل صوتی منتسب به یک عضو هیئت‌مدیره‌ی {A} و {CA} منتشر شد؛ صحبت از اختلاف تاکتیکی و فشار نتیجه. تأیید نشده. #درز_صدا',{imp:3,keep:1});
+  H.S('0','brk','افشای گفتگو: ادعای اختلاف در {A}','گفتگوی منسوب به مدیران {A} در شبکه‌ی اجتماعی دست‌به‌دست می‌شود. صحت آن تأیید نشده و باشگاه هنوز واکنش نشان نداده است.',2,'x:'+(ev.x.xi||0));
+  [0,1].forEach(i=>H.P('f'+i,rwFan(ev.A,i),'اگه درسته مدیریت باید توضیح بده! #'+rwAB(ev.A),{imp:2}));return 1},
+ (ev,c,R,H)=>{H.S('1','stm','{A} گفتگوی منتشرشده را رد کرد','سخنگوی {A}: «'+(ev.x.truth?'برخی حرف‌ها از بافتار خارج شده است.':'این فایل ساختگی است.')+'»',2,'rep:'+ev.A);return 1},
+ (ev,c,R,H)=>{const a=rwAcc('x:'+(ev.x.xi||0));
+  if(ev.x.truth){H.S('2','brk','تأیید شد: گفتگوی منتشرشده معتبر بود','پس از چند روز، {CA} اعتراف کرد بخشی از گفتگو واقعی بوده است.\nاین ماجرا فشار بر باشگاه را بیشتر کرده است.',2,'c:'+ev.ca);
+   H.P('ap','c:'+ev.ca,rwSay('apology',rwStyleOf(ev.ca,null),{},'ap',R),{imp:2});if(a)a.cr=rwClamp(a.cr+6,5,90);const p=c.pr[ev.A];if(p)p.pr=rwClamp(p.pr+10,0,100);rwRel('t:'+ev.A,'c:'+ev.ca,-8,'افشای گفتگو',c)}
+  else{H.S('2','stm','فایل صوتی جعلی بود','کارشناسان فنی فایل را دستکاری‌شده دانستند. منبع ناشناس اعتبار خود را از دست داد.',2,'a:3');
+   H.P('c','j:'+R.i(0,5),'✏ اصلاحیه: انتشار فایل بدون تأیید اشتباه بود؛ از {A} پوزش می‌خواهیم.',{imp:2});if(a)a.cr=rwClamp(a.cr-10,5,90);rwRel('t:'+ev.A,'c:'+ev.ca,6,'روشن‌شدن حقیقت',c)}
+  ev.stat='done';return -1}];
+EVT.wrong_report=[
+ (ev,c,R,H)=>{const jr='j:'+(ev.x.ji||0);const j=rwAcc(jr);
+  H.P('r',jr,'🗞 به نقل از منابع: {CA} در جلسه‌ی خصوصی گفته در بازی بعد بازیکنان کلیدی را کنار می‌گذارد. #خبر_فوری',{imp:3,keep:1});
+  H.S('0','brk','ادعای خبرنگار: تغییر بزرگ در ترکیب {A}','طبق گزارش '+(j?j.n:'یک خبرنگار')+'، {CA} قصد دارد در دیدار بعد ترکیب را عوض کند. این گزارش هنوز تأیید نشده است.',2,jr);return 1},
+ (ev,c,R,H)=>{const sty=rwStyleOf(ev.ca,null);H.S('1','stm','{CA} خبر را تکذیب کرد','«'+rwSay('deny',sty,{},'wr',R)+'»\nسرمربی {A} گزارش را «کاملاً نادرست» خواند.',2,'c:'+ev.ca);H.P('d','c:'+ev.ca,rwSay('deny',sty,{},'wr2',R),{imp:2});return 1},
+ (ev,c,R,H)=>{const jr='j:'+(ev.x.ji||0),j=rwAcc(jr);
+  H.S('2','stm','اصلاحیه و عذرخواهی رسانه','نشریه‌ی '+(j?j.o:'مربوطه')+' اعلام کرد گزارش بدون تأیید دوم منتشر شده بود و آن را اصلاح کرد.',1,jr);
+  H.P('c',jr,'✏ اصلاحیه: خبر قبلی درباره‌ی ترکیب {A} نادرست بود. پوزش می‌خواهم.',{imp:2});if(j)j.cr=rwClamp(j.cr-7,10,95);rwRel(jr,'c:'+ev.ca,-6,'گزارش نادرست',c);ev.stat='done';return -1}];
+EVT.reconcile=[
+ (ev,c,R,H)=>{const a=ev.x.ea,b=ev.x.eb;
+  H.S('0','stm','آشتی غیرمنتظره: '+rwEnt(a)+' و '+rwEnt(b),'پس از ماه‌ها تنش، '+rwEnt(a)+' و '+rwEnt(b)+' در پیامی علنی اختلاف را پایان‌یافته اعلام کردند.',2,a);
+  H.P('r',a,R.p(['با '+rwEnt(b)+' آشتی کردیم؛ فوتبال مهم‌تر از ماست 🤝','وقتشه کینه رو بذاریم کنار؛ احترام متقابل.']),{imp:2,keep:1});rwRel(a,b,28,'آشتی عمومی',c);ev.stat='done';return -1}];
+function rwUserTid(c){const L=c.kind==='lg'?LG:KO;return (L&&rwCid(c.kind)===c.id&&L.teams[0])?TEAMS[L.teams[0].t].id:null}
+
+/* ================= REACTOR WORLD — previews, power rankings, event spawning, world calendar ================= */
+const rwRefByName=n=>REFS.concat(REFS_STREET,REFS_SCHOOL,REFS_ALIEN).find(r=>r.name===n);
+const rwLGof=c=>c.kind==='lg'?LG:c.kind==='ko'?KO:null;
+const rwLive=c=>{const L=rwLGof(c);return L&&rwCid(c.kind)===c.id?L:null};
+function rwPlayerIn(c,tid,txt){const ro=c.ro[tid];if(!ro)return null;const all=ro.p.concat(ro.s||[],[ro.g]);return all.find(id=>{const n=rwPN(id);return n&&txt.indexOf(n)>=0})||null}
+function rwLastMeet(c,A,B){let best=null;Object.values(c.ml).forEach(m=>{if(m.k!==c.kind)return;if((m.a===A&&m.b===B)||(m.a===B&&m.b===A)){if(!best||m.d>best.d)best=m}});return best}
+function rwAbsent(c,tid){return RW.s.su.filter(s=>s.cid===c.id&&s.st==='act'&&(s.tid===tid)&&s.k!=='closure').map(s=>(s.k==='coach'?rwCN(s.id2):rwPN(s.id2))+(s.k==='bench'?' (کنار گذاشته‌شده)':s.k==='coach'?' (محروم از نیمکت)':' (محروم)'))}
+function rwStanding(c){
+  const L=rwLive(c),pos={};if(!L)return pos;
+  if(c.kind==='lg'){try{lgTable().forEach((r,k)=>{pos[c.tids[r.i]]={k:k+1,pts:r.pts,p:r.p,gd:r.gd}})}catch(e){}}
+  return pos;
+}
+/* ---------------- pre-match build-up (every fixture of the next round) ---------------- */
+const RWPRE=['شب حساس {A} و {B}؛ همه‌چیز درباره‌ی بازی','پیش‌نمایش: {A} - {B}','{A} میزبان {B}؛ چه انتظاری داشته باشیم؟','پیش از سوت آغاز: {A} و {B} در آستانه‌ی دیدار','آماده‌ی بازی {A} - {B} می‌شویم','نگاهی به تقابل {A} و {B}'];
+const RWPRED=['دربی در راه است: {A} و {B} رو در رو','جنگ قدیمی دوباره: {A} - {B}','همه‌ی چشم‌ها به دیدار پرتنش {A} و {B}'];
+function rwPreviewRound(c,md){
+  const L=rwLive(c);if(!L||c.pvd[md])return;const fx=L.rounds[md];if(!fx||fx.some(m=>m.res))return;
+  c.pvd[md]=1;const pos=rwStanding(c),d=md*3+2;
+  fx.forEach(m=>{
+    const A=c.tids[m.a],B=c.tids[m.b];if(!A||!B)return;
+    const key='m'+md+'-'+m.a+'-'+m.b,R=rwRng('pv:'+c.id+':'+key),user=(m.a===0||m.b===0),dv=!!derbyOf(A,B),heat=rwRivHeat(A,B);
+    const imp=user?3:dv?3:heat>=40?2:1,nA=rwTN(A),nB=rwTN(B);
+    const ln=[];
+    ln.push((c.kind==='lg'?'هفته‌ی '+(md+1)+' از '+L.rounds.length:'مرحله‌ی '+(md+1))+' · '+nA+' (میزبان) - '+nB+(dv?' · 🔥 دربی':'')+(user?' · 🎮 بازی تو':''));
+    if(pos[A]&&pos[B])ln.push('جدول: '+nA+' رتبه‌ی '+pos[A].k+' ('+pos[A].pts+' امتیاز)، '+nB+' رتبه‌ی '+pos[B].k+' ('+pos[B].pts+' امتیاز).');
+    ln.push('فرم اخیر: '+nA+' ← '+rwFormStr(c,A,3)+' | '+nB+' ← '+rwFormStr(c,B,3)+'.');
+    const lm=rwLastMeet(c,A,B);ln.push(lm?'آخرین دیدار در این رقابت: '+rwTN(lm.a)+' '+lm.sc[0]+'-'+lm.sc[1]+' '+rwTN(lm.b)+(lm.sim?' (شبیه‌سازی‌شده)':'')+'.':'این دو تیم هنوز در این رقابت روبه‌رو نشده‌اند.');
+    const aA=rwAbsent(c,A),aB=rwAbsent(c,B);
+    if(aA.length)ln.push('غایبان '+nA+': '+aA.join('، ')+'.');if(aB.length)ln.push('غایبان '+nB+': '+aB.join('، ')+'.');
+    [A,B].forEach(t=>{const oc=rwOpenCases(c,t);if(oc.length)ln.push('پرونده‌ی باز مرتبط با '+rwTN(t)+': '+oc[0].id+' ('+oc[0].t.slice(0,48)+').')});
+    if(rwClosed(c.id,A))ln.push('بخشی از سکوهای '+nA+' به‌خاطر مجازات بسته است.');
+    if(heat>=40&&!dv)ln.push('رقابت این دو تیم در این فصل داغ شده است (شدت: '+Math.round(heat)+'٪).');
+    const pA=c.pr[A],pB=c.pr[B];
+    if(pA&&pA.pr>=55)ln.push('فشار روی '+nA+' زیاد است.');if(pB&&pB.pr>=55)ln.push('فشار روی '+nB+' زیاد است.');
+    const stA=rwStyleCoach(A,c),stB=rwStyleCoach(B,c);
+    const boasty=t=>{const s=t===A?stA:stB;return (s==='cocky'||s==='aggr'||s==='joker')&&R.c(.65)};
+    const mkq=(t,o)=>{const kind=boasty(t)?'boast':'respect',sty=t===A?stA:stB,q=rwSay(kind,sty,{A:rwTN(t),B:rwTN(o)},'pq',R);
+      if(imp>=2||R.c(.3)){const coA=c.ro[t].c;RW.s.qt.push({id:'Q.'+c.id+'.'+key+'.'+t,cid:c.id,tid:t,co:coA,text:q,kind,key,res:null});
+        ln.push('🎙 '+rwCN(coA)+': «'+q+'»');
+        if(imp>=2)rwPost(c,{key:'pq.'+key+'.'+t,a:'c:'+coA,t:q,tg:[A,B],imp:2,d,keep:kind==='boast'?1:0})}};
+    mkq(A,B);mkq(B,A);
+    rwStory(c,{key:'pre.'+key,cat:'pre',h:rwF(rwPick(dv?'h.prd':'h.pre',dv?RWPRED:RWPRE,R),{A:nA,B:nB}),b:ln.join('\n'),imp,tg:[A,B],m:key,d,by:'j:'+R.i(0,7)});
+    if(imp>=2){
+      const fa=rwFan(A,R.i(0,2)),fb=rwFan(B,R.i(0,2));
+      rwPost(c,{key:'pf.'+key+'.a',a:fa,t:rwFanSay('pre',rwAcc(fa).st,{A:nA,B:nB},R),tg:[A,B],imp:2,d});
+      rwPost(c,{key:'pf.'+key+'.b',a:fb,t:rwFanSay('pre',rwAcc(fb).st,{A:nB,B:nA},R),tg:[A,B],imp:2,d});
+      if(R.c(.6))rwPost(c,{key:'pj.'+key,a:'j:'+R.i(0,7),t:'🔜 '+nA+' - '+nB+': '+(pos[A]&&pos[B]?'رتبه‌ی '+pos[A].k+' مقابل رتبه‌ی '+pos[B].k+'. ':'')+'فرم دو تیم: '+rwFormStr(c,A,3)+' / '+rwFormStr(c,B,3)+'.',tg:[A,B],imp:2,d});
+    }
+  });
+}
+/* ---------------- power rankings (computed only from real state: table, form, confidence, pressure, absences, deductions) ---------------- */
+function rwPowerRankings(c,md){
+  const L=rwLive(c);if(!L||c.pw['k'+md])return;
+  let tids=c.tids.slice();
+  if(c.kind==='ko'){const nx=L.rounds[md+1]||null;if(nx)tids=[];if(nx)nx.forEach(m=>{tids.push(c.tids[m.a],c.tids[m.b])})}
+  const pos=rwStanding(c);
+  const sc=tids.map(t=>{const f=(c.fm[t]||[]).slice(-5),p=c.pr[t]||{cf:50,pr:30,un:10};
+    let v=f.reduce((s,x)=>s+(x==='w'?3:x==='d'?1:0),0)*2+(p.cf-50)/8-(p.pr-30)/12-rwAbsent(c,t).length*1.5-rwDedFor(c.id,t)*.8+(pos[t]?(c.tids.length-pos[t].k)/c.tids.length*10:0);
+    return {t,v:+v.toFixed(2)}}).sort((a,b)=>b.v-a.v||a.t.localeCompare(b.t));
+  const prev=c.pw.cur||{},cur={};sc.forEach((x,i)=>cur[x.t]=i+1);
+  const arr=x=>{const o=prev[x.t],n=cur[x.t];return o==null?'🆕':o>n?'▲'+(o-n):o<n?'▼'+(n-o):'='};
+  const top=sc.slice(0,Math.min(8,sc.length)).map((x,i)=>(i+1)+'. '+rwTN(x.t)+' '+arr(x)+' ('+x.v+')'),bot=sc.length>10?sc.slice(-3).map(x=>(cur[x.t])+'. '+rwTN(x.t)+' '+arr(x)):[];
+  const mv=sc.filter(x=>prev[x.t]!=null).sort((a,b)=>Math.abs((prev[b.t]-cur[b.t]))-Math.abs((prev[a.t]-cur[a.t])))[0];
+  const R=rwRng('pw:'+c.id+':'+md);
+  rwStory(c,{key:'pwr.'+md,cat:'pwr',h:'رتبه‌بندی قدرت — '+(c.kind==='lg'?'هفته '+(md+1):'مرحله '+(md+1))+': '+rwTN(sc[0].t)+' در صدر',b:'این رتبه‌بندی از نتایج، فرم، اعتماد، فشار، غایبان و کسر امتیاز واقعی ساخته می‌شود:\n'+top.join('\n')+(bot.length?'\n…\n'+bot.join('\n'):'')+(mv&&Math.abs(prev[mv.t]-cur[mv.t])>=2?'\n\n📈 بزرگ‌ترین تغییر: '+rwTN(mv.t)+' ('+(prev[mv.t]>cur[mv.t]?'صعود':'سقوط')+' '+Math.abs(prev[mv.t]-cur[mv.t])+' پله).':''),imp:1,tg:sc.slice(0,3).map(x=>x.t),d:md*3+1,by:'a:'+R.i(0,3)});
+  c.pw.cur=cur;c.pw['k'+md]=1;
+}
+/* ---------------- social digest: what the network talked about this matchday (built from real posts) ---------------- */
+function rwSocialDigest(c,md){
+  const key='soc.'+md;if(RW.ix.st.has('S.'+c.id+'.'+key))return;
+  const d0=md*3-2,d1=md*3+1;
+  const ps=RW.s.po.filter(p=>p.c===c.id&&p.d>=d0&&p.d<=d1);if(ps.length<3)return;
+  const cnt={};ps.forEach(p=>{(p.t.match(/#[^\s#.,،؛:!؟?«»()]+/g)||[]).forEach(x=>cnt[x]=(cnt[x]||0)+1)});
+  const tr=Object.entries(cnt).sort((a,b)=>b[1]-a[1]).slice(0,4);
+  const top=ps.slice().sort((a,b)=>b.vw-a.vw)[0],ta=rwAcc(top.a),R=rwRng('sd:'+c.id+':'+md);
+  rwStory(c,{key,cat:'soc',h:'شبکه‌های اجتماعی این هفته: '+(tr.length?tr[0][0]:'پربازدیدترین پست‌ها'),b:'در این بازه '+ps.length+' پست ثبت شد.\n'+(tr.length?'هشتگ‌های داغ: '+tr.map(x=>x[0]+' ('+x[1]+')').join('، ')+'.\n':'')+'پربازدیدترین پست: '+(ta?ta.n+' ('+ta.h+')':'')+' با '+top.vw+' بازدید — «'+top.t.slice(0,120)+'»',imp:1,tg:top.tg||[],d:md*3+1,by:'j:'+R.i(0,7)});
+}
+/* ---------------- event spawning: causes first, chaos second ---------------- */
+function rwCool(c,key,day,n){c.cd[key]=day+n}
+const rwCoolOk=(c,key,day)=>(c.cd[key]||-1)<=day;
+function rwOpenCount(c){return RW.s.ev.filter(e=>e.cid===c.id&&e.stat==='open').length}
+function rwSpawn(c,day,sub){
+  const L=rwLive(c);if(!L)return;
+  const R=rwRng('sp:'+c.id+':'+day),MAXO=7;
+  const mk=(type,o)=>{if(rwOpenCount(c)>=MAXO)return null;const ev=rwNewEv(c,type,o);rwTl(c,'ev','⚡ '+RW_EVN[type]+(ev.A?': '+rwTN(ev.A)+(ev.B?' - '+rwTN(ev.B):''):''),day,1,{ev:ev.id});return ev};
+  const prof=c.kind==='lg'?.9:1;
+  if(sub===0){
+    /* incident-driven events */
+    c.inc.filter(x=>!x.used&&x.d>=day-4).forEach(inc=>{
+      const m=c.ml[inc.key];if(!m||m.k!==c.kind)return;
+      const loser=m.w===0?m.b:m.w===1?m.a:null,Ti=inc.tm===0?m.a:m.b,To=inc.tm===0?m.b:m.a;
+      const rf=rwRefByName(m.rf),mt=rwTN(m.a)+' '+m.sc[0]+'-'+m.sc[1]+' '+rwTN(m.b);
+      if(rf&&rwCoolOk(c,'ref'+rf.id,day)){
+        let pr=inc.k==='pen'?.48:inc.k==='red'?.52:inc.k==='var'?.34:.12;if(m.dv)pr+=.12;if(m.user)pr+=.06;
+        const A=inc.k==='pen'?To:Ti;
+        if(m.w!=null&&((m.w===0&&A===m.a)||(m.w===1&&A===m.b)))pr*=.3;
+        if(R.c(pr*prof)&&rwCoolOk(c,'rc'+A,day)){inc.used=1;rwCool(c,'ref'+rf.id,day,6);rwCool(c,'rc'+A,day,5);
+          mk('ref_controversy',{A,B:A===m.a?m.b:m.a,rf:rf.id,x:{mt,txt:inc.txt,key:inc.key}});return}
+      }
+      if((inc.k==='red'||inc.k==='blue')&&R.c(inc.k==='red'?.6:.18)){
+        const pa=rwPlayerIn(c,Ti,inc.txt);
+        if(pa&&rwCoolOk(c,'pc'+pa,day)){inc.used=1;rwCool(c,'pc'+pa,day,8);mk('player_conduct',{A:Ti,B:To,pa,x:{mt,txt:inc.txt,red:inc.k==='red',key:inc.key}})}
+      }
+    });
+    /* manager reacts to a loss with refereeing flashpoints */
+    Object.values(c.ml).filter(m=>m.k===c.kind&&m.d===Math.floor(day/3)&&m.w>=0&&m.cards.some(x=>/var|pen|red|blue/.test(x[2]))).forEach(m=>{
+      const lt=m.w===0?m.b:m.a,wt=m.w===0?m.a:m.b,co=c.ro[lt].c,sty=rwStyleOf(co,null),rf=rwRefByName(m.rf);
+      if(!rf||!(sty==='aggr'||sty==='cocky'||sty==='emo'))return;
+      if(rwCoolOk(c,'mc'+lt,day)&&R.c(.38*prof)&&!RW.s.ev.some(e=>e.cid===c.id&&e.type==='mgr_crit_ref'&&e.x.key===m.d+'-'+lt)){
+        rwCool(c,'mc'+lt,day,7);const f=m.cards.find(x=>/var|pen|red|blue/.test(x[2]));
+        mk('mgr_crit_ref',{A:lt,B:wt,ca:co,rf:rf.id,x:{mt:rwTN(m.a)+' '+m.sc[0]+'-'+m.sc[1]+' '+rwTN(m.b),key:m.d+'-'+lt}})}
+    });
+    /* derbies and hot rivalries produce feuds and (rarely) crowd trouble */
+    Object.values(c.ml).filter(m=>m.k===c.kind&&m.d===Math.floor(day/3)&&(m.dv||rwRivHeat(m.a,m.b)>=30)).forEach(m=>{
+      const ca=c.ro[m.a].c,cb=c.ro[m.b].c,sa=rwStyleOf(ca,null),sb=rwStyleOf(cb,null);
+      if((sa!=='humble'||sb!=='humble')&&rwCoolOk(c,'fd'+m.a+m.b,day)&&R.c(.34*prof)){rwCool(c,'fd'+m.a+m.b,day,10);
+        const lo=(sa==='aggr'||sa==='cocky'||sa==='joker')?[m.a,m.b]:[m.b,m.a];mk('mgr_feud',{A:lo[0],B:lo[1],ca:c.ro[lo[0]].c,cb:c.ro[lo[1]].c,x:{}})}
+      if(rwRivHeat(m.a,m.b)>=45&&rwCoolOk(c,'fc'+m.a+m.b,day)&&R.c(.2*prof)){rwCool(c,'fc'+m.a+m.b,day,12);mk('fan_clash',{A:m.a,B:m.b,x:{home:m.a}})}
+    });
+  }
+  if(sub===1){
+    const tids=R.sh(c.tids.slice());
+    tids.forEach(t=>{
+      const p=c.pr[t]||{pr:30,un:10,cf:50,fs:50},st=rwStreak(c,t),ro=c.ro[t];if(!ro)return;
+      const co=ro.c,pl=ro.p.concat(ro.s||[]);
+      if(st.k==='l'&&st.n>=3&&p.pr>=50&&rwCoolOk(c,'bc'+t,day)&&R.c(.5)){rwCool(c,'bc'+t,day,12);mk('board_crisis',{A:t,ca:co,x:{}});return}
+      if(p.fs<=38&&rwCoolOk(c,'fp'+t,day)&&R.c(.2)){rwCool(c,'fp'+t,day,14);mk('fan_protest',{A:t,x:{}});return}
+      if(p.un>=18&&(st.k==='l'&&st.n>=2||p.pr>=40)&&pl.length>=2&&rwCoolOk(c,'dr'+t,day)&&R.c(.3)){
+        const a=R.p(pl),bb=R.p(pl.filter(x=>x!==a));rwCool(c,'dr'+t,day,9);mk('dressing_room',{A:t,pa:a,pb:bb,x:{}});return}
+      if(p.un>=22&&pl.length&&rwCoolOk(c,'pm'+t,day)&&R.c(.14)){const a=R.p(pl);rwCool(c,'pm'+t,day,10);mk('player_vs_mgr',{A:t,pa:a,ca:co,x:{}});return}
+      if(p.pr>=45&&rwCoolOk(c,'lk'+t,day)&&R.c(.07)){rwCool(c,'lk'+t,day,14);mk('leak_media',{A:t,ca:co,x:{xi:R.i(0,1)}});return}
+    });
+    if(R.c(.1)&&rwCoolOk(c,'wr',day)){rwCool(c,'wr',day,5);const t=R.p(c.tids);mk('wrong_report',{A:t,ca:c.ro[t].c,x:{ji:R.i(0,7)}})}
+    /* corruption claims need a prior refereeing controversy with the same referee */
+    const prior=RW.s.ev.filter(e=>e.cid===c.id&&e.type==='ref_controversy'&&e.rf);
+    if(prior.length&&R.c(.05)&&rwCoolOk(c,'cd',day)){const e=R.p(prior);if(!rwRefBanned(e.rf)){rwCool(c,'cd',day,20);mk('corruption_doc',{A:e.A,B:e.B,rf:e.rf,x:{}})}}
+    /* old hostility can end */
+    const olds=Object.entries(RW.s.rel).filter(([k,r])=>r.cid===c.id&&r.v<=-18&&r.h.length&&day-r.h[r.h.length-1][0]>=9);
+    if(olds.length&&R.c(.12)&&rwCoolOk(c,'rec',day)){const [k,r]=R.p(olds);const [a,b]=k.split('|');
+      if(rwEnt(a)&&rwEnt(b)&&!/^f:/.test(a+b)){rwCool(c,'rec',day,8);mk('reconcile',{x:{ea:a,eb:b}})}}
+  }
+}
+/* ---------------- stepping one event (each stage runs once; the case, not a timer, controls the pace) ---------------- */
+function rwEvStep(c,ev){
+  if(ev.stat!=='open'||ev.nx>c.day)return;
+  const script=EVT[ev.type];if(!script||ev.s>=script.length){ev.stat='done';return}
+  /* cache validity: every referenced entity must still exist */
+  const bad=(ev.A&&!rwTeam(ev.A))||(ev.B&&!rwTeam(ev.B))||(ev.pa&&!rwPl(ev.pa))||(ev.pb&&!rwPl(ev.pb))||(ev.ca&&!rwCo(ev.ca))||(ev.rf&&!rwRef(ev.rf));
+  if(bad){ev.stat='void';return}
+  const R=rwRng('ev:'+ev.id+':'+ev.s),H=rwEvHelpers(c,ev),rr=script[ev.s](ev,c,R,H);
+  ev.log.push([c.day,ev.s]);
+  if(rr===-1||ev.stat==='done'){ev.stat='done';rwEvDone(c,ev);return}
+  ev.s++;
+  if(rr===0){if(!ev.cs){ev.stat='done';rwEvDone(c,ev);return}ev.nx=1e9}else ev.nx=c.day+Math.max(1,rr);
+}
+function rwEvDone(c,ev){
+  const cs=ev.cs?RW.s.cs.find(x=>x.id===ev.cs):null;
+  rwTl(c,'hist','📜 ثبت در تاریخ: '+RW_EVN[ev.type]+(ev.A?' — '+rwTN(ev.A):'')+(cs?' ('+cs.id+')':''),c.day,1,{ev:ev.id});
+  rwStory(c,{key:ev.id+'.rec',cat:'hist',h:'پرونده‌ی تاریخی: '+RW_EVN[ev.type]+(ev.A?' ('+rwTN(ev.A)+(ev.B?' و '+rwTN(ev.B):'')+')':''),b:'آغاز: روز '+(ev.d0+1)+' · پایان: روز '+(c.day+1)+'.\n'+(cs?rwCaseLine(cs)+'\n':'')+'این رویداد بسته شد و در آرشیو تاریخ رقابت «'+c.title+'» ثبت گردید.',imp:1,tg:rwEvTags(ev),ev:ev.id,cs:ev.cs,d:c.day,by:'o:league'});
+}
+/* ---------------- world calendar: driven only by the game's own progression ---------------- */
+function rwDay(c,day){
+  if(c.pd[day])return;c.pd[day]=1;c.day=Math.max(c.day,day);
+  const sub=day%3,md=Math.floor(day/3);
+  if(sub===0)rwSuspTick(c,md);
+  RW.s.ev.filter(e=>e.cid===c.id&&e.stat==='open'&&e.nx<=day).forEach(e=>rwEvStep(c,e));
+  RW.s.cs.filter(x=>x.cid===c.id&&x.st!=='final').forEach(x=>{const ev=x.ev?RW.s.ev.find(e=>e.id===x.ev):null;rwCaseStep(c,x)});
+  /* follow-ups of remembered quotes */
+  (c.fu||[]).forEach(f=>{if(f.done||f.due>day)return;f.done=1;const q=RW.s.qt.find(x=>x.id===f.q);if(!q)return;
+    const R=rwRng('fu:'+f.q),sty=rwStyleOf(q.co,null),t=q.tid;
+    rwStory(c,{key:'fu.'+f.q,cat:'press',h:rwCN(q.co)+' پس از جنجال «'+q.text.slice(0,30)+'…»: «'+rwSay('defend',sty,{},'fu',R).slice(0,40)+'»',b:'«'+rwSay('defend',sty,{},'fu2',R)+'»\n— '+rwCN(q.co)+' ('+rwTN(t)+') درباره‌ی اظهارات پیش از بازی.',imp:1,tg:[t],d:day,by:'c:'+q.co});
+    rwPost(c,{key:'fup.'+f.q,a:'c:'+q.co,t:rwSay('defend',sty,{},'fu3',R),tg:[t],imp:2,d:day});});
+  if(c.fu&&c.fu.length>30)c.fu=c.fu.filter(f=>!f.done);
+  rwSpawn(c,day,sub);
+  if(sub===1){
+    c.tids.forEach(t=>{const p=c.pr[t];if(!p)return;p.pr+=p.pr>30?-1:p.pr<30?1:0;p.un+=p.un>10?-1:0});
+    Object.values(RW.s.rel).forEach(r=>{if(r.cid===c.id&&Math.abs(r.v)>2&&day%2===1)r.v+=r.v>0?-1:1});
+    Object.values(RW.s.rv).forEach(r=>{const base=derbyOf(r.a,r.b)?35:5;if(c.tids.indexOf(r.a)>=0&&r.heat>base)r.heat=Math.max(base,r.heat-.7)});
+  }
+  rwSave();
+}
+function rwTick(kind){
+  const L=kind==='lg'?LG:KO;if(!L)return;
+  const c=rwComp(kind,true);if(!c||rwCid(kind)!==c.id)return;
+  c.pvd=c.pvd||{};c.pd=c.pd||{};c.pw=c.pw||{};c.cd=c.cd||{};
+  const doneR=L.over?L.rounds.length:L.round;
+  while(c.dm<doneR-1){
+    const md=c.dm+1,base=md*3;
+    rwDay(c,base);rwDay(c,base+1);
+    rwPowerRankings(c,md);
+    rwSocialDigest(c,md);
+    const nx=L.rounds[md+1];
+    if(nx&&!(L.over&&md+1>=L.rounds.length))rwPreviewRound(c,md+1);
+    rwDay(c,base+2);
+    c.dm=md;
+  }
+  if(!L.over)rwPreviewRound(c,Math.min(L.round,L.rounds.length-1));
+  if(L.over&&!c.fin){
+    c.fin=1;
+    let extra=(doneR*3),guard=0;
+    const open=()=>RW.s.cs.some(x=>x.cid===c.id&&x.st!=='final')||RW.s.ev.some(e=>e.cid===c.id&&e.stat==='open');
+    while(open()&&guard<40){guard++;extra++;rwDay(c,extra)}
+    rwSeasonEnd(c,L);
+  }
+  rwSave();
+}
+function rwSeasonEnd(c,L){
+  const R=rwRng('end:'+c.id);let champ=null,line='';
+  if(c.kind==='lg'){const tb=lgTable();champ=c.tids[tb[0].i];line='جدول نهایی: '+tb.slice(0,3).map((r,i)=>(i+1)+'. '+rwTN(c.tids[r.i])+' ('+r.pts+')').join(' · ')}
+  else{champ=L.champ!=null?c.tids[L.champ]:null;line='قهرمان جام حذفی'}
+  const evs=RW.s.ev.filter(e=>e.cid===c.id),css=RW.s.cs.filter(x=>x.cid===c.id);
+  rwStory(c,{key:'season',cat:'hist',h:'فصل «'+c.title+'» تمام شد'+(champ?': قهرمان '+rwTN(champ):''),b:line+'\n'+evs.length+' رویداد جانبی، '+css.length+' پرونده‌ی انضباطی و '+Object.keys(c.ml).length+' بازی ثبت شد.\nهمه‌ی پرونده‌ها و رویدادها در آرشیو این رقابت باقی می‌مانند.',imp:3,d:c.day,by:'o:league'});
+  rwTl(c,'comp','🏆 پایان رقابت'+(champ?'؛ قهرمان: '+rwTN(champ):''),c.day,3);
+}
+/* ---------------- hooks from the game's own match records ---------------- */
+/* the game records user matches as [user, opponent]; the competition fixture is [home, away]. Re-order so every figure stays attached to the right team. */
+function rwFlipRec(rec){
+  const f=x=>x==null?x:1-x,o=Object.assign({},rec);
+  o.score=[rec.score[1],rec.score[0]];o.so=rec.so?[rec.so[1],rec.so[0]]:null;o.w=rec.w<0?-1:1-rec.w;
+  o.goals=(rec.goals||[]).map(g=>Object.assign({},g,{t:f(g.t)}));o.ev=(rec.ev||[]).map(x=>Object.assign({},x,{tm:f(x.tm)}));
+  o.st=rec.st?[rec.st[1],rec.st[0]]:rec.st;o.poss=rec.poss?[rec.poss[1],rec.poss[0]]:rec.poss;o.coach=rec.coach?[rec.coach[1],rec.coach[0]]:rec.coach;
+  o.mvp=rec.mvp?Object.assign({},rec.mvp,{t:f(rec.mvp.t)}):rec.mvp;o.teams=rec.teams?[rec.teams[1],rec.teams[0]]:rec.teams;
+  return o;
+}
+function rwHookRec(rec,info){
+  try{
+    if(rec.kind==='sandbox')return;
+    if(info&&info.sim){
+      const L=info.kind==='lg'?LG:KO;if(!L)return;
+      const tids=[L.teams[info.ai],L.teams[info.bi]].map(t=>TEAMS[t.t].id);
+      rwIngest(rec,{kind:info.kind,round:L.round,ai:info.ai,bi:info.bi,tids,user:false});return;
+    }
+    if(rec.kind==='lg'&&LG){const m=lgMy();if(m){rwIngest(m.a===0?rec:rwFlipRec(rec),{kind:'lg',round:LG.round,ai:m.a,bi:m.b,tids:[LG.teams[m.a],LG.teams[m.b]].map(t=>TEAMS[t.t].id),user:true});return}}
+    if(rec.kind==='ko'&&KO){const m=koMy();if(m){rwIngest(m.a===0?rec:rwFlipRec(rec),{kind:'ko',round:KO.round,ai:m.a,bi:m.b,tids:[KO.teams[m.a],KO.teams[m.b]].map(t=>TEAMS[t.t].id),user:true});return}}
+    if(rec.kind==='friendly'||rec.kind==='intl'||rec.kind==='bot'){
+      const ids=M&&M.teams?M.teams.map(t=>t.def.id):null;if(!ids)return;
+      rwIngest(rec,{kind:'gen',round:0,ai:0,bi:1,tids:ids,user:true});
+    }
+  }catch(e){try{console.error('rw',e)}catch(_){}}
+}
+
+/* ================= REACTOR WORLD — interfaces ================= */
+const RWU={cid:null,tab:'media',cat:'all',q:'',team:'',tag:'',lim:30,det:null,pl:30};
+const rwE=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const rwNL=s=>rwE(s).replace(/\n/g,'<br>');
+function rwEntU(e){const [k,id]=String(e||'').split(':');if(k==='f')return 'هواداران '+rwTN(id);if(k==='j'||k==='a'){const a=rwAcc(e);return a?a.n:e}if(k==='g')return 'اولتراس '+rwTN(id);return rwEnt(e)}
+const rwCompList=()=>Object.values(RW.s.comps).sort((a,b)=>(b.act-a.act)||(b.t0-a.t0));
+const rwCompName=c=>c?(c.kind==='gen'?'🌍 فوتبال عمومی':(c.kind==='lg'?'🏅 ':'🏆 ')+c.title+(c.act?'':' (آرشیو)')):'';
+const rwSeen=cid=>(RW.s.seen&&RW.s.seen[cid])||0;
+function rwUnread(c){const s=rwSeen(c.id);return RW.s.st.filter(x=>x.c===c.id&&x.i>s&&x.imp>=2).length}
+function rwOpen(cid,tab){
+  const cs=rwCompList();
+  if(!cid||cid==='ALL'){RWU.cid=cid==='ALL'?'ALL':(cs.find(c=>c.act&&c.kind!=='gen')||cs[0]||{id:'ALL'}).id}else RWU.cid=cid;
+  RWU.tab=tab||'media';RWU.cat='all';RWU.q='';RWU.team='';RWU.tag='';RWU.lim=30;RWU.pl=30;
+  show('s-world');rwRender();
+}
+function rwAvatar(a){
+  let col='#4a50b8',txt=(a.n||'?').replace(/^(اولتراس|هواداران|سرمربی|حساب)\s*/,'').trim().charAt(0)||'?',ico='';
+  if(a.t){const t=rwTeam(a.t);if(t&&t.color)col=t.color}
+  if(a.k==='org'){col='#1a7f4b';ico='⚖'}else if(a.k==='jr'){col='#2b6cb0';ico='🎙'}else if(a.k==='an'){col='#6b46c1';ico='🧠'}else if(a.k==='meme'){col='#d69e2e';ico='😂'}else if(a.k==='anon'){col='#555';ico='🕵'}else if(a.k==='ctr'){col='#c53030';ico='🔥'}else if(a.k==='grp'){ico='📣'}
+  return '<span class="rwAv" style="background:'+col+'">'+(ico||rwE(txt))+'</span>';
+}
+function rwTagify(t){return rwE(t).replace(/#([^\s#.,،؛:!؟?«»()]+)/g,(m,h)=>'<a class="rwHt" data-tag="'+rwE(h)+'">#'+h+'</a>')}
+function rwPostH(p,withC){
+  const a=rwAcc(p.a);if(!a)return '';
+  const comp=RW.s.comps[p.c],lbl=comp?rwLabel(comp,p):'';
+  let re='';if(p.re){const q=rwPostById(p.re);if(q){const qa=rwAcc(q.a);re='<div class="rwRe">↩ در پاسخ به '+rwE(qa?qa.h:'')+'</div>'}}
+  const nf=n=>n>=1000?(n/1000).toFixed(n>=10000?0:1)+'K':String(n);
+  return '<article class="rwPost'+(p.imp>=3?' hot':'')+(p.k==='reply'?' rep':'')+'" data-post="'+rwE(p.id)+'">'+rwAvatar(a)+'<div class="rwPb"><div class="rwPh"><b>'+rwE(a.n)+'</b>'+(a.v?'<span class="rwVf" title="حساب تأییدشده">✔</span>':'')+'<span class="rwHd">'+rwE(a.h)+'</span><span class="rwTm">'+rwE(lbl)+'</span></div>'+re+'<div class="rwPt">'+rwTagify(p.t)+'</div><div class="rwPs"><span>💬 '+nf(p.cm)+'</span><span>🔁 '+nf(p.rp)+'</span><span>❤ '+nf(p.lk)+'</span><span>👁 '+nf(p.vw)+'</span>'+(withC&&comp?'<span class="rwCb">'+rwE(comp.kind==='gen'?'عمومی':comp.title)+'</span>':'')+(p.ev?'<a class="rwLk" data-ev="'+rwE(p.ev)+'">مسیر ماجرا</a>':'')+(p.cs?'<a class="rwLk" data-cs="'+rwE(p.cs)+'">'+rwE(p.cs)+'</a>':'')+'</div></div></article>';
+}
+function rwStoryCard(x,withC,feat){
+  const comp=RW.s.comps[x.c],unread=comp&&x.i>rwSeen(x.c)&&x.imp>=2;
+  const by=x.by?rwAcc(x.by):null;
+  return '<article class="rwSt c-'+x.cat+(feat?' feat':'')+(x.imp>=3?' hot':'')+'" data-st="'+rwE(x.id)+'"><div class="rwSc"><span class="rwCat">'+rwE(RW_CATN[x.cat]||x.cat)+'</span>'+(x.cat==='brk'||x.imp>=3?'<span class="rwBrk">'+(x.cat==='brk'?'BREAKING':'مهم')+'</span>':'')+(unread?'<i class="rwNew" title="خوانده‌نشده"></i>':'')+(x.sim?'<span class="rwSim" title="نتیجه‌ی شبیه‌سازی‌شده">SIM</span>':'')+'</div><h3>'+rwE(x.h)+'</h3><div class="rwMt">'+(comp?rwE(rwLabel(comp,x)):'')+(by?' · '+rwE(by.n):'')+(withC&&comp?' · <span class="rwCb">'+rwE(comp.kind==='gen'?'عمومی':comp.title)+'</span>':'')+'</div>'+(feat&&x.b?'<p>'+rwE(x.b.split('\n')[0]).slice(0,220)+'</p>':'')+'</article>';
+}
+function rwFilterStories(){
+  const all=RWU.cid==='ALL';
+  let a=RW.s.st.filter(x=>all?(x.imp>=3||x.cat==='brk'||x.cat==='dis'||x.cat==='hist'):x.c===RWU.cid);
+  if(RWU.cat!=='all')a=a.filter(x=>x.cat===RWU.cat);
+  if(RWU.team)a=a.filter(x=>x.tg.indexOf(RWU.team)>=0);
+  if(RWU.q){const q=RWU.q.trim();a=a.filter(x=>(x.h+' '+x.b).indexOf(q)>=0||x.tg.some(t=>rwTN(t).indexOf(q)>=0))}
+  return a.sort((x,y)=>y.i-x.i);
+}
+function rwRender(){
+  const el=$('rwBody');if(!el||!RW.s)return;
+  const cs=rwCompList(),all=RWU.cid==='ALL',c=all?null:RW.s.comps[RWU.cid];
+  $('rwTitle').textContent='🌐 REACTOR WORLD — '+(all?'خبر جهانی فوتبال':c?c.title:'');
+  let h='<div class="rwHead"><select id="rwSel">'+'<option value="ALL"'+(all?' selected':'')+'>🌐 فید جهانی (همه‌ی رقابت‌ها)</option>'+cs.map(x=>'<option value="'+rwE(x.id)+'"'+(x.id===RWU.cid?' selected':'')+'>'+rwE(rwCompName(x))+(rwUnread(x)?' • '+rwUnread(x):'')+'</option>').join('')+'</select>'
+   +'<div class="rwTabs">'+[['media','📰 رسانه'],['social','💬 شبکه اجتماعی'],['cases','⚖ پرونده‌ها'],['timeline','🕒 خط زمانی'],['rel','🤝 روابط']].map(t=>'<button class="rwTb'+(RWU.tab===t[0]?' on':'')+'" data-tab="'+t[0]+'">'+t[1]+'</button>').join('')+'</div></div>';
+  if(!cs.length){el.innerHTML=h+'<div class="rwEmpty">هنوز هیچ رقابتی ثبت نشده. یک لیگ یا جام حذفی شروع کن یا یک بازی دوستانه انجام بده؛ دنیا همان لحظه شروع به ثبت می‌کند.</div>';return}
+  if(c){h+='<div class="rwStat">'+'<span>روز دنیا: <b>'+(Math.floor(c.day/3)+1)+'</b></span><span>خبرها: <b>'+RW.s.st.filter(x=>x.c===c.id).length+'</b></span><span>پست‌ها: <b>'+RW.s.po.filter(x=>x.c===c.id).length+'</b></span><span>پرونده‌ها: <b>'+RW.s.cs.filter(x=>x.cid===c.id).length+'</b></span><span>رویدادها: <b>'+RW.s.ev.filter(x=>x.cid===c.id).length+'</b></span></div>'}
+  if(RWU.tab==='media')h+=rwMediaH(c);else if(RWU.tab==='social')h+=rwSocialH(c);else if(RWU.tab==='cases')h+=rwCasesH(c);else if(RWU.tab==='timeline')h+=rwTimelineH(c);else h+=rwRelH(c);
+  el.innerHTML=h;
+  if(c&&RWU.tab==='media'){RW.s.seen=RW.s.seen||{};const mx=RW.s.st.reduce((m,x)=>x.c===c.id&&x.i>m?x.i:m,0);if(mx>rwSeen(c.id)&&!RWU.keepNew){RWU.pend={cid:c.id,mx}}}
+}
+function rwMarkSeen(){if(RWU.pend){RW.s.seen=RW.s.seen||{};RW.s.seen[RWU.pend.cid]=RWU.pend.mx;RWU.pend=null;rwSave()}}
+function rwMediaH(c){
+  const all=!c;let h='';
+  const list=rwFilterStories();
+  const used=RW.s.st.filter(x=>all?(x.imp>=3||x.cat==='brk'):x.c===c.id);
+  const cats=Object.keys(RW_CATN);
+  h+='<div class="rwBar"><input id="rwQ" type="search" placeholder="🔍 جستجو در خبرها، تیم‌ها، بازیکنان" value="'+rwE(RWU.q)+'"><select id="rwTeam"><option value="">همه‌ی تیم‌ها</option>'+(c?c.tids:Array.from(new Set(RW.s.st.flatMap(x=>x.tg)))).filter(t=>rwTeam(t)).map(t=>'<option value="'+rwE(t)+'"'+(RWU.team===t?' selected':'')+'>'+rwE(rwTN(t))+'</option>').join('')+'</select></div>';
+  h+='<div class="rwChips"><button class="rwCh'+(RWU.cat==='all'?' on':'')+'" data-cat="all">همه</button>'+cats.map(k=>{const n=used.filter(x=>x.cat===k).length;return '<button class="rwCh'+(RWU.cat===k?' on':'')+'" data-cat="'+k+'">'+rwE(RW_CATN[k])+' <small>'+n+'</small></button>'}).join('')+'</div>';
+  const brk=used.filter(x=>x.cat==='brk'||x.imp>=3).sort((a,b)=>b.i-a.i)[0];
+  if(brk&&RWU.cat==='all'&&!RWU.q&&!RWU.team)h+='<div class="rwBreak" data-st="'+rwE(brk.id)+'"><b>🚨 BREAKING</b><span>'+rwE(brk.h)+'</span></div>';
+  if(!list.length)return h+'<div class="rwEmpty">خبری با این فیلتر وجود ندارد.</div>';
+  const feat=RWU.cat==='all'&&!RWU.q&&!RWU.team?list.find(x=>x.imp>=2&&x.cat!=='pwr'):null;
+  h+='<div class="rwGrid">';
+  if(feat)h+=rwStoryCard(feat,all,true);
+  list.filter(x=>x!==feat).slice(0,RWU.lim).forEach(x=>{h+=rwStoryCard(x,all,false)});
+  h+='</div>';
+  if(list.length>RWU.lim+1)h+='<div class="rwMore"><button class="btn" id="rwMore">نمایش بیشتر ('+(list.length-RWU.lim)+')</button></div>';
+  return h;
+}
+function rwTrending(c){
+  const d0=c?c.day-12:0,cnt={};
+  RW.s.po.forEach(p=>{if(c&&p.c!==c.id)return;if(c&&p.d<d0)return;const m=p.t.match(/#[^\s#.,،؛:!؟?«»()]+/g);if(m)m.forEach(x=>{cnt[x]=(cnt[x]||0)+1+(p.imp||1)*.5})});
+  return Object.entries(cnt).sort((a,b)=>b[1]-a[1]).slice(0,8);
+}
+function rwSocialH(c){
+  let list=RW.s.po.filter(p=>c?p.c===c.id:(p.imp>=2||p.keep));
+  if(RWU.tag)list=list.filter(p=>p.t.indexOf('#'+RWU.tag)>=0);
+  if(RWU.team)list=list.filter(p=>p.tg.indexOf(RWU.team)>=0);
+  list=list.sort((a,b)=>b.i-a.i);
+  const tr=rwTrending(c);
+  let h='<div class="rwSoc"><div class="rwFeed">';
+  h+='<div class="rwBar"><select id="rwTeam2"><option value="">همه‌ی تیم‌ها</option>'+(c?c.tids:Array.from(new Set(RW.s.po.flatMap(x=>x.tg)))).filter(t=>rwTeam(t)).map(t=>'<option value="'+rwE(t)+'"'+(RWU.team===t?' selected':'')+'>'+rwE(rwTN(t))+'</option>').join('')+'</select>'+(RWU.tag?'<button class="rwCh on" id="rwClrTag">#'+rwE(RWU.tag)+' ✕</button>':'')+'</div>';
+  if(!list.length)h+='<div class="rwEmpty">هنوز پستی نیست.</div>';
+  list.slice(0,RWU.pl).forEach(p=>{h+=rwPostH(p,!c)});
+  if(list.length>RWU.pl)h+='<div class="rwMore"><button class="btn" id="rwMoreP">بیشتر</button></div>';
+  h+='</div><aside class="rwTr"><h4>🔥 ترند</h4>'+(tr.length?tr.map(([t,n],i)=>'<a class="rwHt blk" data-tag="'+rwE(t.slice(1))+'"><small>'+(i+1)+'</small> '+rwE(t)+'<em>'+Math.round(n)+' پست</em></a>').join(''):'<div class="rwEmpty s">فعلاً ترندی نیست</div>')+'</aside></div>';
+  return h;
+}
+function rwCaseH(cs){
+  const comp=RW.s.comps[cs.cid];
+  const sus=RW.s.su.filter(s=>s.cs===cs.id),ded=RW.s.de.filter(s=>s.cs===cs.id);
+  const stN={open:'ثبت‌شده',inv:'در حال بررسی',hear:'در انتظار جلسه',dec:'در انتظار رأی',app:'تجدیدنظر',final:'نهایی'};
+  const cons=sus.map(s=>'<li>'+rwE(s.txt)+' — <b>'+(s.st==='act'?'فعال (باقی‌مانده: '+s.left+')':s.st==='done'?'پایان‌یافته':'لغو شد')+'</b></li>').concat(ded.map(d=>'<li>کسر '+d.n+' امتیاز از '+rwE(rwTN(d.tid))+' — <b>'+(d.st==='act'?'فعال':'لغو شد')+'</b></li>'));
+  return '<details class="rwCase" id="cs-'+rwE(cs.id)+'"'+(RWU.openCs===cs.id?' open':'')+'><summary><span class="rwCid">'+rwE(cs.id)+'</span><b>'+rwE(cs.t)+'</b><span class="rwSt2 s-'+cs.st+'">'+stN[cs.st]+(cs.fin?' · '+rwE(cs.fin==='appeal-accepted'?'تجدیدنظر پذیرفته شد':RW_OUT[cs.fin]||''):'')+'</span></summary>'
+   +'<div class="rwCb2"><div class="rwRow"><b>رقابت:</b> '+rwE(comp?comp.title:'')+' · <b>شاکی:</b> '+rwE(cs.cmp&&rwTeam(cs.cmp)?rwTN(cs.cmp):'سازمان لیگ')+' · <b>متهم:</b> '+rwE(rwEntU(cs.def))+(cs.defT&&rwTeam(cs.defT)?' ('+rwE(rwTN(cs.defT))+')':'')+'</div>'
+   +'<div class="rwRow"><b>اتهام‌ها:</b> '+cs.al.map(rwE).join('؛ ')+'</div>'
+   +'<div class="rwRow"><b>ادله‌ی بررسی‌شده:</b>'+(cs.evd.length?'<ul>'+cs.evd.map(e=>'<li>'+rwE(e.t)+' <small>(روز '+(Math.floor(e.d/3)+1)+')</small></li>').join('')+'</ul>':' هنوز مدرکی ثبت نشده')+'</div>'
+   +(cs.wt.length?'<div class="rwRow"><b>جلسه و شهود:</b> '+cs.wt.map(rwE).join('، ')+(cs.dfn?'<br>دفاعیه: «'+rwE(cs.dfn)+'»':'')+'</div>':'')
+   +(cs.dec?'<div class="rwRow"><b>رأی:</b> '+rwE(RW_OUT[cs.dec.o])+(cs.ap?' · <b>تجدیدنظر:</b> '+(cs.ap==='accepted'?'پذیرفته شد':cs.ap==='rejected'?'رد شد':'بازگشایی پرونده'):'')+'</div>':'')
+   +'<div class="rwRow"><b>پیامدها:</b>'+(cons.length?'<ul>'+cons.join('')+'</ul>':(cs.dec?' هیچ مجازات سنگینی اعمال نشد':' هنوز تصمیمی گرفته نشده'))+'</div>'
+   +'<div class="rwRow"><b>تاریخچه:</b><ol class="rwLog">'+cs.log.map(l=>'<li><small>روز '+(Math.floor(l[0]/3)+1)+'</small> '+rwE(l[1])+'</li>').join('')+'</ol></div>'
+   +(cs.ev?'<div class="rwRow"><a class="rwLk" data-ev="'+rwE(cs.ev)+'">مشاهده‌ی مسیر کامل ماجرا ←</a></div>':'')+'</div></details>';
+}
+function rwCasesH(c){
+  const L=RW.s.cs.filter(x=>c?x.cid===c.id:true).sort((a,b)=>(a.st==='final')-(b.st==='final')||b.od-a.od);
+  const su=RW.s.su.filter(s=>(c?s.cid===c.id:true)&&s.st==='act'),de=RW.s.de.filter(d=>(c?d.cid===c.id:true)&&d.st==='act');
+  let h='<div class="rwPanel"><h4>🚫 پیامدهای فعال روی بازی واقعی</h4>';
+  if(!su.length&&!de.length)h+='<div class="rwEmpty s">در حال حاضر محرومیت یا کسر امتیاز فعالی وجود ندارد.</div>';
+  else{h+='<ul>'+su.map(s=>'<li>'+rwE(s.txt)+' <small>('+rwE(s.cs||'')+' · باقی‌مانده: '+s.left+')</small></li>').join('')+de.map(d=>'<li>کسر '+d.n+' امتیاز از '+rwE(rwTN(d.tid))+' در جدول <small>('+rwE(d.cs||'')+')</small></li>').join('')+'</ul>'}
+  h+='</div>';
+  if(!L.length)return h+'<div class="rwEmpty">هنوز پرونده‌ای باز نشده است. پرونده‌ها فقط از رویدادهای واقعی بازی‌ها ساخته می‌شوند.</div>';
+  return h+L.slice(0,60).map(rwCaseH).join('');
+}
+function rwTimelineH(c){
+  let L=RW.s.tl.filter(x=>c?x.c===c.id:x.imp>=2).sort((a,b)=>b.i-a.i);
+  if(!L.length)return '<div class="rwEmpty">خط زمانی خالی است.</div>';
+  let h='<div class="rwTl">',last='';
+  L.slice(0,160).forEach(x=>{const cc=RW.s.comps[x.c],lab=cc?(cc.kind==='gen'?'عمومی':cc.kind==='ko'?'مرحله '+(Math.floor(x.d/3)+1):'هفته '+(Math.floor(x.d/3)+1)):'';
+    const g=(cc?cc.id:'')+lab;if(g!==last){h+='<div class="rwTlD">'+rwE(lab)+(!c&&cc?' · '+rwE(cc.title):'')+'</div>';last=g}
+    h+='<div class="rwTlI k-'+x.k+'"'+(x.r&&x.r.st?' data-st="'+rwE(x.r.st)+'"':x.r&&x.r.ev?' data-ev="'+rwE(x.r.ev)+'"':'')+'><i></i><span>'+rwE(x.t)+'</span>'+(x.r&&x.r.ev?'<a class="rwLk">مسیر</a>':'')+'</div>'});
+  return h+'</div>';
+}
+function rwRelH(c){
+  const rl=Object.entries(RW.s.rel).filter(([k,r])=>c?r.cid===c.id:true).sort((a,b)=>Math.abs(b[1].v)-Math.abs(a[1].v)).slice(0,24);
+  const rv=Object.values(RW.s.rv).filter(r=>(c?c.tids.indexOf(r.a)>=0&&c.tids.indexOf(r.b)>=0:true)).sort((a,b)=>b.heat-a.heat).slice(0,10);
+  let h='<div class="rwTwo"><div class="rwPanel"><h4>🤝 روابط (پایدار؛ با رویدادها تغییر می‌کنند)</h4>';
+  if(!rl.length)h+='<div class="rwEmpty s">هنوز رابطه‌ی قابل‌توجهی شکل نگرفته است.</div>';
+  rl.forEach(([k,r])=>{const [a,b]=k.split('|');h+='<div class="rwRl"><div><b>'+rwE(rwEntU(a))+'</b> ↔ <b>'+rwE(rwEntU(b))+'</b></div><div class="rwBr"><i style="width:'+Math.abs(r.v)+'%;background:'+(r.v>=0?'#2cffd1':'#ff4d4d')+'"></i></div><small>'+rwE(rwRelLabel(r.v))+' ('+r.v+') — '+(r.h.length?rwE(r.h[r.h.length-1][2]):'')+'</small></div>'});
+  h+='</div><div class="rwPanel"><h4>🔥 رقابت‌ها (Rivalry)</h4>';
+  if(!rv.length)h+='<div class="rwEmpty s">رقابت ثبت‌شده‌ای وجود ندارد.</div>';
+  rv.forEach(r=>{h+='<div class="rwRl"><div><b>'+rwE(rwTN(r.a))+'</b> × <b>'+rwE(rwTN(r.b))+'</b>'+(derbyOf(r.a,r.b)?' 🔥':'')+'</div><div class="rwBr"><i style="width:'+r.heat+'%;background:#ff9f1c"></i></div><small>شدت '+Math.round(r.heat)+'٪'+(r.h.length?' — '+rwE(r.h[r.h.length-1][1]):'')+'</small></div>'});
+  return h+'</div></div>';
+}
+/* ---- overlays: story detail and incident path ---- */
+function rwOverlay(html){
+  let o=$('rwOv');if(o)o.remove();o=document.createElement('div');o.id='rwOv';
+  o.innerHTML='<div class="rwBox"><div class="rwBd">'+html+'</div><div class="bar"><button class="btn big" id="rwOvX">بستن</button></div></div>';
+  $('app').appendChild(o);o.addEventListener('click',e=>{if(e.target===o||e.target.id==='rwOvX'){SFX.click();o.remove()}});return o;
+}
+function rwStoryOpen(id){
+  const x=RW.s.st.find(s=>s.id===id);if(!x)return;const c=RW.s.comps[x.c],by=x.by?rwAcc(x.by):null;
+  const mk=x.m&&c?c.ml[x.m]:null;
+  let h='<div class="rwSc"><span class="rwCat">'+rwE(RW_CATN[x.cat]||x.cat)+'</span>'+(x.sim?'<span class="rwSim">SIM · شبیه‌سازی‌شده</span>':'')+(x.imp>=3?'<span class="rwBrk">مهم</span>':'')+'</div><h2>'+rwE(x.h)+'</h2><div class="rwMt">'+(c?rwE(c.title)+' · '+rwE(rwLabel(c,x)):'')+(by?' · '+rwE(by.n)+(by.o?' ('+rwE(by.o)+')':''):'')+'</div><div class="rwBody">'+rwNL(x.b)+'</div>';
+  if(mk)h+='<div class="rwRef">⚽ مرتبط با بازی: '+rwE(rwTN(mk.a))+' '+mk.sc[0]+'-'+mk.sc[1]+' '+rwE(rwTN(mk.b))+(mk.sim?' (شبیه‌سازی‌شده)':' (بازی‌شده توسط تو)')+'</div>';
+  if(x.cs)h+='<div class="rwRef">⚖ <a class="rwLk" data-cs="'+rwE(x.cs)+'">پرونده '+rwE(x.cs)+'</a></div>';
+  if(x.ev)h+='<div class="rwRef">🧵 <a class="rwLk" data-ev="'+rwE(x.ev)+'">مسیر کامل این ماجرا</a></div>';
+  if(x.tg.length)h+='<div class="rwTags">'+x.tg.filter(rwTeam).map(t=>'<span>'+rwE(rwTN(t))+'</span>').join('')+'</div>';
+  const rp=RW.s.po.filter(p=>p.ev&&p.ev===x.ev&&x.ev).slice(0,4);
+  rwOverlay(h);
+}
+function rwEvOpen(id){
+  const ev=RW.s.ev.find(e=>e.id===id);if(!ev){const cs=RW.s.cs.find(x=>x.ev===id);if(!cs)return}
+  const c=ev?RW.s.comps[ev.cid]:null;
+  const sts=RW.s.st.filter(x=>x.ev===id).sort((a,b)=>a.i-b.i),pos=RW.s.po.filter(p=>p.ev===id).sort((a,b)=>a.i-b.i);
+  const cs=ev&&ev.cs?RW.s.cs.find(x=>x.id===ev.cs):null;
+  let h='<h2>🧵 مسیر ماجرا: '+rwE(ev?RW_EVN[ev.type]:id)+'</h2><div class="rwMt">'+(c?rwE(c.title):'')+(ev?' · وضعیت: '+(ev.stat==='open'?'در جریان':ev.stat==='done'?'بسته‌شده':'باطل'):'')+'</div>';
+  h+='<div class="rwFlow">'+['EVENT','REACTION','INVESTIGATION','DECISION','CONSEQUENCE','RECORD'].map((s,i)=>{const st=!ev?0:ev.stat==='done'?6:Math.min(5,ev.s+(cs&&cs.st!=='open'?1:0));return '<span class="'+(i<st?'on':'')+'">'+s+'</span>'}).join('')+'</div>';
+  h+='<div class="rwTl">'+sts.map(x=>'<div class="rwTlI" data-st="'+rwE(x.id)+'"><i></i><span><small>'+(c?rwE(rwLabel(c,x)):'')+'</small><br><b>'+rwE(x.h)+'</b></span></div>').join('')+'</div>';
+  if(cs)h+='<div class="rwRef">⚖ '+rwE(rwCaseLine(cs))+' — <a class="rwLk" data-cs="'+rwE(cs.id)+'">باز کردن پرونده</a></div>';
+  if(pos.length)h+='<h4>💬 واکنش‌های شبکه‌ی اجتماعی</h4>'+pos.slice(0,8).map(p=>rwPostH(p,false)).join('');
+  rwOverlay(h);
+}
+/* ---- wiring ---- */
+function rwInit(){
+  $('rwBack').addEventListener('click',()=>{rwMarkSeen();SFX.click();goMenu()});
+  const b=$('rwBody');
+  b.addEventListener('change',e=>{const t=e.target;
+    if(t.id==='rwSel'){rwMarkSeen();RWU.cid=t.value;RWU.cat='all';RWU.team='';RWU.tag='';RWU.lim=30;RWU.pl=30;rwRender()}
+    else if(t.id==='rwTeam'||t.id==='rwTeam2'){RWU.team=t.value;rwRender()}});
+  b.addEventListener('input',e=>{if(e.target.id==='rwQ'){RWU.q=e.target.value;clearTimeout(RWU.qt);RWU.qt=setTimeout(()=>{const p=e.target.selectionStart;rwRender();const q=$('rwQ');if(q){q.focus();try{q.setSelectionRange(p,p)}catch(_){}}},220)}});
+  b.addEventListener('click',e=>{
+    const T=e.target.closest?e.target.closest('[data-tab],[data-cat],[data-st],[data-tag],[data-ev],[data-cs],#rwMore,#rwMoreP,#rwClrTag'):null;if(!T)return;SFX.click();
+    if(T.dataset.tab){rwMarkSeen();RWU.tab=T.dataset.tab;RWU.tag='';RWU.team='';rwRender();return}
+    if(T.dataset.cat){RWU.cat=T.dataset.cat;RWU.lim=30;rwRender();return}
+    if(T.dataset.tag){RWU.tab='social';RWU.tag=T.dataset.tag;RWU.pl=30;rwRender();return}
+    if(T.id==='rwMore'){RWU.lim+=30;rwRender();return}
+    if(T.id==='rwMoreP'){RWU.pl+=30;rwRender();return}
+    if(T.id==='rwClrTag'){RWU.tag='';rwRender();return}
+    if(T.dataset.ev){rwEvOpen(T.dataset.ev);return}
+    if(T.dataset.cs){rwGotoCase(T.dataset.cs);return}
+    if(T.dataset.st){rwStoryOpen(T.dataset.st);return}
+  });
+  document.addEventListener('click',e=>{const o=$('rwOv');if(!o||!o.contains(e.target))return;const T=e.target.closest('[data-st],[data-ev],[data-cs]');if(!T)return;
+    if(T.dataset.cs){o.remove();rwGotoCase(T.dataset.cs)}else if(T.dataset.ev)rwEvOpen(T.dataset.ev);else if(T.dataset.st)rwStoryOpen(T.dataset.st)});
+  $('btnWorld').addEventListener('click',()=>{auInit();SFX.click();rwOpen('ALL','media')});
+  const lm=$('lgMedia');if(lm)lm.addEventListener('click',()=>{SFX.click();const c=rwActive('lg');rwOpen(c?c.id:'ALL','media')});
+  const km=$('koMedia');if(km)km.addEventListener('click',()=>{SFX.click();const c=rwActive('ko');rwOpen(c?c.id:'ALL','media')});
+}
+function rwGotoCase(id){const cs=RW.s.cs.find(x=>x.id===id);if(!cs)return;RWU.cid=cs.cid;RWU.tab='cases';RWU.openCs=id;show('s-world');rwRender();const el=$('cs-'+id);if(el)el.scrollIntoView({block:'center'})}
+
+/* ================= REACTOR WORLD — real consequences wired into the existing game ================= */
+function rwToast(msg){try{let t=$('rwToast');if(!t){t=document.createElement('div');t.id='rwToast';t.style.cssText='position:absolute;left:50%;top:12px;transform:translateX(-50%);z-index:70;background:#7a1010;border:2px solid #ff4d4d;color:#fff;padding:8px 14px;border-radius:10px;font:600 13px Vazirmatn,Tahoma;max-width:92%;text-align:center;direction:rtl';($('app')||document.body).appendChild(t)}
+  t.textContent=msg;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',5200)}catch(e){}}
+const rwErr=e=>{try{console.error('reactor-world',e)}catch(_){}};
+/* 1. point deductions: the league table itself is patched, so every screen and award uses the corrected table */
+const _lgTable=lgTable;
+lgTable=function(){
+  const T=_lgTable.apply(this,arguments);
+  try{const c=LG&&rwActive('lg');if(c){let any=false;T.forEach(r=>{const d=rwDedFor(c.id,TEAMS[LG.teams[r.i].t].id);if(d){r.pts-=d;r.ded=d;any=true}});
+    if(any)T.sort((x,y)=>y.pts-x.pts||y.gd-x.gd||y.gf-x.gf||x.i-y.i)}}catch(e){rwErr(e)}
+  return T;
+};
+/* 2. availability: suspended players cannot start; suspended referees are not assigned; coach bans disable the bench; closures thin the stands */
+const _pickRefFor=pickRefFor;
+pickRefFor=function(V,t0,t1){
+  let r=_pickRefFor.apply(this,arguments);
+  try{for(let i=0;i<12&&r&&rwRefBanned(r.id);i++)r=_pickRefFor.apply(this,arguments)}catch(e){}
+  return r;
+};
+const _koStr=koStr;
+koStr=function(t){
+  let s=_koStr.apply(this,arguments);
+  try{
+    const kind=LG&&LG.teams.indexOf(t)>=0?'lg':KO&&KO.teams.indexOf(t)>=0?'ko':null;
+    if(kind){const c=rwActive(kind);if(c){const tid=TEAMS[t.t].id;
+      const n=t.p.filter(id=>rwSuspP(c.id,id)).length;if(n)s-=3.5*n*.7;
+      if(t.c&&rwSuspC(c.id,t.c))s-=1.2;
+      const p=c.pr[tid];if(p&&p.un>65)s-=1.2}}
+  }catch(e){}
+  return s;
+};
+const _makeFans=makeFans;
+makeFans=function(){
+  const f=_makeFans.apply(this,arguments);
+  try{if((RW.cl||(M&&M.rwCl))&&f&&f.length)return f.filter((x,i)=>i%3!==0&&i%5!==0)}catch(e){}
+  return f;
+};
+const _createMatch=createMatch;
+createMatch=function(i0,i1,ids0,ids1,g0,g1,c0,c1,host,s0,s1,opts){
+  opts=opts||{};
+  const kind=opts.lg?'lg':opts.ko?'ko':null,c=kind?rwActive(kind):null;
+  const notes=[];let cl=false;
+  if(c){
+    try{
+      const tid=[TEAMS[i0].id,TEAMS[i1].id],ids=[ids0.slice(),ids1.slice()],subs=[(s0||[]).slice(),(s1||[]).slice()];
+      for(let k=0;k<2;k++){
+        for(let j=0;j<ids[k].length;j++){
+          if(rwSuspP(c.id,ids[k][j])){
+            const sj=subs[k].findIndex(x=>!rwSuspP(c.id,x)&&ids[k].indexOf(x)<0);
+            if(sj>=0){notes.push('🚫 '+rwPN(ids[k][j])+' ('+rwTN(tid[k])+') محروم/کنار گذاشته‌شده است؛ '+rwPN(subs[k][sj])+' جایگزین شد');ids[k][j]=subs[k][sj];subs[k].splice(sj,1)}
+            else notes.push('⚠ '+rwPN(ids[k][j])+' محروم است ولی ذخیره‌ی مجاز وجود نداشت');
+          }
+        }
+        subs[k]=subs[k].filter(x=>!rwSuspP(c.id,x));
+      }
+      ids0=ids[0];ids1=ids[1];s0=subs[0];s1=subs[1];
+      const home=host?i1:i0;cl=rwClosed(c.id,TEAMS[home].id);RW.cl=cl;
+    }catch(e){rwErr(e)}
+  }
+  let m;try{m=_createMatch.call(this,i0,i1,ids0,ids1,g0,g1,c0,c1,host,s0,s1,opts)}finally{RW.cl=false}
+  if(c){
+    try{
+      m.rwCl=cl;
+      [[c0,0],[c1,1]].forEach(([co,i])=>{if(rwSuspC(c.id,co)){const T=m.teams[i];if(T&&T.cm){T.cm.sent=true;notes.push('🚫 '+rwCN(co)+' از نیمکت محروم است (تصمیم کمیته)')}}});
+      if(cl)notes.push('🚧 بخشی از سکوهای میزبان به‌خاطر مجازات بسته است');
+      m.rwNotes=notes;
+      if(notes.length)rwToast(notes.slice(0,3).join(' | '));
+    }catch(e){rwErr(e)}
+  }
+  return m;
+};
+/* 3. hooks into the game's own match records */
+const _lgNext=lgNext;lgNext=function(){const r=_lgNext.apply(this,arguments);try{if(LG)rwTick('lg')}catch(e){rwErr(e)}return r};
+const _koAdvance=koAdvance;koAdvance=function(){const r=_koAdvance.apply(this,arguments);try{if(KO)rwTick('ko')}catch(e){rwErr(e)}return r};
+const _koCreate=koCreate;koCreate=function(){const r=_koCreate.apply(this,arguments);try{if(KO)rwTick('ko')}catch(e){rwErr(e)}return r};
+
+try{rwLoad()}catch(e){try{console.error('rwLoad',e);RW.s=rwNew();rwReindex()}catch(_){}}
+try{if(LG)rwTick('lg');if(KO)rwTick('ko')}catch(e){rwErr(e)}
+window.__RW={RW,RWU,rwTick,rwComp,rwActive,rwOpen,rwRender,rwSaveNow,rwLoad,rwNew,rwValidate,rwDay,rwHookRec,rwSuspP,rwSuspC,rwRefBanned,rwClosed,rwDedFor,rwEvStep,EVT,rwNewEv,rwOpenCase,rwCaseStep,rwSpawn,rwEnt,rwStoryOpen,rwEvOpen,rwReplaceCoach,rwStanding,rwPreviewRound,rwPowerRankings};
 window.__RL={v100:{PERF,qEff,simInterp,simRestore,hdSprite,SET:()=>SET,SIMH},v95:{getSBE:()=>SBE,setSBE:a=>{SBE=a},getSBS:()=>SBS,setSBS:o=>{SBS=o},newsLoad,newsRec,nwStories,nwAll,newsOpen,sbeOpen,vrClip,RP},v9:{lgCeremony,lgAcc,cerAwards,cinema,pcRun,pcPostStandalone,cnScenes,crSet,tifoSet,v9Cr,ADSL,RP,ADB},lg:{get:()=>LG,create:lgCreate,play:lgPlay,finish:lgFinishMatch,show:lgShow,table:lgTable,reg:lgRegister,my:lgMy},ko:{get:()=>KO,create:koCreate,play:koPlay,register:koRegister,finish:koFinishMatch,show:koShowBracket,trophy:koTrophy,sim:koSim,story:storyLines,clear:koClear,start:koStartSel,sel:()=>sel,mode:()=>MODE},fsLayout,dims:()=>({BW,BH,OX,OY,CW,CH}),setMode:(m,d)=>{MODE=m;if(d)BOTDIFF=d;document.body.classList.toggle('botm',m==='bot')},getSBX:()=>SBX,setSBX:a=>{SBX=a},sbxPreset,fillBot,startMatch,sbxRender,showSbx,renderBotDiff,showLineup,luShow,luSteps:()=>luSteps,FSB,enterFS,exitFS,isFS,sel,createMatch,step,render,getM:()=>M,TEAMS,PLAYERS,GKS,COACHES,fmtMin,VENUES,buildPitch,makeFans,computeReport,reportHTML,lineupHTML,luPortrait,luVideo,drawPlayer,mkPlayer,pickRefFor,REFS_STREET,REFS_SCHOOL,REFS_ALIEN};
-initUI();
+initUI();try{rwInit()}catch(e){try{console.error('rwInit',e)}catch(_){}}
 })();
 </script>
 </body>
